@@ -1,0 +1,8 @@
+/* Karbon — CHUK self-hosted font. Weights present: 100/400/500/600/700 */
+@font-face { font-family: "Karbon"; font-weight: 100; font-display: swap; src: url("Karbon-Hairline.woff") format("woff"); }
+@font-face { font-family: "Karbon"; font-weight: 400; font-display: swap; src: url("Karbon-Regular.woff") format("woff"); }
+@font-face { font-family: "Karbon"; font-weight: 500; font-display: swap; src: url("Karbon-Medium.woff") format("woff"); }
+@font-face { font-family: "Karbon"; font-weight: 600; font-display: swap; src: url("Karbon-Semibold.woff") format("woff"); }
+@font-face { font-family: "Karbon"; font-weight: 700; font-display: swap; src: url("Karbon-Bold.woff") format("woff"); }
+
+/* ponytail: site design calls for 900/800 headings but only up to 700 (Bold) exists on chuk.in — 700 is the real max, no faux-bold */
