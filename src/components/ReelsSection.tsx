@@ -120,7 +120,7 @@ export default function ReelsSection() {
   return (
     <section
       id="reels"
-      className="relative z-10 w-full bg-[#F2DABB] text-[#3A2A2F] font-['Karbon'] py-12 sm:py-20 lg:py-28 px-4 sm:px-6 lg:px-8 border-t border-[#942A45]/15"
+      className="relative z-10 w-full bg-[#F2DABB] text-[#3A2A2F] font-['Karbon'] py-12 sm:py-20 lg:py-32 xl:py-36 px-4 sm:px-8 lg:px-12 xl:px-16 border-t border-[#942A45]/15"
     >
       <div className="max-w-7xl mx-auto flex flex-col items-center">
         {/* Header */}
@@ -130,7 +130,7 @@ export default function ReelsSection() {
             className="gap-2 px-3.5 py-1 sm:px-4 sm:py-1.5 text-xs sm:text-sm font-bold uppercase tracking-wider mb-3 sm:mb-4 shadow-xs bg-[#942A45] text-[#F2DABB]"
           >
             <InstagramIcon className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-[#F3B343]" />
-            <span>Member Reels & Stories</span>
+            <span>Reels and Videos</span>
           </Badge>
 
           <motion.h2

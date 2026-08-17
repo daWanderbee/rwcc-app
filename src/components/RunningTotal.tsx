@@ -47,7 +47,7 @@ export default function RunningTotal() {
   return (
     <section
       id="running-total"
-      className="relative z-10 w-full bg-[#ED544B] text-[#F2DABB] font-['Karbon'] py-16 sm:py-24 lg:py-28 px-4 sm:px-6 lg:px-8"
+      className="relative z-10 w-full bg-[#ED544B] text-[#F2DABB] font-['Karbon'] py-16 sm:py-24 lg:py-32 xl:py-36 px-4 sm:px-8 lg:px-12 xl:px-16"
     >
       <div className="max-w-7xl mx-auto flex flex-col items-center text-center relative z-10">
         {/* Section Label */}
@@ -63,13 +63,13 @@ export default function RunningTotal() {
           initial={{ opacity: 0, y: 10 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="text-2xl sm:text-4xl md:text-5xl lg:text-6xl font-black text-[#F2DABB] tracking-tight leading-tight max-w-4xl mb-14 sm:mb-20 lg:mb-24"
+          className="text-2xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-black text-[#F2DABB] tracking-tight leading-tight max-w-5xl mb-14 sm:mb-20 lg:mb-28"
         >
           Add up every member on that board, and this is what the Club has done so far.
         </motion.h2>
 
         {/* Fluid, Open Editorial Metric Display */}
-        <div className="w-full grid grid-cols-1 md:grid-cols-3 gap-12 md:gap-0 mb-14 sm:mb-20 lg:mb-24 relative">
+        <div className="w-full grid grid-cols-1 md:grid-cols-3 gap-12 md:gap-0 mb-14 sm:mb-20 lg:mb-28 relative">
           {stats.map((stat, index) => {
             const IconComponent = stat.icon;
             return (
@@ -79,28 +79,28 @@ export default function RunningTotal() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.4, delay: index * 0.1 }}
-                className={`flex flex-col items-center text-center px-4 sm:px-8 lg:px-12 ${
+                className={`flex flex-col items-center text-center px-4 sm:px-8 lg:px-12 xl:px-16 ${
                   index !== 2 ? 'md:border-r md:border-[#F2DABB]/25' : ''
                 }`}
               >
                 {/* Top Pill Icon */}
-                <div className="flex items-center gap-2.5 mb-5">
+                <div className="flex items-center gap-2.5 mb-6">
                   <div
                     style={{ backgroundColor: `${stat.accentColor}30`, color: stat.color }}
-                    className="p-2.5 rounded-full border border-current shadow-xs"
+                    className="p-2.5 sm:p-3 rounded-full border border-current shadow-xs"
                   >
-                    <IconComponent className="w-5 h-5 lg:w-6 lg:h-6" />
+                    <IconComponent className="w-5 h-5 lg:w-7 lg:h-7" />
                   </div>
-                  <span className="text-xs lg:text-sm font-bold uppercase tracking-wider text-[#F2DABB]/90">
+                  <span className="text-xs sm:text-sm lg:text-base font-bold uppercase tracking-wider text-[#F2DABB]/90">
                     {stat.badge}
                   </span>
                 </div>
 
                 {/* Giant Metric Value */}
-                <div className="mb-3">
+                <div className="mb-4">
                   <span
                     style={{ color: stat.color }}
-                    className="text-5xl sm:text-6xl lg:text-7xl xl:text-8xl font-black tracking-tight leading-none block"
+                    className="text-5xl sm:text-6xl lg:text-7xl xl:text-8xl 2xl:text-9xl font-black tracking-tight leading-none block"
                   >
                     <NumberTicker
                       value={stat.value}
@@ -111,12 +111,12 @@ export default function RunningTotal() {
                 </div>
 
                 {/* Metric Title */}
-                <h4 className="text-lg sm:text-xl lg:text-2xl font-black text-[#F2DABB] mb-3 leading-tight">
+                <h4 className="text-lg sm:text-xl lg:text-2xl xl:text-3xl font-black text-[#F2DABB] mb-3 leading-tight">
                   {stat.title}
                 </h4>
 
                 {/* Metric Label / Subtext */}
-                <p className="text-xs sm:text-sm lg:text-base text-[#F2DABB]/85 font-medium leading-relaxed max-w-sm">
+                <p className="text-xs sm:text-base lg:text-lg text-[#F2DABB]/85 font-medium leading-relaxed max-w-sm">
                   {stat.label}
                 </p>
               </motion.div>
@@ -129,7 +129,7 @@ export default function RunningTotal() {
           initial={{ opacity: 0, y: 10 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="text-base sm:text-xl md:text-2xl lg:text-3xl text-[#F2DABB] font-black leading-relaxed max-w-4xl mb-12 text-center"
+          className="text-base sm:text-xl md:text-2xl lg:text-3xl xl:text-4xl text-[#F2DABB] font-black leading-relaxed max-w-4xl mb-14 text-center"
         >
           Every one of those numbers was scored by a member restaurant, order by order. Switch your tableware, and the next one is yours.
         </motion.p>

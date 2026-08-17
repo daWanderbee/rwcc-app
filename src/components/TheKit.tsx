@@ -107,11 +107,11 @@ export default function TheKit() {
   return (
     <section
       id="the-kit"
-      className="relative z-10 w-full bg-[#942A45] text-[#F2DABB] font-['Karbon'] py-16 sm:py-24 lg:py-28 px-4 sm:px-6 lg:px-8"
+      className="relative z-10 w-full bg-[#942A45] text-[#F2DABB] font-['Karbon'] py-16 sm:py-24 lg:py-32 xl:py-36 px-4 sm:px-8 lg:px-12 xl:px-16"
     >
       <div className="max-w-7xl mx-auto flex flex-col items-center">
         {/* Section Header */}
-        <div className="text-center max-w-3xl mx-auto mb-12 sm:mb-14 lg:mb-16">
+        <div className="text-center max-w-3xl mx-auto mb-12 sm:mb-16 lg:mb-20">
           <Badge
             variant="sand"
             className="gap-2 px-4 py-1.5 text-xs sm:text-sm font-bold uppercase tracking-wider mb-4 shadow-sm bg-[#F3B343] text-[#942A45] border-0"
@@ -124,7 +124,7 @@ export default function TheKit() {
             initial={{ opacity: 0, y: 10 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="text-3xl sm:text-5xl md:text-6xl font-black text-[#F2DABB] tracking-tight mb-3"
+            className="text-3xl sm:text-5xl md:text-6xl lg:text-7xl font-black text-[#F2DABB] tracking-tight mb-3"
           >
             Every member&apos;s welcome kit
           </motion.h2>
@@ -151,11 +151,11 @@ export default function TheKit() {
         </div>
 
         {/* Main CTA Button */}
-        <div className="mb-14 sm:mb-18">
+        <div className="mb-14 sm:mb-20">
           <Button
             asChild
             size="lg"
-            className="font-black shadow-xl bg-[#ED544B] text-[#F2DABB] hover:bg-[#D9453C] hover:scale-105 active:scale-95 transition-all text-base sm:text-lg px-9 py-6"
+            className="font-black shadow-xl bg-[#ED544B] text-[#F2DABB] hover:bg-[#D9453C] hover:scale-105 active:scale-95 transition-all text-base sm:text-lg px-10 py-6"
           >
             <a href="#join-cta">
               <span>Claim Your Kit Free</span>
@@ -164,8 +164,8 @@ export default function TheKit() {
           </Button>
         </div>
 
-        {/* 7 Kit Pieces Gallery with Multi-Color Image Backdrops */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 sm:gap-10 lg:gap-12 w-full">
+        {/* 7 Kit Pieces Gallery with Multi-Color Image Backdrops (Widescreen 3-Col Grid) */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 sm:gap-10 lg:gap-12 xl:gap-14 w-full">
           {kitPieces.map((piece, index) => (
             <motion.div
               key={piece.id}
@@ -179,18 +179,18 @@ export default function TheKit() {
             >
               <div>
                 {/* Floating Image Preview with Pastel-Saturated Brand Tint */}
-                <div className={`relative w-full h-56 sm:h-64 lg:h-72 rounded-2xl ${piece.imageBg} border-2 ${piece.imageBorder} overflow-hidden mb-6 flex items-center justify-center p-4 transition-transform group-hover:scale-105 duration-300 shadow-md`}>
+                <div className={`relative w-full h-56 sm:h-64 lg:h-72 xl:h-80 rounded-2xl sm:rounded-3xl ${piece.imageBg} border-2 ${piece.imageBorder} overflow-hidden mb-6 flex items-center justify-center p-4 transition-transform group-hover:scale-105 duration-300 shadow-md`}>
                   <Image
                     src={piece.image}
                     alt={piece.title}
                     fill
-                    className="object-contain p-2"
+                    className="object-contain p-3"
                   />
                   
                   {/* Zoom Icon overlay */}
                   <div
                     style={{ backgroundColor: piece.accentColor }}
-                    className="absolute top-3.5 right-3.5 p-2 rounded-full text-[#F2DABB] opacity-90 group-hover:opacity-100 transition-opacity shadow-sm"
+                    className="absolute top-3.5 right-3.5 p-2.5 rounded-full text-[#F2DABB] opacity-90 group-hover:opacity-100 transition-opacity shadow-sm"
                   >
                     <Maximize2 className="w-4 h-4" />
                   </div>
@@ -214,7 +214,7 @@ export default function TheKit() {
                   </span>
 
                   {/* Piece Title */}
-                  <h3 className="text-xl lg:text-2xl font-black text-[#F2DABB] tracking-tight mb-2.5 group-hover:text-[#F3B343] transition-colors">
+                  <h3 className="text-xl lg:text-2xl xl:text-3xl font-black text-[#F2DABB] tracking-tight mb-2.5 group-hover:text-[#F3B343] transition-colors">
                     {piece.title}
                   </h3>
 
@@ -227,10 +227,10 @@ export default function TheKit() {
 
               {/* Specs Footer */}
               <div className="pt-4 border-t border-[#F2DABB]/15 flex items-center justify-between text-xs sm:text-sm font-semibold text-[#F2DABB]/80">
-                <span className="truncate">{piece.specs}</span>
+                <span className="truncate pr-2">{piece.specs}</span>
                 <span
                   style={{ color: piece.accentColor }}
-                  className="font-bold group-hover:underline shrink-0 ml-3"
+                  className="font-bold group-hover:underline shrink-0 ml-2"
                 >
                   Details →
                 </span>
@@ -242,7 +242,7 @@ export default function TheKit() {
         {/* Modal using shadcn Dialog */}
         <Dialog open={!!selectedPiece} onOpenChange={(open) => !open && setSelectedPiece(null)}>
           {selectedPiece && (
-            <DialogContent className="max-w-2xl">
+            <DialogContent className="max-w-2xl max-h-[92vh] overflow-y-auto">
               <DialogHeader>
                 <div className="flex items-center gap-2 mb-2">
                   <Badge

@@ -43,9 +43,9 @@ export default function JoinCtaSection() {
   return (
     <section
       id="join-cta"
-      className="relative z-10 w-full bg-[#ED544B] text-[#F2DABB] font-['Karbon'] py-12 sm:py-20 lg:py-28 px-3 sm:px-6 lg:px-8"
+      className="relative z-10 w-full bg-[#ED544B] text-[#F2DABB] font-['Karbon'] py-12 sm:py-20 lg:py-32 xl:py-36 px-4 sm:px-8 lg:px-12 xl:px-16"
     >
-      <div className="max-w-6xl mx-auto flex flex-col items-center text-center">
+      <div className="max-w-7xl mx-auto flex flex-col items-center text-center">
         {/* Section Header */}
         <Badge
           variant="sand"

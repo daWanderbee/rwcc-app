@@ -33,9 +33,9 @@ export default function Navbar() {
   ];
 
   return (
-    <header className="fixed top-0 left-0 right-0 z-[100] w-full bg-[#F2DABB] border-b-2 border-[#942A45]/20 px-4 sm:px-8 py-3 flex items-center justify-between transition-all shadow-sm">
+    <header className="fixed top-0 left-0 right-0 z-[100] w-full bg-[#F2DABB] border-b-2 border-[#942A45]/20 px-4 sm:px-8 lg:px-12 xl:px-16 py-3 lg:py-3.5 flex items-center justify-between transition-all shadow-sm">
       {/* Top Left: Logo Unit */}
-      <div className="flex items-center gap-6">
+      <div className="flex items-center gap-6 lg:gap-10">
         <AnimatePresence>
           {showLogo && (
             <motion.a
@@ -49,17 +49,17 @@ export default function Navbar() {
               <Image
                 src="/images/rwcc.png"
                 alt="RWCC Logo Unit"
-                width={40}
-                height={40}
+                width={44}
+                height={44}
                 priority
-                className="h-9 sm:h-10 w-auto object-contain drop-shadow-sm transition-transform group-hover:scale-105"
+                className="h-9 sm:h-10 lg:h-11 w-auto object-contain drop-shadow-sm transition-transform group-hover:scale-105"
               />
             </motion.a>
           )}
         </AnimatePresence>
 
         {/* Desktop Navigation Links */}
-        <nav className="hidden md:flex items-center gap-6 text-xs sm:text-sm font-bold text-[#942A45]">
+        <nav className="hidden md:flex items-center gap-6 lg:gap-8 xl:gap-10 text-sm lg:text-base font-bold text-[#942A45]">
           {navLinks.map((link) => (
             <a
               key={link.name}
@@ -77,7 +77,7 @@ export default function Navbar() {
         <Button
           asChild
           size="sm"
-          className="font-black shadow-md"
+          className="font-black shadow-md text-sm lg:text-base lg:px-6 lg:py-2.5"
         >
           <a href="#join-cta">Join The Club</a>
         </Button>

@@ -63,11 +63,11 @@ export default function Leaderboard() {
   return (
     <section
       id="leaderboard"
-      className="relative z-10 w-full bg-[#F2DABB] text-[#3A2A2F] font-['Karbon'] py-12 sm:py-20 lg:py-28 px-3 sm:px-6 lg:px-8"
+      className="relative z-10 w-full bg-[#F2DABB] text-[#3A2A2F] font-['Karbon'] py-16 sm:py-24 lg:py-32 xl:py-36 px-4 sm:px-8 lg:px-12 xl:px-16"
     >
-      <div className="max-w-5xl mx-auto flex flex-col items-center">
+      <div className="max-w-6xl mx-auto flex flex-col items-center">
         {/* Header */}
-        <div className="text-center mb-8 sm:mb-12">
+        <div className="text-center mb-10 sm:mb-14">
           <Badge
             variant="default"
             className="gap-2 px-3.5 py-1 sm:px-4 sm:py-1.5 text-xs sm:text-sm font-bold uppercase tracking-wider mb-3 sm:mb-4 shadow-xs bg-[#942A45] text-[#F2DABB]"
@@ -80,7 +80,7 @@ export default function Leaderboard() {
             initial={{ opacity: 0, y: 10 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="text-2xl sm:text-5xl md:text-6xl font-black text-[#942A45] tracking-tight mb-2 sm:mb-3"
+            className="text-3xl sm:text-5xl md:text-6xl lg:text-7xl font-black text-[#942A45] tracking-tight mb-2 sm:mb-3"
           >
             The Leaderboard
           </motion.h2>
@@ -100,7 +100,7 @@ export default function Leaderboard() {
         <Tabs
           value={sortKey}
           onValueChange={(val) => setSortKey(val as any)}
-          className="mb-10 sm:mb-16 w-full max-w-md flex justify-center px-1"
+          className="mb-12 sm:mb-16 w-full max-w-md flex justify-center px-1"
         >
           <TabsList className="w-full bg-[#E5C7A3] border border-[#942A45]/20 p-1 h-11 sm:h-12">
             <TabsTrigger value="trees" className="flex-1 text-xs sm:text-sm font-bold data-[state=active]:bg-[#95CC2E] data-[state=active]:text-[#3A2A2F]">
@@ -115,17 +115,17 @@ export default function Leaderboard() {
           </TabsList>
         </Tabs>
 
-        {/* Top 3 Podium (Mobile Adaptive) */}
-        <div className="flex items-end justify-center gap-2 sm:gap-8 lg:gap-14 w-full mb-10 sm:mb-16 px-1 max-w-2xl">
+        {/* Top 3 Podium (Expansive Desktop Layout) */}
+        <div className="flex items-end justify-center gap-3 sm:gap-10 lg:gap-16 w-full mb-12 sm:mb-18 px-1 max-w-3xl">
           {/* #2 Rank */}
-          <div className="flex flex-col items-center text-center flex-1 max-w-[110px] sm:max-w-[160px]">
+          <div className="flex flex-col items-center text-center flex-1 max-w-[120px] sm:max-w-[180px]">
             <div className="relative mb-2 sm:mb-3">
-              <div className="w-14 h-14 sm:w-22 sm:h-22 lg:w-26 lg:h-26 rounded-full bg-[#33A8C3] text-[#F2DABB] font-black text-base sm:text-2xl lg:text-3xl flex items-center justify-center shadow-lg border-2 border-[#F2DABB] transition-transform hover:scale-105">
+              <div className="w-16 h-16 sm:w-24 sm:h-24 lg:w-28 lg:h-28 rounded-full bg-[#33A8C3] text-[#F2DABB] font-black text-lg sm:text-2xl lg:text-3xl flex items-center justify-center shadow-lg border-2 border-[#F2DABB] transition-transform hover:scale-105">
                 {top2.initials}
               </div>
               <Badge
                 variant="teal"
-                className="absolute -bottom-1 -right-1 w-5 h-5 sm:w-7 sm:h-7 rounded-full p-0 flex items-center justify-center font-black text-[10px] sm:text-xs lg:text-sm bg-[#33A8C3] text-[#F2DABB] border-2 border-[#F2DABB]"
+                className="absolute -bottom-1 -right-1 w-6 h-6 sm:w-8 sm:h-8 rounded-full p-0 flex items-center justify-center font-black text-xs sm:text-sm bg-[#33A8C3] text-[#F2DABB] border-2 border-[#F2DABB]"
               >
                 2
               </Badge>
@@ -134,47 +134,47 @@ export default function Leaderboard() {
               {top2.name}
             </h4>
             <p className="text-[10px] sm:text-xs font-semibold text-[#3A2A2F]/70 truncate w-full">
-              {top2.city}
+              {top2.city} · {top2.outlets} outlets
             </p>
-            <span className="mt-1 text-[11px] sm:text-sm font-black text-[#0096B1] block">
+            <span className="mt-1 text-xs sm:text-base font-black text-[#0096B1] block">
               {getMetricDisplay(top2)}
             </span>
           </div>
 
           {/* #1 Rank (Centerpiece) */}
-          <div className="flex flex-col items-center text-center flex-1 max-w-[130px] sm:max-w-[190px] -translate-y-3 sm:-translate-y-4">
+          <div className="flex flex-col items-center text-center flex-1 max-w-[140px] sm:max-w-[210px] -translate-y-4 sm:-translate-y-6">
             <div className="relative mb-2 sm:mb-3">
-              <Crown className="w-5 h-5 sm:w-8 sm:h-8 text-[#F3B343] mx-auto mb-1 drop-shadow-md" />
-              <div className="w-18 h-18 sm:w-26 sm:h-26 lg:w-32 lg:h-32 rounded-full bg-[#942A45] text-[#F3B343] font-black text-xl sm:text-3xl lg:text-4xl flex items-center justify-center shadow-2xl border-3 sm:border-4 border-[#F3B343] transition-transform hover:scale-105">
+              <Crown className="w-6 h-6 sm:w-9 sm:h-9 text-[#F3B343] mx-auto mb-1.5 drop-shadow-md" />
+              <div className="w-20 h-20 sm:w-28 sm:h-28 lg:w-36 lg:h-36 rounded-full bg-[#942A45] text-[#F3B343] font-black text-2xl sm:text-4xl lg:text-5xl flex items-center justify-center shadow-2xl border-4 border-[#F3B343] transition-transform hover:scale-105">
                 {top1.initials}
               </div>
               <Badge
                 variant="gold"
-                className="absolute -bottom-1.5 inset-x-0 mx-auto w-6 h-6 sm:w-8 sm:h-8 rounded-full p-0 flex items-center justify-center font-black text-xs sm:text-sm bg-[#F3B343] text-[#942A45] border-2 border-[#942A45]"
+                className="absolute -bottom-2 inset-x-0 mx-auto w-7 h-7 sm:w-9 sm:h-9 rounded-full p-0 flex items-center justify-center font-black text-xs sm:text-base bg-[#F3B343] text-[#942A45] border-2 border-[#942A45]"
               >
                 1
               </Badge>
             </div>
-            <h4 className="font-black text-xs sm:text-lg lg:text-xl text-[#942A45] truncate w-full">
+            <h4 className="font-black text-sm sm:text-lg lg:text-2xl text-[#942A45] truncate w-full">
               {top1.name}
             </h4>
-            <p className="text-[10px] sm:text-xs font-semibold text-[#3A2A2F]/70 truncate w-full">
+            <p className="text-xs sm:text-sm font-semibold text-[#3A2A2F]/70 truncate w-full">
               {top1.city} · {top1.outlets} outlets
             </p>
-            <span className="mt-1 text-[11px] sm:text-base font-black text-[#942A45] block bg-[#F3B343]/30 px-2 sm:px-3 py-0.5 sm:py-1 rounded-full">
+            <span className="mt-1.5 text-xs sm:text-lg font-black text-[#942A45] block bg-[#F3B343]/30 px-3 sm:px-4 py-1 rounded-full">
               {getMetricDisplay(top1)}
             </span>
           </div>
 
           {/* #3 Rank */}
-          <div className="flex flex-col items-center text-center flex-1 max-w-[110px] sm:max-w-[160px]">
+          <div className="flex flex-col items-center text-center flex-1 max-w-[120px] sm:max-w-[180px]">
             <div className="relative mb-2 sm:mb-3">
-              <div className="w-14 h-14 sm:w-22 sm:h-22 lg:w-26 lg:h-26 rounded-full bg-[#ED544B] text-[#F2DABB] font-black text-base sm:text-2xl lg:text-3xl flex items-center justify-center shadow-lg border-2 border-[#F2DABB] transition-transform hover:scale-105">
+              <div className="w-16 h-16 sm:w-24 sm:h-24 lg:w-28 lg:h-28 rounded-full bg-[#ED544B] text-[#F2DABB] font-black text-lg sm:text-2xl lg:text-3xl flex items-center justify-center shadow-lg border-2 border-[#F2DABB] transition-transform hover:scale-105">
                 {top3.initials}
               </div>
               <Badge
                 variant="coral"
-                className="absolute -bottom-1 -right-1 w-5 h-5 sm:w-7 sm:h-7 rounded-full p-0 flex items-center justify-center font-black text-[10px] sm:text-xs lg:text-sm bg-[#ED544B] text-[#F2DABB] border-2 border-[#F2DABB]"
+                className="absolute -bottom-1 -right-1 w-6 h-6 sm:w-8 sm:h-8 rounded-full p-0 flex items-center justify-center font-black text-xs sm:text-sm bg-[#ED544B] text-[#F2DABB] border-2 border-[#F2DABB]"
               >
                 3
               </Badge>
@@ -183,16 +183,16 @@ export default function Leaderboard() {
               {top3.name}
             </h4>
             <p className="text-[10px] sm:text-xs font-semibold text-[#3A2A2F]/70 truncate w-full">
-              {top3.city}
+              {top3.city} · {top3.outlets} outlets
             </p>
-            <span className="mt-1 text-[11px] sm:text-sm font-black text-[#ED544B] block">
+            <span className="mt-1 text-xs sm:text-base font-black text-[#ED544B] block">
               {getMetricDisplay(top3)}
             </span>
           </div>
         </div>
 
-        {/* Open Editorial Ranked List Stream */}
-        <div className="w-full flex flex-col divide-y divide-[#942A45]/15 border-y border-[#942A45]/20 mb-8 sm:mb-10">
+        {/* Open Editorial Ranked List Stream (Widescreen Rows) */}
+        <div className="w-full flex flex-col divide-y divide-[#942A45]/15 border-y border-[#942A45]/20 mb-10">
           <AnimatePresence>
             {displayedData.map((row) => {
               const isTop1 = row.displayRank === 1;
@@ -207,29 +207,29 @@ export default function Leaderboard() {
               return (
                 <div
                   key={row.name}
-                  className="w-full py-3.5 sm:py-5 px-2 sm:px-6 flex items-center justify-between transition-colors hover:bg-[#942A45]/5 gap-2"
+                  className="w-full py-4 sm:py-5 px-3 sm:px-8 flex items-center justify-between transition-colors hover:bg-[#942A45]/5 gap-4"
                 >
                   {/* Left: Rank & Avatar & Name */}
-                  <div className="flex items-center gap-2.5 sm:gap-6 min-w-0">
+                  <div className="flex items-center gap-3 sm:gap-6 min-w-0">
                     <Badge
                       variant={badgeVariant}
-                      className="w-7 h-7 sm:w-9 sm:h-9 rounded-full p-0 flex items-center justify-center shrink-0 font-black text-xs sm:text-sm shadow-xs"
+                      className="w-8 h-8 sm:w-10 sm:h-10 rounded-full p-0 flex items-center justify-center shrink-0 font-black text-xs sm:text-base shadow-xs"
                     >
                       #{row.displayRank}
                     </Badge>
 
                     <div
                       style={{ backgroundColor: row.avatarBg }}
-                      className="w-9 h-9 sm:w-12 sm:h-12 rounded-full text-[#F2DABB] font-black text-xs sm:text-base flex items-center justify-center shrink-0 shadow-md"
+                      className="w-10 h-10 sm:w-13 sm:h-13 rounded-full text-[#F2DABB] font-black text-sm sm:text-lg flex items-center justify-center shrink-0 shadow-md"
                     >
                       {row.initials}
                     </div>
 
                     <div className="text-left min-w-0">
-                      <h4 className="font-bold text-sm sm:text-lg lg:text-xl truncate text-[#942A45]">
+                      <h4 className="font-bold text-sm sm:text-xl lg:text-2xl truncate text-[#942A45]">
                         {row.name}
                       </h4>
-                      <p className="text-[11px] sm:text-sm font-semibold text-[#3A2A2F]/70 truncate">
+                      <p className="text-xs sm:text-sm font-semibold text-[#3A2A2F]/70 truncate">
                         {row.city} · {row.outlets} outlets
                       </p>
                     </div>
@@ -237,10 +237,10 @@ export default function Leaderboard() {
 
                   {/* Right: Primary Metric */}
                   <div className="text-right shrink-0 ml-2">
-                    <span className="font-black text-sm sm:text-lg lg:text-xl block text-[#942A45]">
+                    <span className="font-black text-base sm:text-xl lg:text-2xl block text-[#942A45]">
                       {getMetricDisplay(row)}
                     </span>
-                    <span className="text-[10px] sm:text-sm font-semibold opacity-75 block text-[#3A2A2F]">
+                    <span className="text-xs sm:text-sm font-semibold opacity-75 block text-[#3A2A2F]">
                       {sortKey === 'trees' && `${row.co2Text} CO₂ · ${row.volumeText}`}
                       {sortKey === 'carbon' && `${row.trees.toLocaleString()} trees · ${row.volumeText}`}
                       {sortKey === 'volume' && `${row.trees.toLocaleString()} trees · ${row.co2Text} CO₂`}
@@ -256,14 +256,14 @@ export default function Leaderboard() {
         <Button
           variant="outlinePlum"
           onClick={() => setShowAll(!showAll)}
-          className="mt-1 mb-6 sm:mb-8 gap-2 font-bold text-xs sm:text-base border-[#942A45] hover:bg-[#942A45] hover:text-[#F2DABB] px-5 sm:px-6 py-2.5 sm:py-3"
+          className="mt-1 mb-8 gap-2 font-bold text-sm sm:text-base border-[#942A45] hover:bg-[#942A45] hover:text-[#F2DABB] px-8 py-3.5"
         >
           <span>{showAll ? 'Show Less' : 'View Full Top 10 Leaderboard'}</span>
-          <ChevronDown className={`w-3.5 h-3.5 sm:w-4 sm:h-4 transition-transform duration-200 ${showAll ? 'rotate-180' : ''}`} />
+          <ChevronDown className={`w-4 h-4 transition-transform duration-200 ${showAll ? 'rotate-180' : ''}`} />
         </Button>
 
         {/* Footnote */}
-        <p className="text-[11px] sm:text-sm lg:text-base text-[#3A2A2F]/75 font-semibold max-w-xl text-center leading-relaxed px-2">
+        <p className="text-xs sm:text-sm lg:text-base text-[#3A2A2F]/75 font-semibold max-w-2xl text-center leading-relaxed px-4">
           Rankings refresh each season from verified Chuk order volumes. Newly switched members start with a projected first-year figure.
         </p>
       </div>

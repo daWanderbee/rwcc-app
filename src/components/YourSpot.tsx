@@ -16,9 +16,9 @@ export default function YourSpot() {
   return (
     <section
       id="your-spot"
-      className="relative z-10 w-full bg-[#942A45] text-[#F2DABB] font-['Karbon'] py-12 sm:py-20 lg:py-28 px-3 sm:px-6 lg:px-8"
+      className="relative z-10 w-full bg-[#942A45] text-[#F2DABB] font-['Karbon'] py-12 sm:py-20 lg:py-32 xl:py-36 px-4 sm:px-8 lg:px-12 xl:px-16"
     >
-      <div className="max-w-6xl mx-auto flex flex-col items-center">
+      <div className="max-w-7xl mx-auto flex flex-col items-center">
         {/* Section Header */}
         <div className="text-center max-w-3xl mx-auto mb-10 sm:mb-16 lg:mb-20">
           <Badge
@@ -33,7 +33,7 @@ export default function YourSpot() {
             initial={{ opacity: 0, y: 10 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="text-2xl sm:text-5xl md:text-6xl font-black text-[#F2DABB] tracking-tight mb-3 sm:mb-4"
+            className="text-2xl sm:text-5xl md:text-6xl lg:text-7xl font-black text-[#F2DABB] tracking-tight mb-3 sm:mb-4"
           >
             Your rank, printed for the front of house.
           </motion.h2>

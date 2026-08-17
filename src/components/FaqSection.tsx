@@ -75,7 +75,7 @@ export default function FaqSection() {
   return (
     <section
       id="faq"
-      className="relative z-10 w-full bg-[#F2DABB] text-[#3A2A2F] font-['Karbon'] py-16 sm:py-24 lg:py-28 px-4 sm:px-6 lg:px-8"
+      className="relative z-10 w-full bg-[#F2DABB] text-[#3A2A2F] font-['Karbon'] py-16 sm:py-24 lg:py-32 xl:py-36 px-4 sm:px-8 lg:px-12 xl:px-16"
     >
       <div className="max-w-5xl mx-auto flex flex-col items-center">
         {/* Inject FAQPage Schema for Search & AI Snippets */}
@@ -85,7 +85,7 @@ export default function FaqSection() {
         />
 
         {/* Section Header */}
-        <div className="text-center max-w-2xl mx-auto mb-14 sm:mb-18 lg:mb-20">
+        <div className="text-center max-w-2xl mx-auto mb-14 sm:mb-18 lg:mb-22">
           <Badge
             variant="default"
             className="text-xs sm:text-sm font-black uppercase tracking-widest mb-4 px-4 py-1.5 bg-[#942A45] text-[#F2DABB]"
@@ -97,7 +97,7 @@ export default function FaqSection() {
             initial={{ opacity: 0, y: 10 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="text-3xl sm:text-5xl md:text-6xl font-black text-[#942A45] tracking-tight mb-3"
+            className="text-3xl sm:text-5xl md:text-6xl lg:text-7xl font-black text-[#942A45] tracking-tight mb-3"
           >
             Frequently Asked{' '}
             <span className="text-[#ED544B]">Questions</span>
@@ -118,11 +118,11 @@ export default function FaqSection() {
         <Accordion type="single" collapsible defaultValue="item-1" className="w-full flex flex-col divide-y divide-[#942A45]/20 border-y border-[#942A45]/25">
           {faqs.map((faq, index) => (
             <AccordionItem key={faq.id} value={faq.id} className="border-0 rounded-none bg-transparent shadow-none">
-              <AccordionTrigger className="py-6 sm:py-7 px-3 sm:px-6 hover:no-underline text-lg sm:text-xl lg:text-2xl">
+              <AccordionTrigger className="py-6 sm:py-7 lg:py-8 px-3 sm:px-6 lg:px-8 hover:no-underline text-lg sm:text-xl lg:text-2xl xl:text-3xl">
                 <span className="flex items-center gap-4 sm:gap-6">
                   <span
                     style={{ backgroundColor: faq.accentColor, color: faq.accentColor === '#F3B343' ? '#942A45' : '#F2DABB' }}
-                    className="text-xs sm:text-sm font-black w-8 h-8 sm:w-9 sm:h-9 rounded-xl flex items-center justify-center shrink-0 shadow-xs"
+                    className="text-xs sm:text-sm lg:text-base font-black w-8 h-8 sm:w-10 sm:h-10 rounded-xl flex items-center justify-center shrink-0 shadow-xs"
                   >
                     {index + 1}
                   </span>
@@ -136,9 +136,9 @@ export default function FaqSection() {
                 </div>
               </AccordionTrigger>
 
-              <AccordionContent className="px-3 sm:px-6 pb-7 pt-0 border-0">
-                <div className="flex items-start gap-4 text-base sm:text-lg text-[#3A2A2F] leading-relaxed bg-[#E5C7A3]/40 p-5 sm:p-6 rounded-2xl border border-[#942A45]/15">
-                  <CheckCircle2 className="w-6 h-6 text-[#059669] shrink-0 mt-0.5" />
+              <AccordionContent className="px-3 sm:px-6 lg:px-8 pb-7 pt-0 border-0">
+                <div className="flex items-start gap-4 text-base sm:text-lg lg:text-xl text-[#3A2A2F] leading-relaxed bg-[#E5C7A3]/40 p-5 sm:p-7 rounded-2xl border border-[#942A45]/15">
+                  <CheckCircle2 className="w-6 h-6 lg:w-7 lg:h-7 text-[#059669] shrink-0 mt-0.5" />
                   <div>{faq.answer}</div>
                 </div>
               </AccordionContent>

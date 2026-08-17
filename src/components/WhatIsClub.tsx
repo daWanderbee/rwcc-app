@@ -21,7 +21,7 @@ export default function WhatIsClub() {
       accentColor: '#F3B343', // Sunny Gold
       className: 'col-span-1 md:col-span-2',
       background: (
-        <div className="absolute right-3 bottom-2 sm:right-6 sm:bottom-4 w-36 h-36 sm:w-48 sm:h-48 lg:w-56 lg:h-56 pointer-events-none transition-transform duration-300 group-hover:scale-105">
+        <div className="absolute right-3 bottom-2 sm:right-6 sm:bottom-4 w-36 h-36 sm:w-48 sm:h-48 lg:w-56 lg:h-56 xl:w-64 xl:h-64 pointer-events-none transition-transform duration-300 group-hover:scale-105">
           <Image
             src="/images/RWCC-unit.png"
             alt="RWCC Recognition Plaque Unit"
@@ -42,7 +42,7 @@ export default function WhatIsClub() {
       accentColor: '#33A8C3', // Turquoise Sky
       className: 'col-span-1 md:col-span-1',
       background: (
-        <div className="absolute right-2 bottom-2 sm:right-4 sm:bottom-3 w-28 h-28 sm:w-36 sm:h-36 pointer-events-none transition-transform duration-300 group-hover:scale-105">
+        <div className="absolute right-2 bottom-2 sm:right-4 sm:bottom-3 w-28 h-28 sm:w-36 sm:h-36 lg:w-44 lg:h-44 pointer-events-none transition-transform duration-300 group-hover:scale-105">
           <Image
             src="/images/entering-sticker.png"
             alt="Entering sticker glass decal"
@@ -63,7 +63,7 @@ export default function WhatIsClub() {
       accentColor: '#ED544B', // Sunset Coral
       className: 'col-span-1 md:col-span-1',
       background: (
-        <div className="absolute right-2 bottom-2 sm:right-4 sm:bottom-3 w-28 h-28 sm:w-36 sm:h-36 pointer-events-none transition-transform duration-300 group-hover:scale-105">
+        <div className="absolute right-2 bottom-2 sm:right-4 sm:bottom-3 w-28 h-28 sm:w-36 sm:h-36 lg:w-44 lg:h-44 pointer-events-none transition-transform duration-300 group-hover:scale-105">
           <Image
             src="/images/tent-card.png"
             alt="Table tent card"
@@ -84,7 +84,7 @@ export default function WhatIsClub() {
       accentColor: '#95CC2E', // Leaf Lime Green
       className: 'col-span-1 md:col-span-2',
       background: (
-        <div className="absolute right-3 bottom-2 sm:right-6 sm:bottom-4 w-36 h-36 sm:w-48 sm:h-48 lg:w-56 lg:h-56 pointer-events-none transition-transform duration-300 group-hover:scale-105">
+        <div className="absolute right-3 bottom-2 sm:right-6 sm:bottom-4 w-36 h-36 sm:w-48 sm:h-48 lg:w-56 lg:h-56 xl:w-64 xl:h-64 pointer-events-none transition-transform duration-300 group-hover:scale-105">
           <Image
             src="/images/certifciate.png"
             alt="Framed wall certificate"
@@ -99,7 +99,7 @@ export default function WhatIsClub() {
   return (
     <section
       id="about"
-      className="relative z-10 w-full bg-[#942A45] text-[#F2DABB] font-['Karbon'] rounded-t-[2.5rem] sm:rounded-t-[3.5rem] lg:rounded-t-[4.5rem] -mt-8 sm:-mt-12 lg:-mt-16 pt-14 pb-20 sm:pt-20 sm:pb-32 lg:pt-24 lg:pb-36 px-4 sm:px-6 lg:px-8 shadow-2xl overflow-hidden"
+      className="relative z-10 w-full bg-[#942A45] text-[#F2DABB] font-['Karbon'] rounded-t-[2.5rem] sm:rounded-t-[3.5rem] lg:rounded-t-[4.5rem] -mt-8 sm:-mt-12 lg:-mt-16 pt-16 pb-20 sm:pt-24 sm:pb-32 lg:pt-32 lg:pb-36 px-4 sm:px-8 lg:px-12 xl:px-16 shadow-2xl overflow-hidden"
     >
       <div className="max-w-7xl mx-auto flex flex-col items-center">
         {/* Header */}
@@ -115,7 +115,7 @@ export default function WhatIsClub() {
             initial={{ opacity: 0, y: 10 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="text-3xl sm:text-5xl md:text-6xl lg:text-6xl font-black text-[#F2DABB] tracking-tight mb-4"
+            className="text-3xl sm:text-5xl md:text-6xl lg:text-7xl font-black text-[#F2DABB] tracking-tight mb-4"
           >
             What is the{' '}
             <span className="text-[#F3B343]">Club?</span>
@@ -157,7 +157,7 @@ export function ClubCTA() {
       <Button
         asChild
         size="lg"
-        className="rounded-full bg-[#F3B343] text-[#942A45] font-black text-sm sm:text-base lg:text-lg shadow-xl hover:bg-[#E5A432] hover:scale-105 active:scale-[0.98] transition-all px-9 py-6"
+        className="rounded-full bg-[#F3B343] text-[#942A45] font-black text-sm sm:text-base lg:text-lg shadow-xl hover:bg-[#E5A432] hover:scale-105 active:scale-[0.98] transition-all px-10 py-6"
       >
         <a href="#join-cta" className="flex items-center gap-2">
           <span>Buy from CHUK and Join the Club</span>
