@@ -213,33 +213,36 @@ export default function Leaderboard() {
                 return (
                   <div
                     key={row.name}
-                    className="w-full py-4 px-4 sm:px-6 lg:px-8 flex sm:grid grid-cols-12 items-center justify-between transition-colors hover:bg-[#942A45]/10 gap-2 sm:gap-4"
+                    className="w-full py-3.5 sm:py-4 px-4 sm:px-6 lg:px-8 flex sm:grid sm:grid-cols-12 items-center justify-between transition-colors hover:bg-[#942A45]/10 gap-3 sm:gap-4"
                   >
-                    {/* Col 1: Rank */}
-                    <div className="col-span-1 flex items-center">
-                      <span
-                        style={{ backgroundColor: rankBadgeBg, color: rankBadgeText }}
-                        className="w-7 h-7 sm:w-8 sm:h-8 rounded-full flex items-center justify-center font-black text-xs sm:text-sm shadow-xs shrink-0"
-                      >
-                        #{row.displayRank}
-                      </span>
-                    </div>
-
-                    {/* Col 2: Restaurant & Avatar */}
-                    <div className="col-span-6 flex items-center gap-3 sm:gap-4 min-w-0">
-                      <div
-                        style={{ backgroundColor: row.avatarBg }}
-                        className="w-9 h-9 sm:w-11 sm:h-11 rounded-full text-[#F2DABB] font-black text-xs sm:text-base flex items-center justify-center shrink-0 shadow-sm"
-                      >
-                        {row.initials}
-                      </div>
-                      <div className="text-left min-w-0">
-                        <h4 className="font-black text-sm sm:text-base lg:text-lg truncate text-[#942A45]">
-                          {row.name}
-                        </h4>
-                        <span className="sm:hidden text-[11px] font-semibold text-[#3A2A2F]/70 block">
-                          {row.city} · {row.outlets} outlets
+                    {/* Mobile: Combined Left Group | Desktop: Col 1 & Col 2 */}
+                    <div className="flex sm:contents items-center gap-3 sm:gap-0 min-w-0 flex-1 sm:flex-none">
+                      {/* Col 1: Rank */}
+                      <div className="sm:col-span-1 flex items-center">
+                        <span
+                          style={{ backgroundColor: rankBadgeBg, color: rankBadgeText }}
+                          className="w-7 h-7 sm:w-8 sm:h-8 rounded-full flex items-center justify-center font-black text-xs sm:text-sm shadow-xs shrink-0"
+                        >
+                          #{row.displayRank}
                         </span>
+                      </div>
+
+                      {/* Col 2: Restaurant & Avatar */}
+                      <div className="sm:col-span-6 flex items-center gap-3 sm:gap-4 min-w-0 flex-1 sm:flex-none">
+                        <div
+                          style={{ backgroundColor: row.avatarBg }}
+                          className="w-9 h-9 sm:w-11 sm:h-11 rounded-full text-[#F2DABB] font-black text-xs sm:text-base flex items-center justify-center shrink-0 shadow-sm"
+                        >
+                          {row.initials}
+                        </div>
+                        <div className="text-left min-w-0">
+                          <h4 className="font-black text-sm sm:text-base lg:text-lg truncate text-[#942A45]">
+                            {row.name}
+                          </h4>
+                          <span className="sm:hidden text-[11px] font-semibold text-[#3A2A2F]/70 block truncate">
+                            {row.city} · {row.outlets} outlets
+                          </span>
+                        </div>
                       </div>
                     </div>
 
@@ -254,7 +257,7 @@ export default function Leaderboard() {
                     </div>
 
                     {/* Col 4: Primary Metric */}
-                    <div className="col-span-3 text-right shrink-0">
+                    <div className="sm:col-span-3 text-right shrink-0">
                       <span className="font-black text-sm sm:text-base lg:text-lg block text-[#942A45]">
                         {getMetricDisplay(row)}
                       </span>

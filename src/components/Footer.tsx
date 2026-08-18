@@ -21,7 +21,7 @@ export default function Footer() {
               RESTAURANTS WHO CARE CLUB
             </h4>
             <p className="text-xs sm:text-sm lg:text-base font-semibold text-[#F2DABB]/75">
-              CHUK · Eat Safe · A Pakka Limited Offering
+              By CHUK
             </p>
           </div>
         </div>

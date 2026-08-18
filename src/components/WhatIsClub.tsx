@@ -2,7 +2,7 @@
 
 import React from 'react';
 import { motion } from 'framer-motion';
-import { HelpCircle, Users, KeyRound, Gift, ArrowRight } from 'lucide-react';
+import { Sparkles, Users, KeyRound, Gift, ArrowRight } from 'lucide-react';
 import Image from 'next/image';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
@@ -11,7 +11,7 @@ import { BentoGrid, BentoCard } from '@/components/ui/bento-grid';
 export default function WhatIsClub() {
   const bentoFeatures = [
     {
-      Icon: HelpCircle,
+      Icon: Sparkles,
       name: 'What is the Club?',
       description:
         "CHUK's recognition programme for restaurants that serve on 100% compostable tableware.",

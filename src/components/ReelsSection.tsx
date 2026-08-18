@@ -2,14 +2,10 @@
 
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
-import { Play, Heart, Eye, Volume2, ArrowRight, ChevronRight } from 'lucide-react';
+import { Play, Heart, ExternalLink, ArrowRight } from 'lucide-react';
 import Image from 'next/image';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
-import {
-  Dialog,
-  DialogContent,
-} from '@/components/ui/dialog';
 
 function InstagramIcon({ className = 'w-4 h-4' }: { className?: string }) {
   return (
@@ -31,88 +27,104 @@ function InstagramIcon({ className = 'w-4 h-4' }: { className?: string }) {
 
 interface ReelItem {
   id: string;
+  url: string;
   title: string;
   restaurant: string;
   handle: string;
   city: string;
-  views: string;
   likes: string;
-  duration: string;
   image: string;
   tag: string;
   tagColor: string;
-  audioTrack: string;
-  caption: string;
+  quote: string;
 }
 
 const reelsData: ReelItem[] = [
   {
     id: 'reel-1',
-    title: 'Unboxing the Spring 2026 Welcome Kit',
-    restaurant: 'Green Leaf Kitchen',
-    handle: '@greenleafkitchen',
-    city: 'Bengaluru',
-    views: '18.4K',
-    likes: '2.1K',
-    duration: '0:42',
-    image: '/images/reels/reel-1-unboxing.jpg',
-    tag: 'Welcome Kit',
-    tagColor: '#95CC2E', // Leaf Lime Green
-    audioTrack: 'Original Audio · Green Leaf Kitchen',
-    caption: 'Our official Restaurants Who Care Club 2026 Welcome Kit just arrived! The acrylic plaque looks stunning at our billing desk 🌿✨ #RestaurantsWhoCareClub #CHUK',
+    url: 'https://www.instagram.com/chukitnow/reel/DZ42J3cBD4W/',
+    title: 'Rasodu · Gujarati Snacks',
+    restaurant: 'Rasodu',
+    handle: '@rasodu_official',
+    city: 'HSR Layout, Bengaluru',
+    likes: '217',
+    image: '/images/reels/reel-1.jpg',
+    tag: '3CP Snack Tray',
+    tagColor: '#95CC2E', // Leaf Lime
+    quote: '80% of our menu served on Chuk. The 3CP tray keeps the dabeli crisp and chai doesn’t spill.',
   },
   {
     id: 'reel-2',
-    title: 'Table Service on 100% Bagasse Bowls',
-    restaurant: 'The Daily Bowl',
-    handle: '@thedailybowl',
-    city: 'Mumbai',
-    views: '24.8K',
-    likes: '3.4K',
-    duration: '0:30',
-    image: '/images/reels/reel-2-table-service.jpg',
-    tag: 'Table Service',
-    tagColor: '#33A8C3', // Turquoise Sky
-    audioTrack: 'Trending · Sustainable Flavors',
-    caption: 'Gourmet meal plating meets 100% compostable sugarcane bagasse bowls. Our diners love the tent cards explaining the tree savings! 🍜🌱',
+    url: 'https://www.instagram.com/camerabackpacker/reel/DcGli-6sdx1/',
+    title: 'Civil Lines Wala · Chole Bhature',
+    restaurant: 'Civil Lines Wala',
+    handle: '@camerabackpacker',
+    city: 'Gurgaon',
+    likes: '1.4K',
+    image: '/images/reels/reel-2.jpg',
+    tag: 'Legendary Spot',
+    tagColor: '#F3B343', // Sunny Gold
+    quote: 'Iconic 15-year-old foodie spot serving hot Chole Bhature on 100% regenerative sugarcane tableware.',
   },
   {
     id: 'reel-3',
-    title: 'Front-of-House Plaque Reveal',
-    restaurant: 'Saffron Table',
-    handle: '@saffrontable',
-    city: 'Delhi',
-    views: '31.2K',
-    likes: '4.8K',
-    duration: '0:48',
-    image: '/images/reels/reel-3-reception-plaque.jpg',
-    tag: 'Member Plaque',
-    tagColor: '#F3B343', // Sunny Gold
-    audioTrack: 'Saffron Table Vibes · Delhi',
-    caption: 'Placed our official Season Rank #3 recognition block right by the entrance. Diners stop to read the impact numbers every day! 🏆🌿',
+    url: 'https://www.instagram.com/psclicks_india/reel/Db2Dr0YP7VZ/',
+    title: 'Jain Chaat · Heritage Taste',
+    restaurant: 'Jain Chaat',
+    handle: '@psclicks_india',
+    city: 'Lucknow',
+    likes: '890',
+    image: '/images/reels/reel-3.jpg',
+    tag: 'Heritage Chaat',
+    tagColor: '#ED544B', // Sunset Coral
+    quote: 'Generations of Lucknow chaat lovers, now served with care on 100% compostable Chuk plates.',
   },
   {
     id: 'reel-4',
-    title: 'Why We Switched to 100% Compostable',
-    restaurant: 'Coastal Co.',
-    handle: '@coastalco',
-    city: 'Chennai',
-    views: '42.6K',
-    likes: '5.9K',
-    duration: '0:56',
-    image: '/images/reels/reel-4-chef-kitchen.jpg',
-    tag: 'Kitchen Story',
-    tagColor: '#ED544B', // Sunset Coral
-    audioTrack: 'Chef Stories · Coastal Co.',
-    caption: 'Behind the pass with Chef Maria. Zero single-use plastic in our kitchen — 100% rapid-renewable sugarcane tableware by CHUK. 🌊🌱',
+    url: 'https://www.instagram.com/chukitnow/reel/DbA3_QVBD-g/',
+    title: 'NH8 · Unlimited Rajasthani Thali',
+    restaurant: 'NH8 Restaurant',
+    handle: '@chukitnow',
+    city: 'Bengaluru',
+    likes: '640',
+    image: '/images/reels/reel-4.jpg',
+    tag: 'Unlimited Thali',
+    tagColor: '#33A8C3', // Turquoise Sky
+    quote: 'Using Chuk for 6 years. Guests walking in expect hygiene, sustainability, and sturdiness.',
+  },
+  {
+    id: 'reel-5',
+    url: 'https://www.instagram.com/chukitnow/reel/DaxWodiBDij/',
+    title: 'Bambaiya · Bombay Street Food',
+    restaurant: 'Bambaiya',
+    handle: '@bambaiya_bangalore',
+    city: 'HSR Layout, Bengaluru',
+    likes: '1.1K',
+    image: '/images/reels/reel-5.jpg',
+    tag: 'Founder Story',
+    tagColor: '#F3B343', // Sunny Gold
+    quote: 'Mumbai ka swad in Bangalore. Authentic flavours, honest prices — plastic just didn’t fit our story.',
+  },
+  {
+    id: 'reel-6',
+    url: 'https://www.instagram.com/chukitnow/reel/DaVGhZMBprp/',
+    title: 'Sahib’s Brick Oven Pizza',
+    restaurant: 'Sahib’s Pizza',
+    handle: '@sahibsbrickovenpizza',
+    city: 'Horamavu, Bengaluru',
+    likes: '780',
+    image: '/images/reels/reel-6.jpg',
+    tag: 'Craft Delivery',
+    tagColor: '#95CC2E', // Leaf Lime
+    quote: 'Handcrafted pasta packed in Chuk: no leaks, no soggy bottoms, delivered 100% toxin-free.',
   },
 ];
 
 export default function ReelsSection() {
-  const [selectedReel, setSelectedReel] = useState<ReelItem | null>(null);
   const [likedMap, setLikedMap] = useState<Record<string, boolean>>({});
 
   const toggleLike = (id: string, e: React.MouseEvent) => {
+    e.preventDefault();
     e.stopPropagation();
     setLikedMap((prev) => ({ ...prev, [id]: !prev[id] }));
   };
@@ -124,15 +136,14 @@ export default function ReelsSection() {
     >
       <div className="max-w-7xl mx-auto flex flex-col items-center">
         {/* Header */}
-        <div className="text-center max-w-3xl mx-auto mb-8 sm:mb-14 lg:mb-18">
-
+        <div className="text-center max-w-3xl mx-auto mb-10 sm:mb-16 lg:mb-20">
           <motion.h2
             initial={{ opacity: 0, y: 10 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="text-2xl sm:text-5xl md:text-6xl font-black text-[#942A45] tracking-tight mb-2 sm:mb-3"
+            className="text-3xl sm:text-5xl md:text-6xl font-black text-[#942A45] tracking-tight mb-2 sm:mb-3"
           >
-            From Our Partners' Tables
+            From Our Partners&apos; Tables
           </motion.h2>
 
           <motion.p
@@ -156,50 +167,47 @@ export default function ReelsSection() {
           </motion.p>
         </div>
 
-        {/* Mobile Swipe Hint */}
-        <div className="flex items-center gap-1.5 text-xs font-bold text-[#942A45] mb-3 sm:hidden">
-          <span>Swipe reels</span>
-          <ChevronRight className="w-3.5 h-3.5" />
-        </div>
-
-        {/* Responsive Reels Grid / Touch-friendly Carousel on Mobile */}
-        <div className="flex sm:grid sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 lg:gap-8 w-full mb-10 sm:mb-16 overflow-x-auto sm:overflow-x-visible pb-4 sm:pb-0 snap-x snap-mandatory scrollbar-none -mx-4 px-4 sm:mx-0 sm:px-0">
+        {/* 6 Real Partner Reels Grid (Mobile Snap Carousel / Desktop 3-Col Grid) */}
+        <div className="w-full flex sm:grid sm:grid-cols-2 lg:grid-cols-3 gap-5 sm:gap-6 lg:gap-8 overflow-x-auto sm:overflow-visible snap-x snap-mandatory pb-6 sm:pb-0 mb-12 sm:mb-16 scrollbar-none">
           {reelsData.map((reel, index) => {
-            const isLiked = likedMap[reel.id];
+            const isLiked = !!likedMap[reel.id];
 
             return (
-              <motion.div
+              <motion.a
                 key={reel.id}
+                href={reel.url}
+                target="_blank"
+                rel="noopener noreferrer"
                 initial={{ opacity: 0, y: 15 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.4, delay: index * 0.08 }}
-                onClick={() => setSelectedReel(reel)}
-                className="group relative shrink-0 w-[78vw] sm:w-auto snap-center cursor-pointer rounded-2xl sm:rounded-3xl overflow-hidden shadow-lg border-2 sm:border-3 border-[#942A45]/20 bg-[#3A2A2F] flex flex-col justify-between aspect-[9/16] transition-all duration-300 hover:scale-[1.02] hover:shadow-2xl p-3 sm:p-4"
+                className="group relative shrink-0 w-[82vw] sm:w-auto snap-center rounded-2xl sm:rounded-3xl overflow-hidden shadow-lg border-2 sm:border-3 border-[#942A45]/20 bg-[#3A2A2F] flex flex-col justify-between aspect-[9/16] transition-all duration-300 hover:scale-[1.02] hover:shadow-2xl p-3.5 sm:p-4 text-left"
               >
-                {/* Seamless Full Background Image */}
+                {/* High-Resolution Thumbnail */}
                 <Image
                   src={reel.image}
                   alt={reel.title}
                   fill
+                  sizes="(max-width: 640px) 85vw, (max-width: 1024px) 45vw, 30vw"
                   className="object-cover transition-transform duration-500 group-hover:scale-105"
                 />
 
-                {/* Subtle dark tint */}
-                <div className="absolute inset-0 bg-[#3A2A2F]/15 group-hover:bg-transparent transition-colors" />
+                {/* Subtle dark gradient overlay */}
+                <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-transparent to-black/85 group-hover:from-black/30 group-hover:to-black/80 transition-colors" />
 
-                {/* Top Bar: Tag & Reel Icon */}
+                {/* Top Bar: Tag & Reel Badge */}
                 <div className="relative z-10 flex items-center justify-between">
                   <Badge
                     style={{ backgroundColor: reel.tagColor, color: reel.tagColor === '#F3B343' ? '#942A45' : '#F2DABB' }}
-                    className="font-black text-[10px] sm:text-[11px] uppercase tracking-wider px-2.5 sm:px-3 py-0.5 sm:py-1 border-0 shadow-md"
+                    className="font-black text-[10px] sm:text-xs uppercase tracking-wider px-2.5 sm:px-3 py-0.5 sm:py-1 border-0 shadow-md"
                   >
                     {reel.tag}
                   </Badge>
 
-                  <div className="flex items-center gap-1 px-2 py-0.5 sm:px-2.5 sm:py-1 rounded-full bg-[#3A2A2F]/75 backdrop-blur-xs text-[#F2DABB] text-[10px] sm:text-xs font-bold border border-[#F2DABB]/20 shadow-md">
-                    <InstagramIcon className="w-3 h-3 text-[#F3B343]" />
-                    <span>Reel</span>
+                  <div className="flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-[#3A2A2F]/80 backdrop-blur-xs text-[#F2DABB] text-[10px] sm:text-xs font-bold border border-[#F2DABB]/20 shadow-md">
+                    <InstagramIcon className="w-3.5 h-3.5 text-[#F3B343]" />
+                    <span>Watch Reel</span>
                   </div>
                 </div>
 
@@ -210,7 +218,7 @@ export default function ReelsSection() {
                   </div>
                 </div>
 
-                {/* Bottom Card Pill: Clean solid container with NO visual gaps */}
+                {/* Bottom Card Pill */}
                 <div className="relative z-10 bg-[#3A2A2F]/90 backdrop-blur-xs border border-[#F2DABB]/20 rounded-xl sm:rounded-2xl p-3 sm:p-4 flex flex-col gap-1.5 shadow-xl">
                   <div className="flex items-center justify-between">
                     <span className="text-[11px] sm:text-xs font-bold text-[#F3B343] tracking-wide truncate pr-2">
@@ -227,24 +235,31 @@ export default function ReelsSection() {
                     </button>
                   </div>
 
-                  <h3 className="text-xs sm:text-sm lg:text-base font-black text-[#F2DABB] leading-snug line-clamp-2">
+                  <h3 className="text-xs sm:text-sm lg:text-base font-black text-[#F2DABB] leading-snug line-clamp-1">
                     {reel.title}
                   </h3>
 
-                  <div className="flex items-center justify-between text-[10px] sm:text-[11px] font-semibold text-[#F2DABB]/80 pt-1.5 border-t border-[#F2DABB]/15">
+                  <p className="text-[11px] sm:text-xs font-medium text-[#F2DABB]/80 line-clamp-2 leading-relaxed">
+                    &ldquo;{reel.quote}&rdquo;
+                  </p>
+
+                  <div className="flex items-center justify-between text-[10px] sm:text-[11px] font-bold text-[#F3B343] pt-1.5 border-t border-[#F2DABB]/15">
                     <span className="flex items-center gap-1">
-                      <Eye className="w-3 h-3" />
-                      {reel.views}
+                      <InstagramIcon className="w-3 h-3" />
+                      <span>Instagram</span>
                     </span>
-                    <span className="font-bold text-[#F3B343]">Watch Reel →</span>
+                    <span className="flex items-center gap-1 group-hover:underline">
+                      <span>Open Reel</span>
+                      <ExternalLink className="w-3 h-3" />
+                    </span>
                   </div>
                 </div>
-              </motion.div>
+              </motion.a>
             );
           })}
         </div>
 
-        {/* Follow CTA Bar: Cohesive Left Alignment on Mobile and Desktop */}
+        {/* Follow CTA Bar */}
         <div className="w-full max-w-2xl bg-[#E5C7A3] border-2 border-[#942A45]/20 rounded-2xl sm:rounded-3xl p-5 sm:p-7 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 sm:gap-6 shadow-md">
           <div className="flex items-center gap-3.5 sm:gap-4 text-left w-full sm:w-auto">
             <div className="w-11 h-11 sm:w-13 sm:h-13 rounded-2xl bg-[#942A45] text-[#F3B343] flex items-center justify-center shrink-0 shadow-md">
@@ -275,85 +290,6 @@ export default function ReelsSection() {
             </a>
           </Button>
         </div>
-
-        {/* Modal: Full Reel Player View */}
-        <Dialog open={!!selectedReel} onOpenChange={(open) => !open && setSelectedReel(null)}>
-          {selectedReel && (
-            <DialogContent className="max-w-sm sm:max-w-md p-0 overflow-hidden bg-[#3A2A2F] border-2 border-[#942A45] text-[#F2DABB] max-h-[92vh]">
-              {/* Vertical Reel Mock Video Container */}
-              <div className="relative w-full aspect-[9/16] bg-black p-4 flex flex-col justify-between">
-                <Image
-                  src={selectedReel.image}
-                  alt={selectedReel.title}
-                  fill
-                  className="object-cover"
-                />
-
-                {/* Subtle uniform overlay */}
-                <div className="absolute inset-0 bg-[#3A2A2F]/20" />
-
-                {/* Top Video Header */}
-                <div className="relative z-10 flex items-center justify-between">
-                  <div className="flex items-center gap-2 bg-[#3A2A2F]/80 px-3 py-1.5 rounded-full backdrop-blur-xs border border-[#F2DABB]/20 shadow-md">
-                    <InstagramIcon className="w-4 h-4 text-[#F3B343]" />
-                    <span className="text-xs font-black text-[#F2DABB]">@chukitnow</span>
-                  </div>
-
-                  <div className="p-2 rounded-full bg-[#3A2A2F]/80 text-[#F2DABB] border border-[#F2DABB]/20 shadow-md">
-                    <Volume2 className="w-3.5 h-3.5 text-[#95CC2E]" />
-                  </div>
-                </div>
-
-                {/* Center Animated Play Ring */}
-                <div className="absolute inset-0 flex items-center justify-center pointer-events-none z-10">
-                  <div className="w-14 h-14 rounded-full bg-[#F3B343]/90 text-[#942A45] flex items-center justify-center shadow-2xl animate-pulse">
-                    <Play className="w-6 h-6 fill-current ml-0.5" />
-                  </div>
-                </div>
-
-                {/* Bottom Video Details Card */}
-                <div className="relative z-10 bg-[#3A2A2F]/90 backdrop-blur-xs border border-[#F2DABB]/20 rounded-2xl p-4 flex flex-col gap-2 shadow-2xl">
-                  {/* Progress Bar */}
-                  <div className="w-full h-1 bg-[#F2DABB]/30 rounded-full overflow-hidden mb-1">
-                    <div className="w-3/5 h-full bg-[#F3B343] rounded-full animate-pulse" />
-                  </div>
-
-                  <div className="flex items-center gap-2">
-                    <Badge
-                      style={{ backgroundColor: selectedReel.tagColor, color: selectedReel.tagColor === '#F3B343' ? '#942A45' : '#F2DABB' }}
-                      className="font-black text-[10px] sm:text-xs uppercase"
-                    >
-                      {selectedReel.tag}
-                    </Badge>
-                    <span className="text-xs font-bold text-[#F3B343]">
-                      {selectedReel.handle}
-                    </span>
-                  </div>
-
-                  <h3 className="text-sm sm:text-base font-black text-[#F2DABB] leading-snug">
-                    {selectedReel.title}
-                  </h3>
-
-                  <p className="text-[11px] sm:text-xs font-medium text-[#F2DABB]/90 leading-relaxed line-clamp-2">
-                    {selectedReel.caption}
-                  </p>
-
-                  <div className="flex items-center justify-between pt-1.5 border-t border-[#F2DABB]/20 text-[11px] font-semibold">
-                    <span className="text-[#F2DABB]/75 truncate max-w-[170px]">🎵 {selectedReel.audioTrack}</span>
-                    <a
-                      href="https://www.instagram.com/chukitnow/"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="text-[#F3B343] font-bold hover:underline shrink-0"
-                    >
-                      Open Instagram ↗
-                    </a>
-                  </div>
-                </div>
-              </div>
-            </DialogContent>
-          )}
-        </Dialog>
       </div>
     </section>
   );
