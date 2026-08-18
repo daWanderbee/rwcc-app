@@ -50,13 +50,6 @@ export default function RunningTotal() {
       className="relative z-10 w-full bg-[#ED544B] text-[#F2DABB] font-['Karbon'] py-16 sm:py-24 lg:py-32 xl:py-36 px-4 sm:px-8 lg:px-12 xl:px-16"
     >
       <div className="max-w-7xl mx-auto flex flex-col items-center text-center relative z-10">
-        {/* Section Label */}
-        <Badge
-          variant="sand"
-          className="text-xs sm:text-sm font-bold uppercase tracking-wider mb-4 px-4 py-1.5 shadow-md border-0 bg-[#F2DABB] text-[#942A45]"
-        >
-          Collective Impact Band
-        </Badge>
 
         {/* Intro Line */}
         <motion.h2

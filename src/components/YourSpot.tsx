@@ -21,13 +21,7 @@ export default function YourSpot() {
       <div className="max-w-7xl mx-auto flex flex-col items-center">
         {/* Section Header */}
         <div className="text-center max-w-3xl mx-auto mb-10 sm:mb-16 lg:mb-20">
-          <Badge
-            variant="sand"
-            className="gap-2 px-3.5 py-1 sm:px-4 sm:py-1.5 text-xs sm:text-sm font-bold uppercase tracking-wider mb-3 sm:mb-4 shadow-sm text-[#942A45] bg-[#F2DABB]"
-          >
-            <Award className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-[#942A45]" />
-            <span>Your Spot · Member Recognition Block</span>
-          </Badge>
+
 
           <motion.h2
             initial={{ opacity: 0, y: 10 }}
@@ -55,18 +49,12 @@ export default function YourSpot() {
           <div className="lg:col-span-5 flex flex-col items-center text-center">
             <div className="relative w-full h-56 sm:h-80 lg:h-96 mb-3 sm:mb-4 transition-transform hover:scale-105 duration-300">
               <Image
-                src="/images/RWCC-unit.png"
+                src="/images/rwcc-framed-plaque.jpg"
                 alt="Physical RWCC Recognition Plaque"
                 fill
-                className="object-contain drop-shadow-2xl"
+                className="object-contain drop-shadow-2xl rounded-2xl"
               />
             </div>
-            <span className="text-xs sm:text-sm font-black uppercase tracking-wider text-[#F3B343] block mb-1">
-              Physical Plaque Unit
-            </span>
-            <p className="text-xs sm:text-sm font-semibold text-[#F2DABB]/80 max-w-xs">
-              Laser-etched acrylic and weighted wood base, customized with your name and season rank.
-            </p>
           </div>
 
           {/* Right Column (7 cols): Interactive Live Plaque Specimen */}

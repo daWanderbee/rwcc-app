@@ -125,13 +125,6 @@ export default function ReelsSection() {
       <div className="max-w-7xl mx-auto flex flex-col items-center">
         {/* Header */}
         <div className="text-center max-w-3xl mx-auto mb-8 sm:mb-14 lg:mb-18">
-          <Badge
-            variant="default"
-            className="gap-2 px-3.5 py-1 sm:px-4 sm:py-1.5 text-xs sm:text-sm font-bold uppercase tracking-wider mb-3 sm:mb-4 shadow-xs bg-[#942A45] text-[#F2DABB]"
-          >
-            <InstagramIcon className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-[#F3B343]" />
-            <span>Reels and Videos</span>
-          </Badge>
 
           <motion.h2
             initial={{ opacity: 0, y: 10 }}
@@ -139,7 +132,7 @@ export default function ReelsSection() {
             viewport={{ once: true }}
             className="text-2xl sm:text-5xl md:text-6xl font-black text-[#942A45] tracking-tight mb-2 sm:mb-3"
           >
-            Seen on the Feed
+            From Our Partners' Tables
           </motion.h2>
 
           <motion.p
@@ -149,7 +142,7 @@ export default function ReelsSection() {
             transition={{ delay: 0.1 }}
             className="text-base sm:text-xl lg:text-2xl font-bold text-[#ED544B] mb-2 sm:mb-3"
           >
-            Real members. Real tables. Real impact.
+            The best restaurants in India already made the switch.
           </motion.p>
 
           <motion.p
@@ -159,7 +152,7 @@ export default function ReelsSection() {
             transition={{ delay: 0.15 }}
             className="text-xs sm:text-base lg:text-lg text-[#3A2A2F]/90 font-medium leading-relaxed max-w-2xl mx-auto"
           >
-            Watch how leading restaurant partners across India unbox their welcome kits, showcase their recognition blocks, and inspire diners with 100% compostable tableware.
+            See how operators across the country are serving with 100% compostable Chuk — and what their diners are saying about it.
           </motion.p>
         </div>
 

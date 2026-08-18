@@ -2,7 +2,7 @@
 
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
-import { PackageCheck, ArrowRight, Maximize2, CheckCircle2 } from 'lucide-react';
+import { ArrowRight, Maximize2, CheckCircle2 } from 'lucide-react';
 import Image from 'next/image';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
@@ -20,9 +20,7 @@ const kitPieces = [
     title: 'Recognition block',
     placement: 'Reception & Pass',
     accentColor: '#F3B343', // Sunny Gold
-    imageBg: 'bg-[#FCE8AC]',
-    imageBorder: 'border-[#F3B343]/40',
-    image: '/images/RWCC-unit.png',
+    image: '/images/rwcc-framed-plaque.jpg',
     description:
       'Your ranked plaque with live impact numbers. Built for the reception desk, the billing counter, or the kitchen pass. Updated every season.',
     specs: 'Laser-etched acrylic · Weighted wood base · Seasonal refresh',
@@ -32,8 +30,6 @@ const kitPieces = [
     title: 'Table tent card',
     placement: 'On Every Table',
     accentColor: '#ED544B', // Sunset Coral
-    imageBg: 'bg-[#FDD8D5]',
-    imageBorder: 'border-[#ED544B]/40',
     image: '/images/tent-card.png',
     description:
       'A fold-up card that sits on every table and answers the question before your diner asks it. What is this tableware made from, and why does it matter? Answered in twelve words.',
@@ -44,8 +40,6 @@ const kitPieces = [
     title: 'Entrance door sticker',
     placement: 'Entrance Glass',
     accentColor: '#33A8C3', // Turquoise Sky
-    imageBg: 'bg-[#D8EFF5]',
-    imageBorder: 'border-[#33A8C3]/40',
     image: '/images/entering-sticker.png',
     description:
       "The first thing a diner sees, walking in. A quiet signal that something is different here, before they've even looked at the menu.",
@@ -56,8 +50,6 @@ const kitPieces = [
     title: 'Billing counter sticker',
     placement: 'POS & Counter',
     accentColor: '#95CC2E', // Leaf Lime Green
-    imageBg: 'bg-[#DFEFCB]',
-    imageBorder: 'border-[#95CC2E]/40',
     image: '/images/counter-sticker.png',
     description:
       "The last thing they see before they leave. Your impact numbers at eye level, at the moment they're deciding whether to come back.",
@@ -68,8 +60,6 @@ const kitPieces = [
     title: 'Tray liner',
     placement: 'In-Dining Trays',
     accentColor: '#B5793B', // Warm Bronze
-    imageBg: 'bg-[#F2E2D0]',
-    imageBorder: 'border-[#B5793B]/40',
     image: '/images/tray-liner.png',
     description:
       'Under the food, the story meets the meal. The tray liner carries the sugarcane story: where the tableware came from, why it matters, what happens to it after. Printed with your restaurant name and your numbers.',
@@ -80,8 +70,6 @@ const kitPieces = [
     title: 'Framed wall certificate',
     placement: 'Dining Room Wall',
     accentColor: '#F3B343', // Sunny Gold
-    imageBg: 'bg-[#FCE8AC]',
-    imageBorder: 'border-[#F3B343]/40',
     image: '/images/certifciate.png',
     description:
       'A small frame with a clear signal. Your membership, your impact, your season rank, on the wall for anyone who pauses to read it.',
@@ -92,9 +80,7 @@ const kitPieces = [
     title: 'Sustainability collateral',
     placement: 'Print & Digital',
     accentColor: '#95CC2E', // Leaf Lime Green
-    imageBg: 'bg-[#DFEFCB]',
-    imageBorder: 'border-[#95CC2E]/40',
-    image: '/images/chuk-eat-safe-logo.png',
+    image: '/images/sustainability-team-award.png',
     description:
       'Print and social assets, sized for Instagram, for your outlet windows, and for your own marketing. Use them across every outlet in your network.',
     specs: 'Digital asset pack · Instagram 1:1 & Stories · Window decals',
@@ -112,14 +98,6 @@ export default function TheKit() {
       <div className="max-w-7xl mx-auto flex flex-col items-center">
         {/* Section Header */}
         <div className="text-center max-w-3xl mx-auto mb-12 sm:mb-16 lg:mb-20">
-          <Badge
-            variant="sand"
-            className="gap-2 px-4 py-1.5 text-xs sm:text-sm font-bold uppercase tracking-wider mb-4 shadow-sm bg-[#F3B343] text-[#942A45] border-0"
-          >
-            <PackageCheck className="w-4 h-4 text-[#942A45]" />
-            <span>The Kit</span>
-          </Badge>
-
           <motion.h2
             initial={{ opacity: 0, y: 10 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -164,7 +142,7 @@ export default function TheKit() {
           </Button>
         </div>
 
-        {/* 7 Kit Pieces Gallery with Multi-Color Image Backdrops (Widescreen 3-Col Grid) */}
+        {/* 7 Kit Pieces Gallery with Clean Background-less Cutout Assets */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 sm:gap-10 lg:gap-12 xl:gap-14 w-full">
           {kitPieces.map((piece, index) => (
             <motion.div
@@ -178,19 +156,19 @@ export default function TheKit() {
               style={{ borderColor: piece.accentColor }}
             >
               <div>
-                {/* Floating Image Preview with Pastel-Saturated Brand Tint */}
-                <div className={`relative w-full h-56 sm:h-64 lg:h-72 xl:h-80 rounded-2xl sm:rounded-3xl ${piece.imageBg} border-2 ${piece.imageBorder} overflow-hidden mb-6 flex items-center justify-center p-4 transition-transform group-hover:scale-105 duration-300 shadow-md`}>
+                {/* Floating Image Preview without solid box backgrounds */}
+                <div className="relative w-full h-56 sm:h-64 lg:h-72 xl:h-80 mb-6 flex items-center justify-center p-2 transition-transform group-hover:scale-105 duration-300">
                   <Image
                     src={piece.image}
                     alt={piece.title}
                     fill
-                    className="object-contain p-3"
+                    className="object-contain drop-shadow-2xl rounded-2xl"
                   />
                   
                   {/* Zoom Icon overlay */}
                   <div
                     style={{ backgroundColor: piece.accentColor }}
-                    className="absolute top-3.5 right-3.5 p-2.5 rounded-full text-[#F2DABB] opacity-90 group-hover:opacity-100 transition-opacity shadow-sm"
+                    className="absolute top-2 right-2 p-2.5 rounded-full text-[#F2DABB] opacity-90 group-hover:opacity-100 transition-opacity shadow-md"
                   >
                     <Maximize2 className="w-4 h-4" />
                   </div>
@@ -198,7 +176,7 @@ export default function TheKit() {
                   {/* Badge Number */}
                   <Badge
                     style={{ backgroundColor: piece.accentColor, color: piece.accentColor === '#F3B343' ? '#942A45' : '#F2DABB' }}
-                    className="absolute top-3.5 left-3.5 px-3 py-1 font-black text-xs sm:text-sm border-0 shadow-sm"
+                    className="absolute top-2 left-2 px-3 py-1 font-black text-xs sm:text-sm border-0 shadow-md"
                   >
                     Piece {piece.id}
                   </Badge>
@@ -260,13 +238,13 @@ export default function TheKit() {
                 </DialogTitle>
               </DialogHeader>
 
-              {/* Big Image Preview with Vibrant Tint */}
-              <div className={`relative w-full h-64 sm:h-80 rounded-2xl ${selectedPiece.imageBg} border-2 ${selectedPiece.imageBorder} my-2 p-4 flex items-center justify-center`}>
+              {/* Big Image Preview without solid box backgrounds */}
+              <div className="relative w-full h-64 sm:h-80 my-2 p-2 flex items-center justify-center">
                 <Image
                   src={selectedPiece.image}
                   alt={selectedPiece.title}
                   fill
-                  className="object-contain p-4"
+                  className="object-contain drop-shadow-2xl rounded-2xl"
                 />
               </div>
 

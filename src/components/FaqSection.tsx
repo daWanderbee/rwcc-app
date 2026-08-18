@@ -86,12 +86,6 @@ export default function FaqSection() {
 
         {/* Section Header */}
         <div className="text-center max-w-2xl mx-auto mb-14 sm:mb-18 lg:mb-22">
-          <Badge
-            variant="default"
-            className="text-xs sm:text-sm font-black uppercase tracking-widest mb-4 px-4 py-1.5 bg-[#942A45] text-[#F2DABB]"
-          >
-            FAQ
-          </Badge>
 
           <motion.h2
             initial={{ opacity: 0, y: 10 }}

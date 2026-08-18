@@ -46,13 +46,6 @@ export default function JoinCtaSection() {
       className="relative z-10 w-full bg-[#ED544B] text-[#F2DABB] font-['Karbon'] py-12 sm:py-20 lg:py-32 xl:py-36 px-4 sm:px-8 lg:px-12 xl:px-16"
     >
       <div className="max-w-7xl mx-auto flex flex-col items-center text-center">
-        {/* Section Header */}
-        <Badge
-          variant="sand"
-          className="text-xs sm:text-sm font-bold uppercase tracking-widest mb-3 sm:mb-4 px-3.5 py-1 sm:px-4 sm:py-1.5 border-[#D6A419] text-[#942A45] shadow-sm bg-[#F2DABB]"
-        >
-          Join The Club
-        </Badge>
 
         <motion.h2
           initial={{ opacity: 0, y: 10 }}
@@ -72,37 +65,6 @@ export default function JoinCtaSection() {
         >
           Join the Restaurants Who Care Club, get your impact calculated, and put your recognition block where your diners can see it. Free for every Chuk customer.
         </motion.p>
-
-        {/* Fluid Widescreen Kit Showcase */}
-        <div className="w-full max-w-4xl flex flex-col sm:flex-row items-center gap-6 sm:gap-10 lg:gap-12 border-y-2 border-[#F2DABB]/25 py-6 sm:py-10 mb-10 sm:mb-14 text-left">
-          <div className="relative w-full sm:w-1/2 h-44 sm:h-64 lg:h-72 rounded-2xl overflow-hidden bg-[#F2DABB] flex items-center justify-center p-4 shrink-0 shadow-xl transition-transform hover:scale-102 duration-300">
-            <Image
-              src="/images/RWCC-unit.png"
-              alt="RWCC Welcome Kit Plaque"
-              fill
-              className="object-contain p-2"
-            />
-          </div>
-          
-          <div className="flex flex-col justify-center">
-            <div className="flex items-center gap-2 mb-1.5 sm:mb-2">
-              <Gift className="w-4 h-4 sm:w-5 sm:h-5 text-[#F3B343]" />
-              <span className="text-xs sm:text-sm font-black uppercase tracking-wider text-[#F3B343]">
-                7-Piece Welcome Kit
-              </span>
-            </div>
-            <h4 className="text-xl sm:text-3xl lg:text-4xl font-black text-[#F2DABB] mb-2 sm:mb-3 leading-tight">
-              Everything Included Free
-            </h4>
-            <p className="text-xs sm:text-base lg:text-lg font-medium text-[#F2DABB]/90 leading-relaxed mb-3 sm:mb-4">
-              Acrylic reception plaque, table tent cards, glass decals, billing sticker, printed tray liners & social media badges.
-            </p>
-            <div className="flex items-center gap-2 text-xs sm:text-sm font-bold text-[#DFEFCB]">
-              <ShieldCheck className="w-4 h-4 sm:w-5 sm:h-5 text-[#95CC2E]" />
-              <span>Zero membership fee for Chuk customers</span>
-            </div>
-          </div>
-        </div>
 
         {/* CTAs */}
         <div className="flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-6 w-full max-w-lg mb-10 sm:mb-16">

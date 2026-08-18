@@ -15,7 +15,7 @@ export default function WhatIsClub() {
       name: 'What is the Club?',
       description:
         "CHUK's recognition programme for restaurants that serve on 100% compostable tableware.",
-      href: '#about',
+      href: 'https://chuk.in',
       cta: 'Discover the Movement',
       badge: 'Official Programme',
       accentColor: '#F3B343', // Sunny Gold
@@ -23,10 +23,10 @@ export default function WhatIsClub() {
       background: (
         <div className="absolute right-3 bottom-2 sm:right-6 sm:bottom-4 w-36 h-36 sm:w-48 sm:h-48 lg:w-56 lg:h-56 xl:w-64 xl:h-64 pointer-events-none transition-transform duration-300 group-hover:scale-105">
           <Image
-            src="/images/RWCC-unit.png"
+            src="/images/rwcc-framed-plaque.jpg"
             alt="RWCC Recognition Plaque Unit"
             fill
-            className="object-contain drop-shadow-xl"
+            className="object-contain drop-shadow-xl rounded-xl"
           />
         </div>
       ),
@@ -84,7 +84,7 @@ export default function WhatIsClub() {
       accentColor: '#95CC2E', // Leaf Lime Green
       className: 'col-span-1 md:col-span-2',
       background: (
-        <div className="absolute right-3 bottom-2 sm:right-6 sm:bottom-4 w-36 h-36 sm:w-48 sm:h-48 lg:w-56 lg:h-56 xl:w-64 xl:h-64 pointer-events-none transition-transform duration-300 group-hover:scale-105">
+        <div className="absolute right-3 bottom-2 sm:right-6 sm:bottom-4 w-28 h-28 sm:w-36 sm:h-36 lg:w-40 lg:h-40 xl:w-44 xl:h-44 pointer-events-none transition-transform duration-300 group-hover:scale-105">
           <Image
             src="/images/certifciate.png"
             alt="Framed wall certificate"
@@ -104,12 +104,6 @@ export default function WhatIsClub() {
       <div className="max-w-7xl mx-auto flex flex-col items-center">
         {/* Header */}
         <div className="max-w-3xl mx-auto flex flex-col items-center mb-14 sm:mb-18 lg:mb-20 text-center">
-          <Badge
-            variant="gold"
-            className="text-xs sm:text-sm font-black uppercase tracking-widest mb-4 px-4 py-1.5 bg-[#F3B343] text-[#942A45] shadow-md border-0"
-          >
-            The Movement
-          </Badge>
 
           <motion.h2
             initial={{ opacity: 0, y: 10 }}

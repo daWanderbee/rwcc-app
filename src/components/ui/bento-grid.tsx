@@ -89,7 +89,7 @@ const BentoCard = ({
     </div>
 
     {/* Mobile CTA */}
-    <div className="relative z-10 flex w-full flex-row items-center pt-3 mt-4 border-t border-[#942A45]/15 lg:hidden">
+    <div className="relative z-10 flex w-full flex-row items-center pt-3 mt-4 lg:hidden">
       <Button
         variant="link"
         asChild
@@ -104,7 +104,7 @@ const BentoCard = ({
     </div>
 
     {/* Desktop CTA (slides in on hover) */}
-    <div className="relative z-10 hidden w-full transform-gpu flex-row items-center pt-3 border-t border-[#942A45]/15 opacity-80 transition-all duration-300 group-hover:opacity-100 lg:flex">
+    <div className="relative z-10 hidden w-full transform-gpu flex-row items-center pt-3 opacity-80 transition-all duration-300 group-hover:opacity-100 lg:flex">
       <Button
         variant="link"
         asChild

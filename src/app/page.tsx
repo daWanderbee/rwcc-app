@@ -6,7 +6,7 @@ import ReelsSection from '@/components/ReelsSection';
 import Leaderboard from '@/components/Leaderboard';
 import YourSpot from '@/components/YourSpot';
 import RunningTotal from '@/components/RunningTotal';
-import HowItWorks from '@/components/HowItWorks';
+
 import TheKit from '@/components/TheKit';
 import FaqSection from '@/components/FaqSection';
 import JoinCtaSection from '@/components/JoinCtaSection';
@@ -22,7 +22,7 @@ export default function Home() {
       <Leaderboard />
       <YourSpot />
       <RunningTotal />
-      <HowItWorks />
+
       <TheKit />
       <FaqSection />
       <JoinCtaSection />

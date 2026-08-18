@@ -68,13 +68,6 @@ export default function Leaderboard() {
       <div className="max-w-6xl mx-auto flex flex-col items-center">
         {/* Header */}
         <div className="text-center mb-10 sm:mb-14">
-          <Badge
-            variant="default"
-            className="gap-2 px-3.5 py-1 sm:px-4 sm:py-1.5 text-xs sm:text-sm font-bold uppercase tracking-wider mb-3 sm:mb-4 shadow-xs bg-[#942A45] text-[#F2DABB]"
-          >
-            <Trophy className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-[#F3B343]" />
-            <span>Season Rankings · Spring 2026</span>
-          </Badge>
 
           <motion.h2
             initial={{ opacity: 0, y: 10 }}
