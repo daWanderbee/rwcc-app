@@ -97,11 +97,11 @@ export default function JoinCtaSection() {
             hello@chuk.in
           </a>
           <a
-            href="tel:+917800056200"
+            href="tel:+917800034448"
             className="flex items-center gap-2 hover:underline bg-[#F2DABB]/10 px-3.5 sm:px-4 py-2 rounded-full border border-[#F2DABB]/20 text-xs sm:text-sm"
           >
             <Phone className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-[#F3B343]" />
-            +91-78000-56200
+            +91 78000-34448
           </a>
           <a
             href="https://chuk.in"

@@ -159,7 +159,7 @@ export function ClubCTA() {
         </a>
       </Button>
       <p className="mt-3 text-xs sm:text-sm lg:text-base font-semibold text-[#F2DABB]/80">
-        Free for every CHUK customer · hello@chuk.in · +91-78000-56200
+        Free for every CHUK customer · hello@chuk.in · +91 78000-34448
       </p>
     </motion.div>
   );
