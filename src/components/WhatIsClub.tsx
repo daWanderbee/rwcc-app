@@ -21,7 +21,7 @@ export default function WhatIsClub() {
       accentColor: '#F3B343', // Sunny Gold
       className: 'col-span-1 md:col-span-2',
       background: (
-        <div className="absolute right-3 bottom-2 sm:right-6 sm:bottom-4 w-36 h-36 sm:w-48 sm:h-48 lg:w-56 lg:h-56 xl:w-64 xl:h-64 pointer-events-none transition-transform duration-300 group-hover:scale-105">
+        <div className="absolute right-3 bottom-2 sm:right-6 sm:bottom-4 w-24 h-24 sm:w-32 sm:h-32 lg:w-40 lg:h-40 xl:w-44 xl:h-44 pointer-events-none transition-transform duration-300 group-hover:scale-105">
           <Image
             src="/images/rwcc-framed-plaque.jpg"
             alt="RWCC Recognition Plaque Unit"

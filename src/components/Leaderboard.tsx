@@ -2,7 +2,7 @@
 
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Crown, Trophy, ChevronDown } from 'lucide-react';
+import { Crown, ChevronDown } from 'lucide-react';
 import { Tabs, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
@@ -68,7 +68,6 @@ export default function Leaderboard() {
       <div className="max-w-6xl mx-auto flex flex-col items-center">
         {/* Header */}
         <div className="text-center mb-10 sm:mb-14">
-
           <motion.h2
             initial={{ opacity: 0, y: 10 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -95,161 +94,188 @@ export default function Leaderboard() {
           onValueChange={(val) => setSortKey(val as any)}
           className="mb-12 sm:mb-16 w-full max-w-md flex justify-center px-1"
         >
-          <TabsList className="w-full bg-[#E5C7A3] border border-[#942A45]/20 p-1 h-11 sm:h-12">
-            <TabsTrigger value="trees" className="flex-1 text-xs sm:text-sm font-bold data-[state=active]:bg-[#95CC2E] data-[state=active]:text-[#3A2A2F]">
+          <TabsList className="w-full bg-[#E5C7A3] border border-[#942A45]/20 p-1 h-11 sm:h-12 rounded-full">
+            <TabsTrigger value="trees" className="flex-1 text-xs sm:text-sm font-bold rounded-full data-[state=active]:bg-[#95CC2E] data-[state=active]:text-[#3A2A2F]">
               Trees
             </TabsTrigger>
-            <TabsTrigger value="carbon" className="flex-1 text-xs sm:text-sm font-bold data-[state=active]:bg-[#33A8C3] data-[state=active]:text-[#F2DABB]">
+            <TabsTrigger value="carbon" className="flex-1 text-xs sm:text-sm font-bold rounded-full data-[state=active]:bg-[#33A8C3] data-[state=active]:text-[#F2DABB]">
               Carbon
             </TabsTrigger>
-            <TabsTrigger value="volume" className="flex-1 text-xs sm:text-sm font-bold data-[state=active]:bg-[#ED544B] data-[state=active]:text-[#F2DABB]">
+            <TabsTrigger value="volume" className="flex-1 text-xs sm:text-sm font-bold rounded-full data-[state=active]:bg-[#ED544B] data-[state=active]:text-[#F2DABB]">
               Volume
             </TabsTrigger>
           </TabsList>
         </Tabs>
 
-        {/* Top 3 Podium (Expansive Desktop Layout) */}
-        <div className="flex items-end justify-center gap-3 sm:gap-10 lg:gap-16 w-full mb-12 sm:mb-18 px-1 max-w-3xl">
-          {/* #2 Rank */}
-          <div className="flex flex-col items-center text-center flex-1 max-w-[120px] sm:max-w-[180px]">
-            <div className="relative mb-2 sm:mb-3">
-              <div className="w-16 h-16 sm:w-24 sm:h-24 lg:w-28 lg:h-28 rounded-full bg-[#33A8C3] text-[#F2DABB] font-black text-lg sm:text-2xl lg:text-3xl flex items-center justify-center shadow-lg border-2 border-[#F2DABB] transition-transform hover:scale-105">
+        {/* Top 3 Podium (Structured Desktop Pedestals) */}
+        <div className="grid grid-cols-3 items-end gap-2.5 sm:gap-6 lg:gap-8 w-full max-w-4xl mb-12 sm:mb-18">
+          {/* #2 Rank Pedestal */}
+          <div className="flex flex-col items-center text-center">
+            <div className="relative mb-3">
+              <div className="w-14 h-14 sm:w-22 sm:h-22 lg:w-26 lg:h-26 rounded-full bg-[#33A8C3] text-[#F2DABB] font-black text-base sm:text-2xl lg:text-3xl flex items-center justify-center shadow-lg border-2 border-[#F2DABB] transition-transform hover:scale-105">
                 {top2.initials}
               </div>
-              <Badge
-                variant="teal"
-                className="absolute -bottom-1 -right-1 w-6 h-6 sm:w-8 sm:h-8 rounded-full p-0 flex items-center justify-center font-black text-xs sm:text-sm bg-[#33A8C3] text-[#F2DABB] border-2 border-[#F2DABB]"
-              >
+              <span className="absolute -bottom-1 -right-1 w-5 h-5 sm:w-7 sm:h-7 rounded-full flex items-center justify-center font-black text-xs sm:text-sm bg-[#33A8C3] text-[#F2DABB] border-2 border-[#F2DABB]">
                 2
-              </Badge>
+              </span>
             </div>
-            <h4 className="font-black text-xs sm:text-base lg:text-lg text-[#942A45] truncate w-full">
-              {top2.name}
-            </h4>
-            <p className="text-[10px] sm:text-xs font-semibold text-[#3A2A2F]/70 truncate w-full">
-              {top2.city} · {top2.outlets} outlets
-            </p>
-            <span className="mt-1 text-xs sm:text-base font-black text-[#0096B1] block">
-              {getMetricDisplay(top2)}
-            </span>
+            <div className="w-full bg-[#E5C7A3] border-2 border-[#33A8C3]/50 rounded-2xl p-3 sm:p-5 pt-3 flex flex-col items-center">
+              <h4 className="font-black text-xs sm:text-base lg:text-lg text-[#942A45] truncate w-full">
+                {top2.name}
+              </h4>
+              <p className="text-[10px] sm:text-xs font-semibold text-[#3A2A2F]/70 truncate w-full mb-1">
+                {top2.city} · {top2.outlets} outlets
+              </p>
+              <span className="text-xs sm:text-sm lg:text-base font-black text-[#0096B1] bg-[#33A8C3]/20 px-2.5 py-0.5 rounded-full">
+                {getMetricDisplay(top2)}
+              </span>
+            </div>
           </div>
 
-          {/* #1 Rank (Centerpiece) */}
-          <div className="flex flex-col items-center text-center flex-1 max-w-[140px] sm:max-w-[210px] -translate-y-4 sm:-translate-y-6">
-            <div className="relative mb-2 sm:mb-3">
-              <Crown className="w-6 h-6 sm:w-9 sm:h-9 text-[#F3B343] mx-auto mb-1.5 drop-shadow-md" />
-              <div className="w-20 h-20 sm:w-28 sm:h-28 lg:w-36 lg:h-36 rounded-full bg-[#942A45] text-[#F3B343] font-black text-2xl sm:text-4xl lg:text-5xl flex items-center justify-center shadow-2xl border-4 border-[#F3B343] transition-transform hover:scale-105">
+          {/* #1 Rank Pedestal (Elevated Centerpiece) */}
+          <div className="flex flex-col items-center text-center -translate-y-2 sm:-translate-y-4">
+            <Crown className="w-6 h-6 sm:w-8 sm:h-8 text-[#F3B343] mb-1 drop-shadow-md" />
+            <div className="relative mb-3">
+              <div className="w-18 h-18 sm:w-28 sm:h-28 lg:w-32 lg:h-32 rounded-full bg-[#942A45] text-[#F3B343] font-black text-2xl sm:text-4xl lg:text-5xl flex items-center justify-center shadow-2xl border-4 border-[#F3B343] transition-transform hover:scale-105">
                 {top1.initials}
               </div>
-              <Badge
-                variant="gold"
-                className="absolute -bottom-2 inset-x-0 mx-auto w-7 h-7 sm:w-9 sm:h-9 rounded-full p-0 flex items-center justify-center font-black text-xs sm:text-base bg-[#F3B343] text-[#942A45] border-2 border-[#942A45]"
-              >
+              <span className="absolute -bottom-2 inset-x-0 mx-auto w-6 h-6 sm:w-8 sm:h-8 rounded-full flex items-center justify-center font-black text-xs sm:text-sm bg-[#F3B343] text-[#942A45] border-2 border-[#942A45]">
                 1
-              </Badge>
+              </span>
             </div>
-            <h4 className="font-black text-sm sm:text-lg lg:text-2xl text-[#942A45] truncate w-full">
-              {top1.name}
-            </h4>
-            <p className="text-xs sm:text-sm font-semibold text-[#3A2A2F]/70 truncate w-full">
-              {top1.city} · {top1.outlets} outlets
-            </p>
-            <span className="mt-1.5 text-xs sm:text-lg font-black text-[#942A45] block bg-[#F3B343]/30 px-3 sm:px-4 py-1 rounded-full">
-              {getMetricDisplay(top1)}
-            </span>
+            <div className="w-full bg-[#E5C7A3] border-2 border-[#F3B343] rounded-2xl p-3.5 sm:p-6 pt-3 flex flex-col items-center shadow-md">
+              <h4 className="font-black text-sm sm:text-lg lg:text-xl text-[#942A45] truncate w-full">
+                {top1.name}
+              </h4>
+              <p className="text-xs sm:text-sm font-semibold text-[#3A2A2F]/70 truncate w-full mb-1">
+                {top1.city} · {top1.outlets} outlets
+              </p>
+              <span className="text-xs sm:text-base lg:text-lg font-black text-[#942A45] bg-[#F3B343]/35 px-3 py-0.5 sm:py-1 rounded-full">
+                {getMetricDisplay(top1)}
+              </span>
+            </div>
           </div>
 
-          {/* #3 Rank */}
-          <div className="flex flex-col items-center text-center flex-1 max-w-[120px] sm:max-w-[180px]">
-            <div className="relative mb-2 sm:mb-3">
-              <div className="w-16 h-16 sm:w-24 sm:h-24 lg:w-28 lg:h-28 rounded-full bg-[#ED544B] text-[#F2DABB] font-black text-lg sm:text-2xl lg:text-3xl flex items-center justify-center shadow-lg border-2 border-[#F2DABB] transition-transform hover:scale-105">
+          {/* #3 Rank Pedestal */}
+          <div className="flex flex-col items-center text-center">
+            <div className="relative mb-3">
+              <div className="w-14 h-14 sm:w-22 sm:h-22 lg:w-26 lg:h-26 rounded-full bg-[#ED544B] text-[#F2DABB] font-black text-base sm:text-2xl lg:text-3xl flex items-center justify-center shadow-lg border-2 border-[#F2DABB] transition-transform hover:scale-105">
                 {top3.initials}
               </div>
-              <Badge
-                variant="coral"
-                className="absolute -bottom-1 -right-1 w-6 h-6 sm:w-8 sm:h-8 rounded-full p-0 flex items-center justify-center font-black text-xs sm:text-sm bg-[#ED544B] text-[#F2DABB] border-2 border-[#F2DABB]"
-              >
+              <span className="absolute -bottom-1 -right-1 w-5 h-5 sm:w-7 sm:h-7 rounded-full flex items-center justify-center font-black text-xs sm:text-sm bg-[#ED544B] text-[#F2DABB] border-2 border-[#F2DABB]">
                 3
-              </Badge>
+              </span>
             </div>
-            <h4 className="font-black text-xs sm:text-base lg:text-lg text-[#942A45] truncate w-full">
-              {top3.name}
-            </h4>
-            <p className="text-[10px] sm:text-xs font-semibold text-[#3A2A2F]/70 truncate w-full">
-              {top3.city} · {top3.outlets} outlets
-            </p>
-            <span className="mt-1 text-xs sm:text-base font-black text-[#ED544B] block">
-              {getMetricDisplay(top3)}
-            </span>
+            <div className="w-full bg-[#E5C7A3] border-2 border-[#ED544B]/50 rounded-2xl p-3 sm:p-5 pt-3 flex flex-col items-center">
+              <h4 className="font-black text-xs sm:text-base lg:text-lg text-[#942A45] truncate w-full">
+                {top3.name}
+              </h4>
+              <p className="text-[10px] sm:text-xs font-semibold text-[#3A2A2F]/70 truncate w-full mb-1">
+                {top3.city} · {top3.outlets} outlets
+              </p>
+              <span className="text-xs sm:text-sm lg:text-base font-black text-[#ED544B] bg-[#ED544B]/20 px-2.5 py-0.5 rounded-full">
+                {getMetricDisplay(top3)}
+              </span>
+            </div>
           </div>
         </div>
 
-        {/* Open Editorial Ranked List Stream (Widescreen Rows) */}
-        <div className="w-full flex flex-col divide-y divide-[#942A45]/15 border-y border-[#942A45]/20 mb-10">
-          <AnimatePresence>
-            {displayedData.map((row) => {
-              const isTop1 = row.displayRank === 1;
-              const isTop2 = row.displayRank === 2;
-              const isTop3 = row.displayRank === 3;
+        {/* Editorial Ranked Stream (Desktop Table Layout) */}
+        <div className="w-full bg-[#E5C7A3]/50 border-2 border-[#942A45]/20 rounded-3xl overflow-hidden mb-10 shadow-md">
+          {/* Table Header on Desktop */}
+          <div className="hidden sm:grid grid-cols-12 py-3 px-6 lg:px-8 border-b-2 border-[#942A45]/20 text-xs font-black uppercase tracking-wider text-[#942A45]/80 bg-[#E5C7A3]">
+            <div className="col-span-1">Rank</div>
+            <div className="col-span-6">Member Restaurant</div>
+            <div className="col-span-2">Network</div>
+            <div className="col-span-3 text-right">Impact Metric</div>
+          </div>
 
-              let badgeVariant: any = 'default';
-              if (isTop1) badgeVariant = 'gold';
-              else if (isTop2) badgeVariant = 'teal';
-              else if (isTop3) badgeVariant = 'coral';
+          <div className="flex flex-col divide-y divide-[#942A45]/15">
+            <AnimatePresence>
+              {displayedData.map((row) => {
+                const isTop1 = row.displayRank === 1;
+                const isTop2 = row.displayRank === 2;
+                const isTop3 = row.displayRank === 3;
 
-              return (
-                <div
-                  key={row.name}
-                  className="w-full py-4 sm:py-5 px-3 sm:px-8 flex items-center justify-between transition-colors hover:bg-[#942A45]/5 gap-4"
-                >
-                  {/* Left: Rank & Avatar & Name */}
-                  <div className="flex items-center gap-3 sm:gap-6 min-w-0">
-                    <Badge
-                      variant={badgeVariant}
-                      className="w-8 h-8 sm:w-10 sm:h-10 rounded-full p-0 flex items-center justify-center shrink-0 font-black text-xs sm:text-base shadow-xs"
-                    >
-                      #{row.displayRank}
-                    </Badge>
+                let rankBadgeBg = '#942A45';
+                let rankBadgeText = '#F2DABB';
+                if (isTop1) {
+                  rankBadgeBg = '#F3B343';
+                  rankBadgeText = '#942A45';
+                } else if (isTop2) {
+                  rankBadgeBg = '#33A8C3';
+                  rankBadgeText = '#F2DABB';
+                } else if (isTop3) {
+                  rankBadgeBg = '#ED544B';
+                  rankBadgeText = '#F2DABB';
+                }
 
-                    <div
-                      style={{ backgroundColor: row.avatarBg }}
-                      className="w-10 h-10 sm:w-13 sm:h-13 rounded-full text-[#F2DABB] font-black text-sm sm:text-lg flex items-center justify-center shrink-0 shadow-md"
-                    >
-                      {row.initials}
+                return (
+                  <div
+                    key={row.name}
+                    className="w-full py-4 px-4 sm:px-6 lg:px-8 flex sm:grid grid-cols-12 items-center justify-between transition-colors hover:bg-[#942A45]/10 gap-2 sm:gap-4"
+                  >
+                    {/* Col 1: Rank */}
+                    <div className="col-span-1 flex items-center">
+                      <span
+                        style={{ backgroundColor: rankBadgeBg, color: rankBadgeText }}
+                        className="w-7 h-7 sm:w-8 sm:h-8 rounded-full flex items-center justify-center font-black text-xs sm:text-sm shadow-xs shrink-0"
+                      >
+                        #{row.displayRank}
+                      </span>
                     </div>
 
-                    <div className="text-left min-w-0">
-                      <h4 className="font-bold text-sm sm:text-xl lg:text-2xl truncate text-[#942A45]">
-                        {row.name}
-                      </h4>
-                      <p className="text-xs sm:text-sm font-semibold text-[#3A2A2F]/70 truncate">
-                        {row.city} · {row.outlets} outlets
-                      </p>
+                    {/* Col 2: Restaurant & Avatar */}
+                    <div className="col-span-6 flex items-center gap-3 sm:gap-4 min-w-0">
+                      <div
+                        style={{ backgroundColor: row.avatarBg }}
+                        className="w-9 h-9 sm:w-11 sm:h-11 rounded-full text-[#F2DABB] font-black text-xs sm:text-base flex items-center justify-center shrink-0 shadow-sm"
+                      >
+                        {row.initials}
+                      </div>
+                      <div className="text-left min-w-0">
+                        <h4 className="font-black text-sm sm:text-base lg:text-lg truncate text-[#942A45]">
+                          {row.name}
+                        </h4>
+                        <span className="sm:hidden text-[11px] font-semibold text-[#3A2A2F]/70 block">
+                          {row.city} · {row.outlets} outlets
+                        </span>
+                      </div>
+                    </div>
+
+                    {/* Col 3: Location & Network (Desktop) */}
+                    <div className="hidden sm:flex col-span-2 flex-col text-left">
+                      <span className="text-xs sm:text-sm font-bold text-[#942A45]">
+                        {row.city}
+                      </span>
+                      <span className="text-[11px] font-semibold text-[#3A2A2F]/75">
+                        {row.outlets} active outlets
+                      </span>
+                    </div>
+
+                    {/* Col 4: Primary Metric */}
+                    <div className="col-span-3 text-right shrink-0">
+                      <span className="font-black text-sm sm:text-base lg:text-lg block text-[#942A45]">
+                        {getMetricDisplay(row)}
+                      </span>
+                      <span className="text-[10px] sm:text-xs font-semibold text-[#3A2A2F]/75 block">
+                        {sortKey === 'trees' && `${row.co2Text} CO₂ · ${row.volumeText}`}
+                        {sortKey === 'carbon' && `${row.trees.toLocaleString()} trees · ${row.volumeText}`}
+                        {sortKey === 'volume' && `${row.trees.toLocaleString()} trees · ${row.co2Text} CO₂`}
+                      </span>
                     </div>
                   </div>
-
-                  {/* Right: Primary Metric */}
-                  <div className="text-right shrink-0 ml-2">
-                    <span className="font-black text-base sm:text-xl lg:text-2xl block text-[#942A45]">
-                      {getMetricDisplay(row)}
-                    </span>
-                    <span className="text-xs sm:text-sm font-semibold opacity-75 block text-[#3A2A2F]">
-                      {sortKey === 'trees' && `${row.co2Text} CO₂ · ${row.volumeText}`}
-                      {sortKey === 'carbon' && `${row.trees.toLocaleString()} trees · ${row.volumeText}`}
-                      {sortKey === 'volume' && `${row.trees.toLocaleString()} trees · ${row.co2Text} CO₂`}
-                    </span>
-                  </div>
-                </div>
-              );
-            })}
-          </AnimatePresence>
+                );
+              })}
+            </AnimatePresence>
+          </div>
         </div>
 
         {/* Show More / Show Less Toggle Button */}
         <Button
           variant="outlinePlum"
           onClick={() => setShowAll(!showAll)}
-          className="mt-1 mb-8 gap-2 font-bold text-sm sm:text-base border-[#942A45] hover:bg-[#942A45] hover:text-[#F2DABB] px-8 py-3.5"
+          className="mt-1 mb-8 gap-2 font-bold text-sm sm:text-base border-[#942A45] hover:bg-[#942A45] hover:text-[#F2DABB] px-8 py-3.5 rounded-full"
         >
           <span>{showAll ? 'Show Less' : 'View Full Top 10 Leaderboard'}</span>
           <ChevronDown className={`w-4 h-4 transition-transform duration-200 ${showAll ? 'rotate-180' : ''}`} />
