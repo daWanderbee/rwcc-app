@@ -11,12 +11,12 @@ const steps = [
     num: '01',
     title: 'We score your switch',
     icon: Calculator,
-    color: '#33A8C3', // Turquoise Sky
+    color: '#33A8C3',
     imageBg: 'bg-[#D8EFF5]',
     imageBorder: 'border-[#33A8C3]/30',
     image: '/images/step1-scorecard.jpg',
     imageFit: 'object-cover',
-    body: 'From your actual or projected Chuk order volume, we work out three numbers: the products you put into service, the trees planted equivalent of choosing bagasse over fossil-based packaging, and the CO2 you kept out of the air.',
+    body: 'From your actual or projected Chuk order volume, we work out three numbers: the products you put into service, the trees planted equivalent of choosing bagasse over fossil-based packaging, and the CO₂ you kept out of the air.',
     tag: 'Automated Calculation',
     tagVariant: 'teal' as const,
   },
@@ -24,7 +24,7 @@ const steps = [
     num: '02',
     title: 'We build your recognition block',
     icon: Shield,
-    color: '#F3B343', // Sunny Gold
+    color: '#F3B343',
     imageBg: 'bg-[#FCE8AC]',
     imageBorder: 'border-[#F3B343]/40',
     image: '/images/RWCC-unit.png',
@@ -37,7 +37,7 @@ const steps = [
     num: '03',
     title: 'We send your welcome kit',
     icon: Box,
-    color: '#ED544B', // Sunset Coral
+    color: '#ED544B',
     imageBg: 'bg-[#FDD8D5]',
     imageBorder: 'border-[#ED544B]/30',
     image: '/images/step3-welcome-kit-flatlay.jpg',
@@ -52,11 +52,11 @@ export default function HowItWorks() {
   return (
     <section
       id="how-it-works"
-      className="relative z-10 w-full bg-[#F2DABB] text-[#3A2A2F] font-['Karbon'] py-16 sm:py-24 lg:py-32 xl:py-36 px-4 sm:px-8 lg:px-12 xl:px-16"
+      className="relative z-10 w-full bg-[#F2DABB] text-[#3A2A2F] font-['Karbon'] py-16 sm:py-24 lg:py-32 px-4 sm:px-8 lg:px-12 xl:px-16"
     >
       <div className="max-w-7xl mx-auto flex flex-col items-center">
         {/* Header */}
-        <div className="text-center max-w-3xl mx-auto mb-14 sm:mb-20 lg:mb-28">
+        <div className="text-center max-w-3xl mx-auto mb-14 sm:mb-20">
           <Badge
             variant="default"
             className="text-xs sm:text-sm font-black uppercase tracking-widest mb-4 px-4 py-1.5 bg-[#942A45] text-[#F2DABB]"
@@ -95,8 +95,8 @@ export default function HowItWorks() {
           </motion.p>
         </div>
 
-        {/* Colourful 3-Step Process Flow with High-Res Imagery */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-10 md:gap-10 lg:gap-14 xl:gap-18 w-full relative">
+        {/* 3-Step Process Flow */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-10 md:gap-10 lg:gap-14 w-full relative">
           {steps.map((step, idx) => {
             const Icon = step.icon;
             return (
@@ -131,8 +131,8 @@ export default function HowItWorks() {
                   </div>
                 </div>
 
-                {/* Colourful High-Resolution Visual Preview Box */}
-                <div className={`relative w-full h-52 sm:h-60 lg:h-72 xl:h-80 rounded-2xl sm:rounded-3xl overflow-hidden mb-6 lg:mb-8 ${step.imageBg} border-2 ${step.imageBorder} flex items-center justify-center p-2 transition-transform group-hover:scale-105 duration-300 shadow-md`}>
+                {/* Visual Preview Box */}
+                <div className={`relative w-full h-52 sm:h-60 lg:h-72 rounded-2xl overflow-hidden mb-6 ${step.imageBg} border-2 ${step.imageBorder} flex items-center justify-center p-2 transition-transform group-hover:scale-105 duration-300 shadow-md`}>
                   <Image
                     src={step.image}
                     alt={step.title}
@@ -142,7 +142,7 @@ export default function HowItWorks() {
                 </div>
 
                 {/* Step Title */}
-                <h3 className="text-xl lg:text-2xl xl:text-3xl font-black text-[#942A45] tracking-tight mb-3 leading-snug">
+                <h3 className="text-xl lg:text-2xl font-black text-[#942A45] tracking-tight mb-3 leading-snug">
                   Step {step.num} — {step.title}
                 </h3>
 

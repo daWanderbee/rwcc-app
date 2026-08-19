@@ -3,6 +3,7 @@ import Navbar from '@/components/Navbar';
 import HeroSection from '@/components/HeroSection';
 import WhatIsClub from '@/components/WhatIsClub';
 import ReelsSection from '@/components/ReelsSection';
+import HowImpactIsCalculated from '@/components/HowImpactIsCalculated';
 import Leaderboard from '@/components/Leaderboard';
 import YourSpot from '@/components/YourSpot';
 import RunningTotal from '@/components/RunningTotal';
@@ -19,6 +20,7 @@ export default function Home() {
       <HeroSection />
       <WhatIsClub />
       <ReelsSection />
+      <HowImpactIsCalculated />
       <Leaderboard />
       <YourSpot />
       <RunningTotal />
