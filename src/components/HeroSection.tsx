@@ -23,7 +23,7 @@ export default function HeroSection() {
               className="text-5xl xl:text-7xl 2xl:text-8xl font-black text-[#942A45] tracking-tight leading-[1.08] mb-6 font-['Karbon']"
             >
               Welcome to{' '}
-              <span className="text-[#ED544B] underline decoration-[#F3B343] decoration-wavy decoration-4">
+              <span className="text-[#33A8C3] underline decoration-[#F3B343] decoration-wavy decoration-4">
                 the club.
               </span>
             </motion.h1>

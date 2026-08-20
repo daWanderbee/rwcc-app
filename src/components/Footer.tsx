@@ -28,22 +28,22 @@ export default function Footer() {
 
         {/* Center: Quick Links */}
         <div className="flex flex-wrap items-center justify-center gap-5 sm:gap-8 lg:gap-10 text-sm sm:text-base lg:text-lg font-bold text-[#F2DABB]/85">
-          <a href="#about" className="hover:text-[#F3B343] transition-colors">
+          <a href="#about" className="hover:text-[#F2DABB] transition-colors">
             About
           </a>
-          <a href="#leaderboard" className="hover:text-[#F3B343] transition-colors">
+          <a href="#leaderboard" className="hover:text-[#F2DABB] transition-colors">
             Leaderboard
           </a>
-          <a href="#your-spot" className="hover:text-[#F3B343] transition-colors">
+          <a href="#your-spot" className="hover:text-[#F2DABB] transition-colors">
             Your Spot
           </a>
-          <a href="#how-it-works" className="hover:text-[#F3B343] transition-colors">
+          <a href="#how-it-works" className="hover:text-[#F2DABB] transition-colors">
             How It Works
           </a>
-          <a href="#the-kit" className="hover:text-[#F3B343] transition-colors">
+          <a href="#the-kit" className="hover:text-[#F2DABB] transition-colors">
             The Kit
           </a>
-          <a href="#faq" className="hover:text-[#F3B343] transition-colors">
+          <a href="#faq" className="hover:text-[#F2DABB] transition-colors">
             FAQ
           </a>
         </div>

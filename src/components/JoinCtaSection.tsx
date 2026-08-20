@@ -74,7 +74,7 @@ export default function JoinCtaSection() {
             className="w-full sm:w-auto px-8 sm:px-10 py-5 sm:py-6 bg-[#F2DABB] text-[#942A45] font-black text-sm sm:text-lg shadow-xl hover:bg-[#F3B343] hover:text-[#942A45] transition-all hover:scale-105 active:scale-95 flex items-center justify-center gap-2"
           >
             <span>Join the Club</span>
-            <ArrowRight className="w-4 h-4 sm:w-5 sm:h-5 text-[#ED544B]" />
+            <ArrowRight className="w-4 h-4 sm:w-5 sm:h-5 text-[#33A8C3]" />
           </Button>
 
           <Button
@@ -93,14 +93,14 @@ export default function JoinCtaSection() {
             href="mailto:hello@chuk.in"
             className="flex items-center gap-2 hover:underline bg-[#F2DABB]/10 px-3.5 sm:px-4 py-2 rounded-full border border-[#F2DABB]/20 text-xs sm:text-sm"
           >
-            <Mail className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-[#F3B343]" />
+            <Mail className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-[#F2DABB]" />
             hello@chuk.in
           </a>
           <a
             href="tel:+917800034448"
             className="flex items-center gap-2 hover:underline bg-[#F2DABB]/10 px-3.5 sm:px-4 py-2 rounded-full border border-[#F2DABB]/20 text-xs sm:text-sm"
           >
-            <Phone className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-[#F3B343]" />
+            <Phone className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-[#F2DABB]" />
             +91 78000-34448
           </a>
           <a
@@ -109,7 +109,7 @@ export default function JoinCtaSection() {
             rel="noopener noreferrer"
             className="flex items-center gap-2 hover:underline bg-[#F2DABB]/10 px-3.5 sm:px-4 py-2 rounded-full border border-[#F2DABB]/20 text-xs sm:text-sm"
           >
-            <Globe className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-[#F3B343]" />
+            <Globe className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-[#F2DABB]" />
             chuk.in
           </a>
         </div>
@@ -131,7 +131,7 @@ export default function JoinCtaSection() {
                 {modalType === 'join' ? 'Claim Your Spot & Welcome Kit' : 'Talk to the Chuk Team'}
               </DialogTitle>
             </div>
-            <DialogDescription className="text-xs font-semibold text-[#3A2A2F]/80">
+            <DialogDescription className="text-xs font-semibold text-[#942A45]/80">
               {modalType === 'join'
                 ? 'Fill in your restaurant details to calculate your impact numbers and claim your free 7-piece kit.'
                 : "Have questions about switching or joining? Send us your message and we'll get right back."}
@@ -140,13 +140,13 @@ export default function JoinCtaSection() {
 
           {formSubmitted ? (
             <div className="py-6 sm:py-8 text-center flex flex-col items-center">
-              <div className="w-12 h-12 sm:w-14 sm:h-14 rounded-full bg-[#95CC2E] text-[#3A2A2F] flex items-center justify-center mb-3 sm:mb-4 shadow-md">
+              <div className="w-12 h-12 sm:w-14 sm:h-14 rounded-full bg-[#95CC2E] text-[#942A45] flex items-center justify-center mb-3 sm:mb-4 shadow-md">
                 <CheckCircle2 className="w-7 h-7 sm:w-8 sm:h-8" />
               </div>
               <h3 className="text-xl sm:text-2xl font-black text-[#942A45] mb-2">
                 Welcome to the Club!
               </h3>
-              <p className="text-xs sm:text-sm font-semibold text-[#3A2A2F] mb-6 max-w-xs">
+              <p className="text-xs sm:text-sm font-semibold text-[#942A45] mb-6 max-w-xs">
                 We&apos;ve received your details. Our team will verify your Chuk order volume and dispatch your welcome kit shortly.
               </p>
               <Button
@@ -217,7 +217,7 @@ export default function JoinCtaSection() {
                     id="outlets"
                     value={formData.outlets}
                     onChange={(e) => setFormData({ ...formData, outlets: e.target.value })}
-                    className="flex h-11 w-full rounded-xl border-2 border-[#E5C7A3] bg-[#E5C7A3]/30 px-3 py-2 text-base sm:text-sm font-semibold text-[#3A2A2F] focus-visible:outline-none focus-visible:border-[#942A45]"
+                    className="flex h-11 w-full rounded-xl border-2 border-[#E5C7A3] bg-[#E5C7A3]/30 px-3 py-2 text-base sm:text-sm font-semibold text-[#942A45] focus-visible:outline-none focus-visible:border-[#942A45]"
                   >
                     <option value="1">1 Outlet</option>
                     <option value="2-5">2 - 5 Outlets</option>
@@ -232,7 +232,7 @@ export default function JoinCtaSection() {
                     id="chukCustomer"
                     value={formData.isChukCustomer}
                     onChange={(e) => setFormData({ ...formData, isChukCustomer: e.target.value })}
-                    className="flex h-11 w-full rounded-xl border-2 border-[#E5C7A3] bg-[#E5C7A3]/30 px-3 py-2 text-base sm:text-sm font-semibold text-[#3A2A2F] focus-visible:outline-none focus-visible:border-[#942A45]"
+                    className="flex h-11 w-full rounded-xl border-2 border-[#E5C7A3] bg-[#E5C7A3]/30 px-3 py-2 text-base sm:text-sm font-semibold text-[#942A45] focus-visible:outline-none focus-visible:border-[#942A45]"
                   >
                     <option value="yes">Yes, active customer</option>
                     <option value="switching">Planning to switch</option>

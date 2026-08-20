@@ -83,7 +83,7 @@ const BentoCard = ({
       <h3 className="text-lg sm:text-2xl lg:text-3xl font-black text-[#942A45] tracking-tight leading-snug drop-shadow-2xs pr-16 sm:pr-0">
         {name}
       </h3>
-      <p className="max-w-md text-xs sm:text-base text-[#3A2A2F] font-semibold leading-relaxed drop-shadow-2xs pr-12 sm:pr-0">
+      <p className="max-w-md text-xs sm:text-base text-[#942A45] font-semibold leading-relaxed drop-shadow-2xs pr-12 sm:pr-0">
         {description}
       </p>
     </div>
@@ -96,7 +96,7 @@ const BentoCard = ({
         size="sm"
         className="p-0 text-[#942A45] font-black text-xs sm:text-sm hover:no-underline"
       >
-        <a href={href} className="flex items-center gap-1.5 hover:text-[#ED544B] transition-colors">
+        <a href={href} className="flex items-center gap-1.5 hover:text-[#33A8C3] transition-colors">
           <span>{cta}</span>
           <ArrowRight className="h-3.5 w-3.5" />
         </a>
@@ -111,7 +111,7 @@ const BentoCard = ({
         size="sm"
         className="p-0 text-[#942A45] font-black text-base hover:no-underline"
       >
-        <a href={href} className="flex items-center gap-2 hover:text-[#ED544B] transition-colors">
+        <a href={href} className="flex items-center gap-2 hover:text-[#33A8C3] transition-colors">
           <span>{cta}</span>
           <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
         </a>

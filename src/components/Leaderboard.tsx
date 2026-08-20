@@ -205,13 +205,13 @@ const leaderboardMembers: RestaurantMember[] = [
   },
 ];
 
-const LEAGUES: { label: string; value: string; categoriesInPlay: string }[] = [
-  { label: 'Overall National Board', value: 'All Types', categoriesInPlay: 'All CHUK tableware categories' },
-  { label: 'Cloud Kitchen League', value: 'Cloud kitchen', categoriesInPlay: 'Containers, lids, bowls, cutlery' },
-  { label: 'QSR & Fast Food League', value: 'QSR and fast food', categoriesInPlay: 'Trays, containers, cups, lids, cutlery' },
-  { label: 'Restaurant & Casual Dining', value: 'Restaurant and casual dining', categoriesInPlay: 'Containers, lids, plates for takeaway' },
-  { label: 'Cafe & Bakery League', value: 'Cafe and bakery', categoriesInPlay: 'Cups, lids, plates, bowls' },
-  { label: 'Caterer & Canteen League', value: 'Caterer and canteen', categoriesInPlay: 'Plates, bowls, trays, cutlery' },
+const LEAGUES: { label: string; value: string }[] = [
+  { label: 'Overall National Board', value: 'All Types' },
+  { label: 'Cloud Kitchen League', value: 'Cloud kitchen' },
+  { label: 'QSR & Fast Food League', value: 'QSR and fast food' },
+  { label: 'Restaurant & Casual Dining', value: 'Restaurant and casual dining' },
+  { label: 'Cafe & Bakery League', value: 'Cafe and bakery' },
+  { label: 'Caterer & Canteen League', value: 'Caterer and canteen' },
 ];
 
 const fmtNum = (n: number) => new Intl.NumberFormat('en-US').format(n);
@@ -245,8 +245,6 @@ export default function Leaderboard() {
   const top2 = sortedAndFilteredData[1] || leaderboardMembers[1];
   const top3 = sortedAndFilteredData[2] || leaderboardMembers[2];
 
-  const currentLeagueInfo = LEAGUES.find((l) => l.value === selectedLeague);
-
   const getHeadlineMetric = (row: RestaurantMember) => {
     if (sortKey === 'meals') return `${fmtNum(row.mealsPlasticFree)} Meals`;
     if (sortKey === 'volume') return `${fmtNum(row.volumeCbm)} CBM`;
@@ -261,7 +259,7 @@ export default function Leaderboard() {
   return (
     <section
       id="leaderboard"
-      className="relative z-10 w-full bg-[#F2DABB] text-[#3A2A2F] font-['Karbon'] py-16 sm:py-24 lg:py-32 xl:py-36 px-4 sm:px-8 lg:px-12 xl:px-16 border-b border-[#942A45]/15"
+      className="relative z-10 w-full bg-[#F2DABB] text-[#942A45] font-['Karbon'] py-16 sm:py-24 lg:py-32 xl:py-36 px-4 sm:px-8 lg:px-12 xl:px-16 border-b border-[#942A45]/15"
     >
       <div className="max-w-6xl mx-auto flex flex-col items-center">
         {/* Header Block with Official Copy */}
@@ -287,17 +285,7 @@ export default function Leaderboard() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 0.1 }}
-            className="text-lg sm:text-2xl font-bold text-[#ED544B] mb-4 max-w-3xl mx-auto leading-snug"
-          >
-            The Club leaderboard ranks members on three core numbers — meals served plastic-free, volume of Chuk products used (CBM), and carbon avoided.
-          </motion.p>
-
-          <motion.p
-            initial={{ opacity: 0, y: 10 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ delay: 0.15 }}
-            className="text-base sm:text-lg lg:text-xl text-[#3A2A2F] font-semibold leading-relaxed max-w-3xl mx-auto mb-6"
+            className="text-base sm:text-lg lg:text-xl text-[#942A45] font-semibold leading-relaxed max-w-3xl mx-auto mb-6"
           >
             Track your real kitchen impact verified directly from your Chuk order history.
           </motion.p>
@@ -328,27 +316,27 @@ export default function Leaderboard() {
               <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-6">
                 <div className="bg-[#F2DABB] p-4 rounded-2xl border border-[#33A8C3]/30">
                   <h4 className="font-black text-sm text-[#33A8C3] mb-1">Meals served plastic-free</h4>
-                  <p className="text-xs text-[#3A2A2F]/85 font-medium leading-relaxed">
+                  <p className="text-xs text-[#942A45]/85 font-medium leading-relaxed">
                     One plate, bowl, container, or tray = one meal — counted straight from your orders, no double-counting, no rounding up.
                   </p>
                 </div>
 
                 <div className="bg-[#F2DABB] p-4 rounded-2xl border border-[#95CC2E]/40">
-                  <h4 className="font-black text-sm text-[#3A2A2F] mb-1">Carbon avoided</h4>
-                  <p className="text-xs text-[#3A2A2F]/85 font-medium leading-relaxed">
+                  <h4 className="font-black text-sm text-[#942A45] mb-1">Carbon avoided</h4>
+                  <p className="text-xs text-[#942A45]/85 font-medium leading-relaxed">
                     Measured against the packaging you used before you switched. The number only moves when the switch is real.
                   </p>
                 </div>
 
                 <div className="bg-[#F2DABB] p-4 rounded-2xl border border-[#F3B343]/40">
-                  <h4 className="font-black text-sm text-[#B5793B] mb-1">Volume of Chuk Products Used (CBM)</h4>
-                  <p className="text-xs text-[#3A2A2F]/85 font-medium leading-relaxed">
+                  <h4 className="font-black text-sm text-[#942A45] mb-1">Volume of Chuk Products Used (CBM)</h4>
+                  <p className="text-xs text-[#942A45]/85 font-medium leading-relaxed">
                     Every cubic metre of Chuk product you&apos;ve taken on, tallied straight from your orders. Small crates per delivery, stacked over months — into a number that shows exactly how far you&apos;ve moved.
                   </p>
                 </div>
               </div>
 
-              <div className="text-xs text-[#3A2A2F]/85 font-semibold space-y-2 border-t border-[#942A45]/20 pt-4">
+              <div className="text-xs text-[#942A45]/85 font-semibold space-y-2 border-t border-[#942A45]/20 pt-4">
                 <p>
                   <strong>Ranked Against Kitchens Like Yours:</strong> You&apos;re ranked against kitchens like yours. A cloud kitchen packs every order that leaves the counter. A dine-in restaurant only packs takeaway.
                 </p>
@@ -388,23 +376,15 @@ export default function Leaderboard() {
               <TabsTrigger value="meals" className="text-xs font-bold rounded-full px-4 py-1.5 data-[state=active]:bg-[#33A8C3] data-[state=active]:text-[#F2DABB]">
                 Meals Served
               </TabsTrigger>
-              <TabsTrigger value="volume" className="text-xs font-bold rounded-full px-4 py-1.5 data-[state=active]:bg-[#F3B343] data-[state=active]:text-[#3A2A2F]">
+              <TabsTrigger value="volume" className="text-xs font-bold rounded-full px-4 py-1.5 data-[state=active]:bg-[#F3B343] data-[state=active]:text-[#942A45]">
                 Volume (CBM)
               </TabsTrigger>
-              <TabsTrigger value="carbon" className="text-xs font-bold rounded-full px-4 py-1.5 data-[state=active]:bg-[#95CC2E] data-[state=active]:text-[#3A2A2F]">
+              <TabsTrigger value="carbon" className="text-xs font-bold rounded-full px-4 py-1.5 data-[state=active]:bg-[#95CC2E] data-[state=active]:text-[#942A45]">
                 Carbon Avoided
               </TabsTrigger>
             </TabsList>
           </Tabs>
         </div>
-
-        {/* League In-Play Categories Banner */}
-        {currentLeagueInfo && (
-          <div className="w-full max-w-4xl mb-8 bg-[#942A45]/10 border border-[#942A45]/20 rounded-2xl py-2.5 px-4 text-center text-xs sm:text-sm font-bold text-[#942A45]">
-            <span className="uppercase tracking-wider mr-2 text-[#ED544B] font-black">CHUK Categories in play:</span>
-            {currentLeagueInfo.categoriesInPlay}
-          </div>
-        )}
 
         {/* Top 3 Podium (Structured Desktop Pedestals) */}
         {sortedAndFilteredData.length >= 3 && (
@@ -423,13 +403,13 @@ export default function Leaderboard() {
                 <h4 className="font-black text-xs sm:text-base lg:text-lg text-[#942A45] truncate w-full">
                   {top2.name}
                 </h4>
-                <p className="text-[10px] sm:text-xs font-semibold text-[#3A2A2F]/70 truncate w-full mb-1">
+                <p className="text-[10px] sm:text-xs font-semibold text-[#942A45]/70 truncate w-full mb-1">
                   {top2.businessType} · {top2.city}
                 </p>
                 <span suppressHydrationWarning className="text-xs sm:text-sm lg:text-base font-black text-[#0096B1] bg-[#33A8C3]/20 px-2.5 py-0.5 rounded-full mb-1">
                   {getHeadlineMetric(top2)}
                 </span>
-                <span className="text-[10px] font-bold text-[#3A2A2F]/75 uppercase tracking-wider">
+                <span className="text-[10px] font-bold text-[#942A45]/75 uppercase tracking-wider">
                   {top2.tier} Tier
                 </span>
               </div>
@@ -438,7 +418,7 @@ export default function Leaderboard() {
             {/* #1 Rank Pedestal (Elevated Centerpiece) */}
             <div className="flex flex-col items-center text-center -translate-y-2 sm:-translate-y-4">
               <div className="relative mb-3">
-                <div className="w-18 h-18 sm:w-28 sm:h-28 lg:w-32 lg:h-32 rounded-full bg-[#942A45] text-[#F3B343] font-black text-2xl sm:text-4xl lg:text-5xl flex items-center justify-center shadow-2xl border-4 border-[#F3B343] transition-transform hover:scale-105">
+                <div className="w-18 h-18 sm:w-28 sm:h-28 lg:w-32 lg:h-32 rounded-full bg-[#942A45] text-[#F2DABB] font-black text-2xl sm:text-4xl lg:text-5xl flex items-center justify-center shadow-2xl border-4 border-[#F3B343] transition-transform hover:scale-105">
                   {top1.initials}
                 </div>
                 <span className="absolute -bottom-2 inset-x-0 mx-auto w-6 h-6 sm:w-8 sm:h-8 rounded-full flex items-center justify-center font-black text-xs sm:text-sm bg-[#F3B343] text-[#942A45] border-2 border-[#942A45]">
@@ -449,7 +429,7 @@ export default function Leaderboard() {
                 <h4 className="font-black text-sm sm:text-lg lg:text-xl text-[#942A45] truncate w-full">
                   {top1.name}
                 </h4>
-                <p className="text-xs sm:text-sm font-semibold text-[#3A2A2F]/70 truncate w-full mb-1">
+                <p className="text-xs sm:text-sm font-semibold text-[#942A45]/70 truncate w-full mb-1">
                   {top1.businessType} · {top1.city}
                 </p>
                 <span suppressHydrationWarning className="text-xs sm:text-base lg:text-lg font-black text-[#942A45] bg-[#F3B343]/35 px-3 py-0.5 sm:py-1 rounded-full mb-1">
@@ -475,13 +455,13 @@ export default function Leaderboard() {
                 <h4 className="font-black text-xs sm:text-base lg:text-lg text-[#942A45] truncate w-full">
                   {top3.name}
                 </h4>
-                <p className="text-[10px] sm:text-xs font-semibold text-[#3A2A2F]/70 truncate w-full mb-1">
+                <p className="text-[10px] sm:text-xs font-semibold text-[#942A45]/70 truncate w-full mb-1">
                   {top3.businessType} · {top3.city}
                 </p>
-                <span suppressHydrationWarning className="text-xs sm:text-sm lg:text-base font-black text-[#ED544B] bg-[#ED544B]/20 px-2.5 py-0.5 rounded-full mb-1">
+                <span suppressHydrationWarning className="text-xs sm:text-sm lg:text-base font-black text-[#33A8C3] bg-[#ED544B]/20 px-2.5 py-0.5 rounded-full mb-1">
                   {getHeadlineMetric(top3)}
                 </span>
-                <span className="text-[10px] font-bold text-[#3A2A2F]/75 uppercase tracking-wider">
+                <span className="text-[10px] font-bold text-[#942A45]/75 uppercase tracking-wider">
                   {top3.tier} Tier
                 </span>
               </div>
@@ -553,7 +533,7 @@ export default function Leaderboard() {
                               {row.tier}
                             </span>
                           </div>
-                          <span className="sm:hidden text-[11px] font-semibold text-[#3A2A2F]/70 block truncate">
+                          <span className="sm:hidden text-[11px] font-semibold text-[#942A45]/70 block truncate">
                             {row.businessType} · {row.city}
                           </span>
                         </div>
@@ -565,7 +545,7 @@ export default function Leaderboard() {
                       <span className="text-xs sm:text-sm font-bold text-[#942A45]">
                         {row.businessType}
                       </span>
-                      <span className="text-[11px] font-semibold text-[#3A2A2F]/75">
+                      <span className="text-[11px] font-semibold text-[#942A45]/75">
                         {row.city}
                       </span>
                     </div>
@@ -575,7 +555,7 @@ export default function Leaderboard() {
                       <span suppressHydrationWarning className="font-black text-sm sm:text-base lg:text-lg block text-[#942A45]">
                         {getHeadlineMetric(row)}
                       </span>
-                      <span suppressHydrationWarning className="text-[10px] sm:text-xs font-semibold text-[#3A2A2F]/75 block">
+                      <span suppressHydrationWarning className="text-[10px] sm:text-xs font-semibold text-[#942A45]/75 block">
                         {getSubMetric(row)}
                       </span>
                     </div>
@@ -597,7 +577,7 @@ export default function Leaderboard() {
         </Button>
 
         {/* Verified Order History Footnote */}
-        <p className="text-xs sm:text-sm lg:text-base text-[#3A2A2F]/80 font-semibold max-w-2xl text-center leading-relaxed px-4">
+        <p className="text-xs sm:text-sm lg:text-base text-[#942A45]/80 font-semibold max-w-2xl text-center leading-relaxed px-4">
           The numbers come off real Chuk order history. Where we have to assume something, we take the lower figure so your impact score holds up when corporate clients ask you to prove it.
         </p>
       </div>

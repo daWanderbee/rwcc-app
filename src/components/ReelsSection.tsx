@@ -132,7 +132,7 @@ export default function ReelsSection() {
   return (
     <section
       id="reels"
-      className="relative z-10 w-full bg-[#F2DABB] text-[#3A2A2F] font-['Karbon'] py-12 sm:py-20 lg:py-32 xl:py-36 px-4 sm:px-8 lg:px-12 xl:px-16 border-t border-[#942A45]/15"
+      className="relative z-10 w-full bg-[#F2DABB] text-[#942A45] font-['Karbon'] py-12 sm:py-20 lg:py-32 xl:py-36 px-4 sm:px-8 lg:px-12 xl:px-16 border-t border-[#942A45]/15"
     >
       <div className="max-w-7xl mx-auto flex flex-col items-center">
         {/* Header */}
@@ -151,7 +151,7 @@ export default function ReelsSection() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 0.1 }}
-            className="text-base sm:text-xl lg:text-2xl font-bold text-[#ED544B] mb-2 sm:mb-3"
+            className="text-base sm:text-xl lg:text-2xl font-bold text-[#33A8C3] mb-2 sm:mb-3"
           >
             The best restaurants in India already made the switch.
           </motion.p>
@@ -161,7 +161,7 @@ export default function ReelsSection() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 0.15 }}
-            className="text-xs sm:text-base lg:text-lg text-[#3A2A2F]/90 font-medium leading-relaxed max-w-2xl mx-auto"
+            className="text-xs sm:text-base lg:text-lg text-[#942A45]/90 font-medium leading-relaxed max-w-2xl mx-auto"
           >
             See how operators across the country are serving with 100% compostable Chuk — and what their diners are saying about it.
           </motion.p>
@@ -206,7 +206,7 @@ export default function ReelsSection() {
                   </Badge>
 
                   <div className="flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-[#3A2A2F]/80 backdrop-blur-xs text-[#F2DABB] text-[10px] sm:text-xs font-bold border border-[#F2DABB]/20 shadow-md">
-                    <InstagramIcon className="w-3.5 h-3.5 text-[#F3B343]" />
+                    <InstagramIcon className="w-3.5 h-3.5 text-[#F2DABB]" />
                     <span>Watch Reel</span>
                   </div>
                 </div>
@@ -221,16 +221,16 @@ export default function ReelsSection() {
                 {/* Bottom Card Pill */}
                 <div className="relative z-10 bg-[#3A2A2F]/90 backdrop-blur-xs border border-[#F2DABB]/20 rounded-xl sm:rounded-2xl p-3 sm:p-4 flex flex-col gap-1.5 shadow-xl">
                   <div className="flex items-center justify-between">
-                    <span className="text-[11px] sm:text-xs font-bold text-[#F3B343] tracking-wide truncate pr-2">
+                    <span className="text-[11px] sm:text-xs font-bold text-[#F2DABB] tracking-wide truncate pr-2">
                       {reel.handle} · {reel.city}
                     </span>
 
                     <button
                       type="button"
                       onClick={(e) => toggleLike(reel.id, e)}
-                      className="flex items-center gap-1 text-[#F2DABB] hover:text-[#ED544B] transition-colors p-0.5"
+                      className="flex items-center gap-1 text-[#F2DABB] hover:text-[#33A8C3] transition-colors p-0.5"
                     >
-                      <Heart className={`w-3.5 h-3.5 ${isLiked ? 'fill-[#ED544B] text-[#ED544B]' : ''}`} />
+                      <Heart className={`w-3.5 h-3.5 ${isLiked ? 'fill-[#ED544B] text-[#33A8C3]' : ''}`} />
                       <span className="text-[10px] sm:text-xs font-black">{isLiked ? 'Liked' : reel.likes}</span>
                     </button>
                   </div>
@@ -243,7 +243,7 @@ export default function ReelsSection() {
                     &ldquo;{reel.quote}&rdquo;
                   </p>
 
-                  <div className="flex items-center justify-between text-[10px] sm:text-[11px] font-bold text-[#F3B343] pt-1.5 border-t border-[#F2DABB]/15">
+                  <div className="flex items-center justify-between text-[10px] sm:text-[11px] font-bold text-[#F2DABB] pt-1.5 border-t border-[#F2DABB]/15">
                     <span className="flex items-center gap-1">
                       <InstagramIcon className="w-3 h-3" />
                       <span>Instagram</span>
@@ -262,14 +262,14 @@ export default function ReelsSection() {
         {/* Follow CTA Bar */}
         <div className="w-full max-w-2xl bg-[#E5C7A3] border-2 border-[#942A45]/20 rounded-2xl sm:rounded-3xl p-5 sm:p-7 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 sm:gap-6 shadow-md">
           <div className="flex items-center gap-3.5 sm:gap-4 text-left w-full sm:w-auto">
-            <div className="w-11 h-11 sm:w-13 sm:h-13 rounded-2xl bg-[#942A45] text-[#F3B343] flex items-center justify-center shrink-0 shadow-md">
+            <div className="w-11 h-11 sm:w-13 sm:h-13 rounded-2xl bg-[#942A45] text-[#F2DABB] flex items-center justify-center shrink-0 shadow-md">
               <InstagramIcon className="w-5 h-5 sm:w-6 sm:h-6" />
             </div>
             <div className="text-left flex-1">
               <h4 className="font-black text-base sm:text-lg lg:text-xl text-[#942A45] leading-tight">
                 Follow @chukitnow on Instagram
               </h4>
-              <p className="text-xs sm:text-sm font-semibold text-[#3A2A2F]/85 mt-0.5 leading-snug">
+              <p className="text-xs sm:text-sm font-semibold text-[#942A45]/85 mt-0.5 leading-snug">
                 Tag #RestaurantsWhoCareClub to get featured on our national feed.
               </p>
             </div>

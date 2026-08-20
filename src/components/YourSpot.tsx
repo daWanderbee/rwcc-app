@@ -58,7 +58,7 @@ export default function YourSpot() {
           </div>
 
           {/* Right Column (7 cols): Interactive Live Plaque Specimen */}
-          <div className="lg:col-span-7 w-full bg-[#F2DABB] text-[#3A2A2F] rounded-2xl sm:rounded-3xl p-4 sm:p-8 lg:p-10 shadow-2xl">
+          <div className="lg:col-span-7 w-full bg-[#F2DABB] text-[#942A45] rounded-2xl sm:rounded-3xl p-4 sm:p-8 lg:p-10 shadow-2xl">
             {/* Plaque Header */}
             <div className="flex items-center justify-between gap-2 pb-4 sm:pb-5 border-b border-[#942A45]/20 mb-5 sm:mb-6">
               <div className="flex items-center gap-2.5 sm:gap-3.5 min-w-0">
@@ -73,7 +73,7 @@ export default function YourSpot() {
                   <span className="text-[9px] sm:text-xs font-black uppercase tracking-widest text-[#942A45] truncate block">
                     RESTAURANTS WHO CARE CLUB
                   </span>
-                  <span className="text-[11px] sm:text-sm font-bold text-[#3A2A2F] truncate block">
+                  <span className="text-[11px] sm:text-sm font-bold text-[#942A45] truncate block">
                     Spring 2026 Official Plaque
                   </span>
                 </div>
@@ -95,7 +95,7 @@ export default function YourSpot() {
                   variant="ghost"
                   size="sm"
                   onClick={() => setIsEditing(!isEditing)}
-                  className="h-7 text-[11px] sm:text-sm font-bold text-[#ED544B] hover:text-[#D9453C] gap-1 px-2.5 rounded-full"
+                  className="h-7 text-[11px] sm:text-sm font-bold text-[#33A8C3] hover:text-[#0096B1] gap-1 px-2.5 rounded-full"
                 >
                   <RefreshCw className="w-3 h-3" />
                   {isEditing ? 'Done' : 'Customize'}
@@ -123,7 +123,7 @@ export default function YourSpot() {
               {/* Stat 1: Trees */}
               <div className="border-t-2 sm:border-t-3 border-[#95CC2E] pt-3 sm:pt-4 flex flex-col justify-between">
                 <div className="flex items-center justify-between mb-1">
-                  <span className="text-[9px] sm:text-xs font-bold text-[#3A2A2F]/80 truncate">
+                  <span className="text-[9px] sm:text-xs font-bold text-[#942A45]/80 truncate">
                     Trees Equiv.
                   </span>
                   <Trees className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-[#95CC2E] shrink-0" />
@@ -136,7 +136,7 @@ export default function YourSpot() {
               {/* Stat 2: CO2 */}
               <div className="border-t-2 sm:border-t-3 border-[#33A8C3] pt-3 sm:pt-4 flex flex-col justify-between">
                 <div className="flex items-center justify-between mb-1">
-                  <span className="text-[9px] sm:text-xs font-bold text-[#3A2A2F]/80 truncate">
+                  <span className="text-[9px] sm:text-xs font-bold text-[#942A45]/80 truncate">
                     CO₂ Avoided
                   </span>
                   <Leaf className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-[#33A8C3] shrink-0" />
@@ -149,19 +149,19 @@ export default function YourSpot() {
               {/* Stat 3: Chuk Products */}
               <div className="border-t-2 sm:border-t-3 border-[#ED544B] pt-3 sm:pt-4 flex flex-col justify-between">
                 <div className="flex items-center justify-between mb-1">
-                  <span className="text-[9px] sm:text-xs font-bold text-[#3A2A2F]/80 truncate">
+                  <span className="text-[9px] sm:text-xs font-bold text-[#942A45]/80 truncate">
                     Chuk / Year
                   </span>
-                  <CheckCircle2 className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-[#ED544B] shrink-0" />
+                  <CheckCircle2 className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-[#33A8C3] shrink-0" />
                 </div>
-                <span className="text-lg sm:text-3xl lg:text-4xl font-black text-[#ED544B]">
+                <span className="text-lg sm:text-3xl lg:text-4xl font-black text-[#33A8C3]">
                   <NumberTicker value={512} suffix="K" />
                 </span>
               </div>
             </div>
 
             {/* Plaque Footer Line */}
-            <div className="pt-3 sm:pt-4 border-t border-[#942A45]/15 flex items-center justify-between text-[11px] sm:text-sm font-semibold text-[#3A2A2F]/80">
+            <div className="pt-3 sm:pt-4 border-t border-[#942A45]/15 flex items-center justify-between text-[11px] sm:text-sm font-semibold text-[#942A45]/80">
               <span className="truncate pr-2">CHUK · Restaurants Who Care · 2026</span>
               <Badge variant="default" className="text-[9px] sm:text-xs font-black uppercase tracking-wider px-2 sm:px-3 py-0.5 sm:py-1 bg-[#942A45] text-[#F2DABB] shrink-0">
                 Front of House

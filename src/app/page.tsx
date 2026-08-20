@@ -15,7 +15,7 @@ import Footer from '@/components/Footer';
 
 export default function Home() {
   return (
-    <main className="relative min-h-screen bg-[#F2DABB] text-[#3A2A2F] font-['Karbon'] selection:bg-[#942A45] selection:text-[#F2DABB]">
+    <main className="relative min-h-screen bg-[#F2DABB] text-[#942A45] font-['Karbon'] selection:bg-[#942A45] selection:text-[#F2DABB]">
       <Navbar />
       <HeroSection />
       <WhatIsClub />

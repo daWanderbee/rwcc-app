@@ -64,7 +64,7 @@ export default function Navbar() {
             <a
               key={link.name}
               href={link.href}
-              className="hover:text-[#ED544B] transition-colors relative py-1"
+              className="hover:text-[#33A8C3] transition-colors relative py-1"
             >
               {link.name}
             </a>
@@ -108,10 +108,10 @@ export default function Navbar() {
                 key={link.name}
                 href={link.href}
                 onClick={() => setMobileMenuOpen(false)}
-                className="py-2.5 border-b border-[#E5C7A3] hover:text-[#ED544B] flex items-center justify-between"
+                className="py-2.5 border-b border-[#E5C7A3] hover:text-[#33A8C3] flex items-center justify-between"
               >
                 <span>{link.name}</span>
-                <span className="text-xs text-[#ED544B]">→</span>
+                <span className="text-xs text-[#33A8C3]">→</span>
               </a>
             ))}
           </motion.div>

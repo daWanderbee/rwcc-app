@@ -30,7 +30,7 @@ export const CometCard = ({
       )}
     >
       {/* Inner Card Body - Using solid sand palette */}
-      <div className="relative z-10 w-full h-full bg-[#F2DABB] rounded-[21px] p-6 sm:p-8 flex flex-col justify-between text-[#3A2A2F] font-['Karbon']">
+      <div className="relative z-10 w-full h-full bg-[#F2DABB] rounded-[21px] p-6 sm:p-8 flex flex-col justify-between text-[#942A45] font-['Karbon']">
         {children}
       </div>
     </motion.div>

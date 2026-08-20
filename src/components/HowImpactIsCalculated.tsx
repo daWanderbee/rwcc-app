@@ -100,7 +100,7 @@ export default function HowImpactIsCalculated() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 0.15 }}
-            className="text-xl sm:text-2xl font-black text-[#F3B343] mb-3"
+            className="text-xl sm:text-2xl font-black text-[#F2DABB] mb-3"
           >
             Meals, carbon, and volume used (CBM) — verified directly from your orders.
           </motion.p>
@@ -112,7 +112,7 @@ export default function HowImpactIsCalculated() {
             transition={{ delay: 0.2 }}
             className="text-base sm:text-lg font-medium text-[#F2DABB]/90 leading-relaxed"
           >
-            Every season, we convert your verified Chuk order volume into three headline numbers — <strong className="text-[#33A8C3]">meals served plastic-free</strong>, <strong className="text-[#95CC2E]">carbon avoided</strong>, and <strong className="text-[#F3B343]">volume of Chuk products used (CBM)</strong>.
+            Every season, we convert your verified Chuk order volume into three headline numbers — <strong className="text-[#33A8C3]">meals served plastic-free</strong>, <strong className="text-[#95CC2E]">carbon avoided</strong>, and <strong className="text-[#F2DABB]">volume of Chuk products used (CBM)</strong>.
           </motion.p>
         </div>
 
@@ -128,8 +128,8 @@ export default function HowImpactIsCalculated() {
           className="mt-16 sm:mt-20 w-full max-w-4xl bg-[#7B2239]/80 border-2 border-[#F3B343]/40 rounded-3xl p-6 sm:p-10 text-center flex flex-col items-center shadow-xl backdrop-blur-md"
         >
           <div className="flex items-center gap-3 mb-3">
-            <Trophy className="w-6 h-6 text-[#F3B343]" />
-            <span className="text-xs font-black uppercase tracking-widest text-[#F3B343]">
+            <Trophy className="w-6 h-6 text-[#F2DABB]" />
+            <span className="text-xs font-black uppercase tracking-widest text-[#F2DABB]">
               Dual Recognition System
             </span>
             <MapPin className="w-6 h-6 text-[#33A8C3]" />

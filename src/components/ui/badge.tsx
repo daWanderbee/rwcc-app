@@ -18,11 +18,11 @@ const badgeVariants = cva(
         teal:
           'border-[#0096B1] bg-[#0096B1] text-[#F2DABB]',
         green:
-          'border-[#82B74B] bg-[#82B74B] text-[#3A2A2F]',
+          'border-[#82B74B] bg-[#82B74B] text-[#942A45]',
         sand:
-          'border-[#E5C7A3] bg-[#E5C7A3] text-[#3A2A2F]',
+          'border-[#E5C7A3] bg-[#E5C7A3] text-[#942A45]',
         outline:
-          'border-[#E5C7A3] text-[#3A2A2F] bg-transparent',
+          'border-[#E5C7A3] text-[#942A45] bg-transparent',
       },
     },
     defaultVariants: {

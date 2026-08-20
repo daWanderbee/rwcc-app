@@ -112,7 +112,7 @@ export default function WhatIsClub() {
             className="text-3xl sm:text-5xl md:text-6xl lg:text-7xl font-black text-[#F2DABB] tracking-tight mb-4"
           >
             What is the{' '}
-            <span className="text-[#F3B343]">Club?</span>
+            <span className="text-[#F2DABB]">Club?</span>
           </motion.h2>
 
           <motion.p
@@ -155,7 +155,7 @@ export function ClubCTA() {
       >
         <a href="#join-cta" className="flex items-center gap-2">
           <span>Buy from CHUK and Join the Club</span>
-          <ArrowRight className="w-5 h-5 text-[#ED544B]" />
+          <ArrowRight className="w-5 h-5 text-[#33A8C3]" />
         </a>
       </Button>
       <p className="mt-3 text-xs sm:text-sm lg:text-base font-semibold text-[#F2DABB]/80">

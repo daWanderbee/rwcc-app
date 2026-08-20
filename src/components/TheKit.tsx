@@ -112,7 +112,7 @@ export default function TheKit() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 0.1 }}
-            className="text-lg sm:text-xl lg:text-2xl font-bold text-[#F3B343] mb-4"
+            className="text-lg sm:text-xl lg:text-2xl font-bold text-[#F2DABB] mb-4"
           >
             Markers your customers can actually see.
           </motion.p>
@@ -192,7 +192,7 @@ export default function TheKit() {
                   </span>
 
                   {/* Piece Title */}
-                  <h3 className="text-xl lg:text-2xl xl:text-3xl font-black text-[#F2DABB] tracking-tight mb-2.5 group-hover:text-[#F3B343] transition-colors">
+                  <h3 className="text-xl lg:text-2xl xl:text-3xl font-black text-[#F2DABB] tracking-tight mb-2.5 group-hover:text-[#F2DABB] transition-colors">
                     {piece.title}
                   </h3>
 
@@ -248,13 +248,13 @@ export default function TheKit() {
                 />
               </div>
 
-              <DialogDescription className="text-base font-medium text-[#3A2A2F] leading-relaxed">
+              <DialogDescription className="text-base font-medium text-[#942A45] leading-relaxed">
                 {selectedPiece.description}
               </DialogDescription>
 
               <div className="p-4 rounded-2xl bg-[#DFEFCB] border border-[#95CC2E]/40 flex items-center gap-3 my-2">
                 <CheckCircle2 className="w-5 h-5 text-[#059669] shrink-0" />
-                <span className="text-xs sm:text-sm font-bold text-[#3A2A2F]">
+                <span className="text-xs sm:text-sm font-bold text-[#942A45]">
                   Included free for every verified Chuk customer.
                 </span>
               </div>

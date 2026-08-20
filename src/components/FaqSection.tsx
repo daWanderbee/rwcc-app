@@ -75,7 +75,7 @@ export default function FaqSection() {
   return (
     <section
       id="faq"
-      className="relative z-10 w-full bg-[#F2DABB] text-[#3A2A2F] font-['Karbon'] py-16 sm:py-24 lg:py-32 xl:py-36 px-4 sm:px-8 lg:px-12 xl:px-16"
+      className="relative z-10 w-full bg-[#F2DABB] text-[#942A45] font-['Karbon'] py-16 sm:py-24 lg:py-32 xl:py-36 px-4 sm:px-8 lg:px-12 xl:px-16"
     >
       <div className="max-w-5xl mx-auto flex flex-col items-center">
         {/* Inject FAQPage Schema for Search & AI Snippets */}
@@ -94,7 +94,7 @@ export default function FaqSection() {
             className="text-3xl sm:text-5xl md:text-6xl lg:text-7xl font-black text-[#942A45] tracking-tight mb-3"
           >
             Frequently Asked{' '}
-            <span className="text-[#ED544B]">Questions</span>
+            <span className="text-[#33A8C3]">Questions</span>
           </motion.h2>
 
           <motion.p
@@ -102,7 +102,7 @@ export default function FaqSection() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 0.1 }}
-            className="text-base sm:text-lg lg:text-xl text-[#3A2A2F]/85 font-medium leading-relaxed max-w-xl mx-auto"
+            className="text-base sm:text-lg lg:text-xl text-[#942A45]/85 font-medium leading-relaxed max-w-xl mx-auto"
           >
             Everything you need to know about joining the Club, calculating your impact, and getting your recognition kit.
           </motion.p>
@@ -120,7 +120,7 @@ export default function FaqSection() {
                   >
                     {index + 1}
                   </span>
-                  <span className="hover:text-[#ED544B] transition-colors">{faq.question}</span>
+                  <span className="hover:text-[#33A8C3] transition-colors">{faq.question}</span>
                 </span>
                 
                 <div className="flex items-center gap-3 shrink-0 mr-2">
@@ -131,7 +131,7 @@ export default function FaqSection() {
               </AccordionTrigger>
 
               <AccordionContent className="px-3 sm:px-6 lg:px-8 pb-7 pt-0 border-0">
-                <div className="flex items-start gap-4 text-base sm:text-lg lg:text-xl text-[#3A2A2F] leading-relaxed bg-[#E5C7A3]/40 p-5 sm:p-7 rounded-2xl border border-[#942A45]/15">
+                <div className="flex items-start gap-4 text-base sm:text-lg lg:text-xl text-[#942A45] leading-relaxed bg-[#E5C7A3]/40 p-5 sm:p-7 rounded-2xl border border-[#942A45]/15">
                   <CheckCircle2 className="w-6 h-6 lg:w-7 lg:h-7 text-[#059669] shrink-0 mt-0.5" />
                   <div>{faq.answer}</div>
                 </div>

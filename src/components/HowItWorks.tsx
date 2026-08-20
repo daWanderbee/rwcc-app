@@ -52,7 +52,7 @@ export default function HowItWorks() {
   return (
     <section
       id="how-it-works"
-      className="relative z-10 w-full bg-[#F2DABB] text-[#3A2A2F] font-['Karbon'] py-16 sm:py-24 lg:py-32 px-4 sm:px-8 lg:px-12 xl:px-16"
+      className="relative z-10 w-full bg-[#F2DABB] text-[#942A45] font-['Karbon'] py-16 sm:py-24 lg:py-32 px-4 sm:px-8 lg:px-12 xl:px-16"
     >
       <div className="max-w-7xl mx-auto flex flex-col items-center">
         {/* Header */}
@@ -71,7 +71,7 @@ export default function HowItWorks() {
             className="text-3xl sm:text-5xl md:text-6xl lg:text-7xl font-black text-[#942A45] tracking-tight mb-3"
           >
             Simple to join.{' '}
-            <span className="text-[#ED544B]">Impossible to ignore.</span>
+            <span className="text-[#33A8C3]">Impossible to ignore.</span>
           </motion.h2>
 
           <motion.p
@@ -79,7 +79,7 @@ export default function HowItWorks() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 0.1 }}
-            className="text-lg sm:text-xl lg:text-2xl font-bold text-[#F3B343] mb-4"
+            className="text-lg sm:text-xl lg:text-2xl font-bold text-[#F2DABB] mb-4"
           >
             From switch to spot in three steps.
           </motion.p>
@@ -89,7 +89,7 @@ export default function HowItWorks() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 0.15 }}
-            className="text-base sm:text-lg lg:text-xl text-[#3A2A2F] font-medium leading-relaxed max-w-2xl mx-auto"
+            className="text-base sm:text-lg lg:text-xl text-[#942A45] font-medium leading-relaxed max-w-2xl mx-auto"
           >
             Restaurants that switch to compostable shouldn&apos;t have to explain the impact themselves. The Club does that work for you: three numbers, calculated from your actual Chuk order volume, displayed wherever your customers look.
           </motion.p>
@@ -147,7 +147,7 @@ export default function HowItWorks() {
                 </h3>
 
                 {/* Step Body */}
-                <p className="text-sm sm:text-base lg:text-lg text-[#3A2A2F] font-medium leading-relaxed">
+                <p className="text-sm sm:text-base lg:text-lg text-[#942A45] font-medium leading-relaxed">
                   {step.body}
                 </p>
               </motion.div>
