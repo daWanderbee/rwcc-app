@@ -3,27 +3,27 @@
 import React from 'react';
 import Image from 'next/image';
 import { motion } from 'framer-motion';
-import { Scale, TrendingUp, Trees, ShieldCheck, Sparkles } from 'lucide-react';
+import { Utensils, Package, Coffee, Leaf, Trophy, MapPin } from 'lucide-react';
 import { StickyScroll, StickyScrollContentItem } from '@/components/ui/sticky-scroll-reveal';
 
 export default function HowImpactIsCalculated() {
   const stickyContent: StickyScrollContentItem[] = [
     {
       num: '01',
-      title: 'Every material has a carbon cost.',
+      title: 'Meals served plastic-free',
       description:
-        'Each tableware material has a measured greenhouse gas cost per gram. Bagasse sits at the low end. Your impact is the difference between Chuk\'s carbon cost and the material you replaced.',
-      icon: Scale,
-      color: '#ED544B',
-      tag: 'Material Carbon Cost',
+        'One plate, bowl, container, or tray = one meal. Counted straight from your orders. Lids, cutlery and dipping cups don’t get counted twice.',
+      icon: Utensils,
+      color: '#33A8C3',
+      tag: 'Headline Metric',
       content: (
         <div className="relative w-full h-full flex flex-col items-center justify-center p-2">
-          <div className="relative w-full h-64 sm:h-72 drop-shadow-2xl">
+          <div className="relative w-full h-64 sm:h-72 drop-shadow-2xl overflow-hidden rounded-2xl border-2 border-[#F2DABB]/20">
             <Image
-              src="/images/user_impact_kit_closed.png"
-              alt="Restaurants Who Care Club Box"
+              src="/images/explain_meal_tray.png"
+              alt="CHUK 4-Compartment Meal Tray"
               fill
-              className="object-contain"
+              className="object-cover rounded-2xl"
               priority
               sizes="(max-width: 768px) 100vw, 40vw"
             />
@@ -33,20 +33,20 @@ export default function HowImpactIsCalculated() {
     },
     {
       num: '02',
-      title: 'Your volume makes that difference real.',
+      title: 'Delivery & takeaway containers',
       description:
-        'One plate is a small saving. Multiplied across every meal, every outlet, every season — it becomes significant.',
-      icon: TrendingUp,
-      color: '#33A8C3',
-      tag: 'Volume Multiplier',
+        'Every delivery container and lid logged directly from your orders. Small savings across daily shipments scale into tons of avoided waste.',
+      icon: Package,
+      color: '#ED544B',
+      tag: 'Takeaway Packaging',
       content: (
         <div className="relative w-full h-full flex flex-col items-center justify-center p-2">
-          <div className="relative w-full h-64 sm:h-72 drop-shadow-2xl">
+          <div className="relative w-full h-64 sm:h-72 drop-shadow-2xl overflow-hidden rounded-2xl border-2 border-[#F2DABB]/20">
             <Image
-              src="/images/user_impact_plaque.png"
-              alt="RWCC Framed Impact Plaque"
+              src="/images/explain_delivery_container.png"
+              alt="CHUK Delivery Food Container with Lids"
               fill
-              className="object-contain rounded-xl"
+              className="object-cover rounded-2xl"
               sizes="(max-width: 768px) 100vw, 40vw"
             />
           </div>
@@ -55,45 +55,42 @@ export default function HowImpactIsCalculated() {
     },
     {
       num: '03',
-      title: 'Trees make it tangible.',
+      title: 'Plant-fibre cups & lids',
       description:
-        'A mature tree absorbs a known amount of CO₂ each year. Your Trees Saved figure is your total CO₂ avoided, converted into that equivalent.',
-      icon: Trees,
-      color: '#95CC2E',
-      tag: 'Tree Sequestration',
+        '100% compostable sugarcane bagasse cups and embossed lids replacing conventional plastic and PE-lined cups.',
+      icon: Coffee,
+      color: '#F3B343',
+      tag: 'Beverage Packaging',
       content: (
-        <div className="w-full h-full bg-[#F2DABB] text-[#3A2A2F] rounded-3xl p-6 flex flex-col justify-center items-center text-center shadow-2xl border-4 border-[#95CC2E]">
-          <div className="p-4 bg-[#95CC2E] text-[#3A2A2F] rounded-full mb-3 shadow-md">
-            <Trees className="w-10 h-10" />
+        <div className="relative w-full h-full flex flex-col items-center justify-center p-2">
+          <div className="relative w-full h-64 sm:h-72 drop-shadow-2xl overflow-hidden rounded-2xl border-2 border-[#F2DABB]/20">
+            <Image
+              src="/images/explain_beverage_cup.png"
+              alt="CHUK Beverage Cup with Compostable Lid"
+              fill
+              className="object-cover rounded-2xl"
+              sizes="(max-width: 768px) 100vw, 40vw"
+            />
           </div>
-          <span className="text-xs font-black uppercase tracking-widest text-[#942A45] mb-1">
-            Direct Mathematical Metric
-          </span>
-          <h4 className="text-2xl sm:text-3xl font-black text-[#942A45] mb-2">
-            1 Tree ≈ 20 kg CO₂ / Year
-          </h4>
-          <p className="text-xs sm:text-sm text-[#3A2A2F]/85 font-bold max-w-xs leading-relaxed">
-            Dividing total avoided emissions by annual mature tree absorption yields your verified Trees Saved score.
-          </p>
         </div>
       ),
     },
     {
       num: '04',
-      title: 'Why verified order volume?',
+      title: 'Carbon avoided & streak',
       description:
-        'Because a badge only means something if it\'s real. Your ranking comes from Chuk\'s own order records, not self-reported estimates.',
-      icon: ShieldCheck,
-      color: '#F3B343',
-      tag: 'Kitchen Verified',
+        'Measured against whatever packaging material you used before you switched. The longer your streak, the greater your verified impact.',
+      icon: Leaf,
+      color: '#95CC2E',
+      tag: 'Net Footprint Impact',
       content: (
         <div className="relative w-full h-full flex flex-col items-center justify-center p-2">
-          <div className="relative w-full h-64 sm:h-72 drop-shadow-2xl">
+          <div className="relative w-full h-64 sm:h-72 drop-shadow-2xl overflow-hidden rounded-2xl border-2 border-[#F2DABB]/20">
             <Image
-              src="/images/user_impact_kit_open_nobg.png"
-              alt="RWCC Welcome Kit Flatlay"
+              src="/images/explain_square_bowl.png"
+              alt="CHUK Square Bowl with Wooden Fork"
               fill
-              className="object-contain"
+              className="object-cover rounded-2xl"
               sizes="(max-width: 768px) 100vw, 40vw"
             />
           </div>
@@ -115,7 +112,7 @@ export default function HowImpactIsCalculated() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 0.1 }}
-            className="text-3xl sm:text-5xl lg:text-6xl font-black text-[#F2DABB] tracking-tight mb-4"
+            className="text-3xl sm:text-5xl lg:text-6xl font-black text-[#F2DABB] tracking-tight mb-3"
           >
             How Your Impact Is Calculated
           </motion.h2>
@@ -124,15 +121,50 @@ export default function HowImpactIsCalculated() {
             initial={{ opacity: 0, y: 10 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            transition={{ delay: 0.2 }}
-            className="text-base sm:text-xl font-medium text-[#F2DABB]/90 leading-relaxed"
+            transition={{ delay: 0.15 }}
+            className="text-xl sm:text-2xl font-black text-[#F3B343] mb-3"
           >
-            Every season, we convert your verified Chuk order volume into three numbers — <strong className="text-[#95CC2E]">trees</strong>, <strong className="text-[#33A8C3]">CO₂</strong>, and <strong className="text-[#F3B343]">units served</strong> — using published emissions data for each tableware material.
+            Meals, volume, and carbon — verified directly from your orders.
+          </motion.p>
+
+          <motion.p
+            initial={{ opacity: 0, y: 10 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.2 }}
+            className="text-base sm:text-lg font-medium text-[#F2DABB]/90 leading-relaxed"
+          >
+            Every season, we convert your verified Chuk order volume into three headline numbers — <strong className="text-[#33A8C3]">meals served plastic-free</strong>, <strong className="text-[#F3B343]">order volume</strong>, and <strong className="text-[#95CC2E]">carbon avoided</strong>.
           </motion.p>
         </div>
 
         {/* Aceternity UI Sticky Scroll Reveal */}
         <StickyScroll content={stickyContent} />
+
+        {/* Closing Callout Block */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ delay: 0.3 }}
+          className="mt-16 sm:mt-20 w-full max-w-4xl bg-[#7B2239]/80 border-2 border-[#F3B343]/40 rounded-3xl p-6 sm:p-10 text-center flex flex-col items-center shadow-xl backdrop-blur-md"
+        >
+          <div className="flex items-center gap-3 mb-3">
+            <Trophy className="w-6 h-6 text-[#F3B343]" />
+            <span className="text-xs font-black uppercase tracking-widest text-[#F3B343]">
+              Dual Recognition System
+            </span>
+            <MapPin className="w-6 h-6 text-[#33A8C3]" />
+          </div>
+
+          <h3 className="text-2xl sm:text-4xl font-black text-[#F2DABB] mb-3 leading-tight">
+            Two leaderboards. One for the country. One for your city.
+          </h3>
+
+          <p className="text-sm sm:text-lg font-medium text-[#F2DABB]/90 leading-relaxed max-w-2xl">
+            The national rank is wide open. The city rank is the one your regulars would actually notice — and the one a kitchen your size can genuinely lead.
+          </p>
+        </motion.div>
       </div>
     </section>
   );

@@ -52,9 +52,10 @@ export function NumberTicker({
     <span
       className={cn('inline-block tabular-nums', className)}
       ref={ref}
+      suppressHydrationWarning
     >
       {prefix}
-      {value.toLocaleString()}
+      {Intl.NumberFormat('en-US').format(value)}
       {suffix}
     </span>
   );

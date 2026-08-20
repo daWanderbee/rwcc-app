@@ -1,193 +1,502 @@
 'use client';
 
-import React, { useState } from 'react';
+import React, { useState, useMemo } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Crown, ChevronDown } from 'lucide-react';
+import { ChevronDown } from 'lucide-react';
 import { Tabs, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 
-interface Restaurant {
-  rank: number;
+export type BusinessType =
+  | 'Cloud kitchen'
+  | 'QSR and fast food'
+  | 'Restaurant and casual dining'
+  | 'Cafe and bakery'
+  | 'Caterer and canteen';
+
+interface RestaurantMember {
+  id: string;
   name: string;
   initials: string;
+  businessType: BusinessType;
   city: string;
   outlets: number;
-  trees: number;
-  co2: number;
-  co2Text: string;
-  volume: number;
-  volumeText: string;
-  avatarBg: string;
+  mealsPlasticFree: number; // Headline Figure (Meals)
+  volumePieces: number; // Volume Figure (Pieces)
+  co2AvoidedKg: number; // Technical Carbon Metric (kg CO2e)
+  kwhAvoided: number; // Electricity Avoided
+  monthsRunning: number; // Streak
   tier: 'Platinum' | 'Gold' | 'Silver' | 'Bronze';
+  avatarBg: string;
   tierColor: string;
+  memberSince: string;
 }
 
-const initialData: Restaurant[] = [
-  { rank: 1, name: 'Green Leaf Kitchen', initials: 'GL', city: 'Bengaluru', outlets: 8, trees: 3792, co2: 114, co2Text: '114 t', volume: 512, volumeText: '512K', avatarBg: '#F3B343', tier: 'Gold', tierColor: '#F3B343' },
-  { rank: 2, name: 'The Daily Bowl', initials: 'DB', city: 'Mumbai', outlets: 12, trees: 3467, co2: 104, co2Text: '104 t', volume: 468, volumeText: '468K', avatarBg: '#33A8C3', tier: 'Silver', tierColor: '#33A8C3' },
-  { rank: 3, name: 'Saffron Table', initials: 'ST', city: 'Delhi', outlets: 6, trees: 2970, co2: 92, co2Text: '92 t', volume: 401, volumeText: '401K', avatarBg: '#ED544B', tier: 'Bronze', tierColor: '#ED544B' },
-  { rank: 4, name: 'Coastal Co.', initials: 'CC', city: 'Chennai', outlets: 5, trees: 2637, co2: 79, co2Text: '79 t', volume: 356, volumeText: '356K', avatarBg: '#942A45', tier: 'Platinum', tierColor: '#942A45' },
-  { rank: 5, name: 'Urban Tadka', initials: 'UT', city: 'Pune', outlets: 9, trees: 2311, co2: 71, co2Text: '71 t', volume: 312, volumeText: '312K', avatarBg: '#95CC2E', tier: 'Bronze', tierColor: '#95CC2E' },
-  { rank: 6, name: 'Ferment', initials: 'FM', city: 'Hyderabad', outlets: 4, trees: 2030, co2: 58, co2Text: '58 t', volume: 274, volumeText: '274K', avatarBg: '#B5793B', tier: 'Bronze', tierColor: '#B5793B' },
-  { rank: 7, name: 'Nourish Bowls', initials: 'NB', city: 'Kolkata', outlets: 7, trees: 1785, co2: 54, co2Text: '54 t', volume: 241, volumeText: '241K', avatarBg: '#942A45', tier: 'Platinum', tierColor: '#942A45' },
-  { rank: 8, name: 'Baithak', initials: 'BK', city: 'Jaipur', outlets: 3, trees: 1519, co2: 47, co2Text: '47 t', volume: 205, volumeText: '205K', avatarBg: '#F3B343', tier: 'Gold', tierColor: '#F3B343' },
-  { rank: 9, name: 'The Green Fork', initials: 'GF', city: 'Goa', outlets: 4, trees: 1319, co2: 40, co2Text: '40 t', volume: 178, volumeText: '178K', avatarBg: '#95CC2E', tier: 'Bronze', tierColor: '#95CC2E' },
-  { rank: 10, name: 'Subko Kitchen', initials: 'SK', city: 'Ahmedabad', outlets: 3, trees: 1104, co2: 33, co2Text: '33 t', volume: 149, volumeText: '149K', avatarBg: '#33A8C3', tier: 'Silver', tierColor: '#33A8C3' },
+const leaderboardMembers: RestaurantMember[] = [
+  {
+    id: '1',
+    name: 'Green Leaf Kitchen',
+    initials: 'GL',
+    businessType: 'Cloud kitchen',
+    city: 'Bengaluru',
+    outlets: 8,
+    mealsPlasticFree: 345000,
+    volumePieces: 512000,
+    co2AvoidedKg: 7850,
+    kwhAvoided: 3120,
+    monthsRunning: 18,
+    tier: 'Platinum',
+    avatarBg: '#F3B343',
+    tierColor: '#F3B343',
+    memberSince: 'Jul 2024',
+  },
+  {
+    id: '2',
+    name: 'Anjani Sweets',
+    initials: 'AS',
+    businessType: 'QSR and fast food',
+    city: 'Mumbai',
+    outlets: 5,
+    mealsPlasticFree: 295000,
+    volumePieces: 468000,
+    co2AvoidedKg: 7500,
+    kwhAvoided: 2980,
+    monthsRunning: 16,
+    tier: 'Gold',
+    avatarBg: '#ED544B',
+    tierColor: '#ED544B',
+    memberSince: 'Sep 2024',
+  },
+  {
+    id: '3',
+    name: 'Saffron Table',
+    initials: 'ST',
+    businessType: 'Restaurant and casual dining',
+    city: 'Delhi',
+    outlets: 6,
+    mealsPlasticFree: 210000,
+    volumePieces: 401000,
+    co2AvoidedKg: 5120,
+    kwhAvoided: 2040,
+    monthsRunning: 14,
+    tier: 'Gold',
+    avatarBg: '#33A8C3',
+    tierColor: '#33A8C3',
+    memberSince: 'Nov 2024',
+  },
+  {
+    id: '4',
+    name: 'Subko Coffee & Bakehouse',
+    initials: 'SK',
+    businessType: 'Cafe and bakery',
+    city: 'Mumbai',
+    outlets: 4,
+    mealsPlasticFree: 178000,
+    volumePieces: 320000,
+    co2AvoidedKg: 4210,
+    kwhAvoided: 1680,
+    monthsRunning: 15,
+    tier: 'Gold',
+    avatarBg: '#B5793B',
+    tierColor: '#B5793B',
+    memberSince: 'Aug 2024',
+  },
+  {
+    id: '5',
+    name: 'Urban Tadka',
+    initials: 'UT',
+    businessType: 'QSR and fast food',
+    city: 'Pune',
+    outlets: 4,
+    mealsPlasticFree: 165000,
+    volumePieces: 312000,
+    co2AvoidedKg: 4120,
+    kwhAvoided: 1640,
+    monthsRunning: 12,
+    tier: 'Gold',
+    avatarBg: '#95CC2E',
+    tierColor: '#95CC2E',
+    memberSince: 'Jan 2025',
+  },
+  {
+    id: '6',
+    name: 'The Green Fork',
+    initials: 'GF',
+    businessType: 'Cloud kitchen',
+    city: 'Kochi',
+    outlets: 2,
+    mealsPlasticFree: 112000,
+    volumePieces: 280000,
+    co2AvoidedKg: 2810,
+    kwhAvoided: 1120,
+    monthsRunning: 24,
+    tier: 'Platinum',
+    avatarBg: '#942A45',
+    tierColor: '#942A45',
+    memberSince: 'Jan 2024',
+  },
+  {
+    id: '7',
+    name: 'Coastal Co.',
+    initials: 'CC',
+    businessType: 'Restaurant and casual dining',
+    city: 'Chennai',
+    outlets: 3,
+    mealsPlasticFree: 128000,
+    volumePieces: 250000,
+    co2AvoidedKg: 3150,
+    kwhAvoided: 1250,
+    monthsRunning: 10,
+    tier: 'Gold',
+    avatarBg: '#942A45',
+    tierColor: '#942A45',
+    memberSince: 'Mar 2025',
+  },
+  {
+    id: '8',
+    name: 'Ferment',
+    initials: 'FM',
+    businessType: 'Cafe and bakery',
+    city: 'Hyderabad',
+    outlets: 4,
+    mealsPlasticFree: 145000,
+    volumePieces: 240000,
+    co2AvoidedKg: 3410,
+    kwhAvoided: 1360,
+    monthsRunning: 9,
+    tier: 'Silver',
+    avatarBg: '#33A8C3',
+    tierColor: '#33A8C3',
+    memberSince: 'Apr 2025',
+  },
+  {
+    id: '9',
+    name: 'Nourish Bowls',
+    initials: 'NB',
+    businessType: 'Caterer and canteen',
+    city: 'Kolkata',
+    outlets: 7,
+    mealsPlasticFree: 185000,
+    volumePieces: 220000,
+    co2AvoidedKg: 4390,
+    kwhAvoided: 1750,
+    monthsRunning: 8,
+    tier: 'Silver',
+    avatarBg: '#942A45',
+    tierColor: '#942A45',
+    memberSince: 'May 2025',
+  },
+  {
+    id: '10',
+    name: 'Baithak Canteen',
+    initials: 'BK',
+    businessType: 'Caterer and canteen',
+    city: 'Jaipur',
+    outlets: 3,
+    mealsPlasticFree: 95000,
+    volumePieces: 180000,
+    co2AvoidedKg: 2190,
+    kwhAvoided: 870,
+    monthsRunning: 5,
+    tier: 'Bronze',
+    avatarBg: '#F3B343',
+    tierColor: '#F3B343',
+    memberSince: 'Aug 2025',
+  },
 ];
 
+const LEAGUES: { label: string; value: string; categoriesInPlay: string }[] = [
+  { label: 'Overall National Board', value: 'All Types', categoriesInPlay: 'All CHUK tableware categories' },
+  { label: 'Cloud Kitchen League', value: 'Cloud kitchen', categoriesInPlay: 'Containers, lids, bowls, cutlery' },
+  { label: 'QSR & Fast Food League', value: 'QSR and fast food', categoriesInPlay: 'Trays, containers, cups, lids, cutlery' },
+  { label: 'Restaurant & Casual Dining', value: 'Restaurant and casual dining', categoriesInPlay: 'Containers, lids, plates for takeaway' },
+  { label: 'Cafe & Bakery League', value: 'Cafe and bakery', categoriesInPlay: 'Cups, lids, plates, bowls' },
+  { label: 'Caterer & Canteen League', value: 'Caterer and canteen', categoriesInPlay: 'Plates, bowls, trays, cutlery' },
+];
+
+const fmtNum = (n: number) => new Intl.NumberFormat('en-US').format(n);
+
 export default function Leaderboard() {
-  const [sortKey, setSortKey] = useState<'trees' | 'carbon' | 'volume'>('trees');
-  const [showAll, setShowAll] = useState(false);
+  const [selectedLeague, setSelectedLeague] = useState<string>('All Types');
+  const [sortKey, setSortKey] = useState<'meals' | 'volume' | 'carbon'>('meals');
+  const [showAll, setShowAll] = useState<boolean>(false);
+  const [showExplanation, setShowExplanation] = useState<boolean>(false);
 
-  const sortedData = [...initialData].sort((a, b) => {
-    if (sortKey === 'trees') return b.trees - a.trees;
-    if (sortKey === 'carbon') return b.co2 - a.co2;
-    if (sortKey === 'volume') return b.volume - a.volume;
-    return 0;
-  }).map((item, index) => ({ ...item, displayRank: index + 1 }));
+  // Filter & Sort Members based on Meals, Volume, and Carbon
+  const sortedAndFilteredData = useMemo(() => {
+    let filtered = leaderboardMembers;
+    if (selectedLeague !== 'All Types') {
+      filtered = leaderboardMembers.filter((m) => m.businessType.toLowerCase() === selectedLeague.toLowerCase());
+    }
 
-  const displayedData = showAll ? sortedData : sortedData.slice(0, 5);
+    return [...filtered]
+      .sort((a, b) => {
+        if (sortKey === 'meals') return b.mealsPlasticFree - a.mealsPlasticFree;
+        if (sortKey === 'volume') return b.volumePieces - a.volumePieces;
+        if (sortKey === 'carbon') return b.co2AvoidedKg - a.co2AvoidedKg;
+        return 0;
+      })
+      .map((item, index) => ({ ...item, displayRank: index + 1 }));
+  }, [selectedLeague, sortKey]);
 
-  const top1 = sortedData[0];
-  const top2 = sortedData[1];
-  const top3 = sortedData[2];
+  const displayedData = showAll ? sortedAndFilteredData : sortedAndFilteredData.slice(0, 5);
 
-  const getMetricDisplay = (row: Restaurant) => {
-    if (sortKey === 'trees') return `${row.trees.toLocaleString()} trees`;
-    if (sortKey === 'carbon') return `${row.co2Text} CO₂`;
-    if (sortKey === 'volume') return `${row.volumeText} Chuk`;
-    return `${row.trees.toLocaleString()} trees`;
+  const top1 = sortedAndFilteredData[0] || leaderboardMembers[0];
+  const top2 = sortedAndFilteredData[1] || leaderboardMembers[1];
+  const top3 = sortedAndFilteredData[2] || leaderboardMembers[2];
+
+  const currentLeagueInfo = LEAGUES.find((l) => l.value === selectedLeague);
+
+  const getHeadlineMetric = (row: RestaurantMember) => {
+    if (sortKey === 'meals') return `${fmtNum(row.mealsPlasticFree)} Meals`;
+    if (sortKey === 'volume') return `${fmtNum(row.volumePieces)} Pcs`;
+    if (sortKey === 'carbon') return `${fmtNum(row.co2AvoidedKg)} kg CO₂`;
+    return `${fmtNum(row.mealsPlasticFree)} Meals`;
+  };
+
+  const getSubMetric = (row: RestaurantMember) => {
+    return `${fmtNum(row.mealsPlasticFree)} meals · ${fmtNum(row.volumePieces)} pcs · ${fmtNum(row.co2AvoidedKg)} kg CO₂`;
   };
 
   return (
     <section
       id="leaderboard"
-      className="relative z-10 w-full bg-[#F2DABB] text-[#3A2A2F] font-['Karbon'] py-16 sm:py-24 lg:py-32 xl:py-36 px-4 sm:px-8 lg:px-12 xl:px-16"
+      className="relative z-10 w-full bg-[#F2DABB] text-[#3A2A2F] font-['Karbon'] py-16 sm:py-24 lg:py-32 xl:py-36 px-4 sm:px-8 lg:px-12 xl:px-16 border-b border-[#942A45]/15"
     >
       <div className="max-w-6xl mx-auto flex flex-col items-center">
-        {/* Header */}
-        <div className="text-center mb-10 sm:mb-14">
+        {/* Header Block with Official Copy */}
+        <div className="text-center max-w-4xl mx-auto mb-10 sm:mb-14">
+          <Badge
+            variant="default"
+            className="text-xs sm:text-sm font-black uppercase tracking-widest mb-4 px-4 py-1.5 bg-[#942A45] text-[#F2DABB]"
+          >
+            Verified Impact League
+          </Badge>
+
           <motion.h2
             initial={{ opacity: 0, y: 10 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="text-3xl sm:text-5xl md:text-6xl lg:text-7xl font-black text-[#942A45] tracking-tight mb-2 sm:mb-3"
+            className="text-3xl sm:text-5xl md:text-6xl lg:text-7xl font-black text-[#942A45] tracking-tight mb-4"
           >
-            The Leaderboard
+            See where your kitchen stands
           </motion.h2>
-          
+
           <motion.p
             initial={{ opacity: 0, y: 10 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 0.1 }}
-            className="text-base sm:text-xl lg:text-2xl font-bold text-[#ED544B]"
+            className="text-lg sm:text-2xl font-bold text-[#ED544B] mb-4 max-w-3xl mx-auto leading-snug"
           >
-            Who&apos;s saving the most?
+            The Club leaderboard ranks members on three core numbers — meals served plastic-free, total volume, and carbon avoided.
           </motion.p>
+
+          <motion.p
+            initial={{ opacity: 0, y: 10 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.15 }}
+            className="text-base sm:text-lg lg:text-xl text-[#3A2A2F] font-semibold leading-relaxed max-w-3xl mx-auto mb-6"
+          >
+            Track your real kitchen impact verified directly from your Chuk order history.
+          </motion.p>
+
+          <Button
+            variant="ghost"
+            onClick={() => setShowExplanation(!showExplanation)}
+            className="text-xs sm:text-sm font-extrabold text-[#942A45] hover:bg-[#942A45]/10 px-4 py-2 rounded-full inline-flex items-center gap-1.5"
+          >
+            <span>{showExplanation ? 'Hide Calculation Rules' : 'How the numbers are calculated'}</span>
+            <ChevronDown className={`w-3.5 h-3.5 transition-transform ${showExplanation ? 'rotate-180' : ''}`} />
+          </Button>
         </div>
 
-        {/* Tab Segmented Control */}
-        <Tabs
-          value={sortKey}
-          onValueChange={(val) => setSortKey(val as any)}
-          className="mb-12 sm:mb-16 w-full max-w-md flex justify-center px-1"
-        >
-          <TabsList className="w-full bg-[#E5C7A3] border border-[#942A45]/20 p-1 h-11 sm:h-12 rounded-full">
-            <TabsTrigger value="trees" className="flex-1 text-xs sm:text-sm font-bold rounded-full data-[state=active]:bg-[#95CC2E] data-[state=active]:text-[#3A2A2F]">
-              Trees
-            </TabsTrigger>
-            <TabsTrigger value="carbon" className="flex-1 text-xs sm:text-sm font-bold rounded-full data-[state=active]:bg-[#33A8C3] data-[state=active]:text-[#F2DABB]">
-              Carbon
-            </TabsTrigger>
-            <TabsTrigger value="volume" className="flex-1 text-xs sm:text-sm font-bold rounded-full data-[state=active]:bg-[#ED544B] data-[state=active]:text-[#F2DABB]">
-              Volume
-            </TabsTrigger>
-          </TabsList>
-        </Tabs>
+        {/* Collapsible Calculation Rules Section */}
+        <AnimatePresence>
+          {showExplanation && (
+            <motion.div
+              initial={{ opacity: 0, height: 0 }}
+              animate={{ opacity: 1, height: 'auto' }}
+              exit={{ opacity: 0, height: 0 }}
+              className="w-full max-w-4xl bg-[#E5C7A3] border-2 border-[#942A45]/30 rounded-3xl p-6 sm:p-8 mb-12 shadow-lg overflow-hidden text-left"
+            >
+              <h3 className="text-xl font-black text-[#942A45] mb-4">
+                Three numbers sit against your name.
+              </h3>
+
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-6">
+                <div className="bg-[#F2DABB] p-4 rounded-2xl border border-[#33A8C3]/30">
+                  <h4 className="font-black text-sm text-[#33A8C3] mb-1">Meals served plastic-free</h4>
+                  <p className="text-xs text-[#3A2A2F]/85 font-medium leading-relaxed">
+                    comes off your orders. One plate, bowl, container or tray counts as one meal. Lids, cutlery and dipping cups don&apos;t get counted twice.
+                  </p>
+                </div>
+
+                <div className="bg-[#F2DABB] p-4 rounded-2xl border border-[#F3B343]/40">
+                  <h4 className="font-black text-sm text-[#B5793B] mb-1">Order volume</h4>
+                  <p className="text-xs text-[#3A2A2F]/85 font-medium leading-relaxed">
+                    the verified total piece count of Chuk tableware deployed by your kitchen outlets.
+                  </p>
+                </div>
+
+                <div className="bg-[#F2DABB] p-4 rounded-2xl border border-[#95CC2E]/40">
+                  <h4 className="font-black text-sm text-[#3A2A2F] mb-1">Carbon avoided</h4>
+                  <p className="text-xs text-[#3A2A2F]/85 font-medium leading-relaxed">
+                    is measured against whatever packaging material you used before you switched.
+                  </p>
+                </div>
+              </div>
+
+              <div className="text-xs text-[#3A2A2F]/85 font-semibold space-y-2 border-t border-[#942A45]/20 pt-4">
+                <p>
+                  <strong>Ranked Against Kitchens Like Yours:</strong> You&apos;re ranked against kitchens like yours. A cloud kitchen packs every order that leaves the counter. A dine-in restaurant only packs takeaway.
+                </p>
+                <p>
+                  <strong>Verified Order History:</strong> The numbers come off your real order history, not a form you fill in. Where we have to assume something, we take the lower figure so your saving holds up.
+                </p>
+              </div>
+            </motion.div>
+          )}
+        </AnimatePresence>
+
+        {/* Filter Controls: Business Type League Dropdown & Metric Tabs */}
+        <div className="w-full max-w-4xl flex flex-col sm:flex-row items-center justify-between gap-4 mb-10">
+          {/* Business Type League Selection Dropdown */}
+          <div className="flex items-center gap-2.5 w-full sm:w-auto">
+            <span className="text-sm font-black text-[#942A45] uppercase tracking-wider">Format League:</span>
+            <select
+              value={selectedLeague}
+              onChange={(e) => setSelectedLeague(e.target.value)}
+              className="bg-[#E5C7A3] border-2 border-[#942A45]/30 text-[#942A45] font-black text-sm rounded-xl py-2 px-4 focus:outline-none focus:ring-2 focus:ring-[#942A45] cursor-pointer"
+            >
+              {LEAGUES.map((l) => (
+                <option key={l.value} value={l.value}>
+                  {l.label}
+                </option>
+              ))}
+            </select>
+          </div>
+
+          {/* Metric Sorting Tabs */}
+          <Tabs
+            value={sortKey}
+            onValueChange={(val) => setSortKey(val as any)}
+            className="w-full sm:w-auto"
+          >
+            <TabsList className="bg-[#E5C7A3] border border-[#942A45]/20 p-1 h-11 rounded-full flex gap-1">
+              <TabsTrigger value="meals" className="text-xs font-bold rounded-full px-4 py-1.5 data-[state=active]:bg-[#33A8C3] data-[state=active]:text-[#F2DABB]">
+                Meals Served
+              </TabsTrigger>
+              <TabsTrigger value="volume" className="text-xs font-bold rounded-full px-4 py-1.5 data-[state=active]:bg-[#F3B343] data-[state=active]:text-[#3A2A2F]">
+                Order Volume
+              </TabsTrigger>
+              <TabsTrigger value="carbon" className="text-xs font-bold rounded-full px-4 py-1.5 data-[state=active]:bg-[#95CC2E] data-[state=active]:text-[#3A2A2F]">
+                Carbon Avoided
+              </TabsTrigger>
+            </TabsList>
+          </Tabs>
+        </div>
+
+        {/* League In-Play Categories Banner */}
+        {currentLeagueInfo && (
+          <div className="w-full max-w-4xl mb-8 bg-[#942A45]/10 border border-[#942A45]/20 rounded-2xl py-2.5 px-4 text-center text-xs sm:text-sm font-bold text-[#942A45]">
+            <span className="uppercase tracking-wider mr-2 text-[#ED544B] font-black">CHUK Categories in play:</span>
+            {currentLeagueInfo.categoriesInPlay}
+          </div>
+        )}
 
         {/* Top 3 Podium (Structured Desktop Pedestals) */}
-        <div className="grid grid-cols-3 items-end gap-2.5 sm:gap-6 lg:gap-8 w-full max-w-4xl mb-12 sm:mb-18">
-          {/* #2 Rank Pedestal */}
-          <div className="flex flex-col items-center text-center">
-            <div className="relative mb-3">
-              <div className="w-14 h-14 sm:w-22 sm:h-22 lg:w-26 lg:h-26 rounded-full bg-[#33A8C3] text-[#F2DABB] font-black text-base sm:text-2xl lg:text-3xl flex items-center justify-center shadow-lg border-2 border-[#F2DABB] transition-transform hover:scale-105">
-                {top2.initials}
+        {sortedAndFilteredData.length >= 3 && (
+          <div className="grid grid-cols-3 items-end gap-2.5 sm:gap-6 lg:gap-8 w-full max-w-4xl mb-12 sm:mb-16">
+            {/* #2 Rank Pedestal */}
+            <div className="flex flex-col items-center text-center">
+              <div className="relative mb-3">
+                <div className="w-14 h-14 sm:w-22 sm:h-22 lg:w-26 lg:h-26 rounded-full bg-[#33A8C3] text-[#F2DABB] font-black text-base sm:text-2xl lg:text-3xl flex items-center justify-center shadow-lg border-2 border-[#F2DABB] transition-transform hover:scale-105">
+                  {top2.initials}
+                </div>
+                <span className="absolute -bottom-1 -right-1 w-5 h-5 sm:w-7 sm:h-7 rounded-full flex items-center justify-center font-black text-xs sm:text-sm bg-[#33A8C3] text-[#F2DABB] border-2 border-[#F2DABB]">
+                  2
+                </span>
               </div>
-              <span className="absolute -bottom-1 -right-1 w-5 h-5 sm:w-7 sm:h-7 rounded-full flex items-center justify-center font-black text-xs sm:text-sm bg-[#33A8C3] text-[#F2DABB] border-2 border-[#F2DABB]">
-                2
-              </span>
+              <div className="w-full bg-[#E5C7A3] border-2 border-[#33A8C3]/50 rounded-2xl p-3 sm:p-5 pt-3 flex flex-col items-center shadow-sm">
+                <h4 className="font-black text-xs sm:text-base lg:text-lg text-[#942A45] truncate w-full">
+                  {top2.name}
+                </h4>
+                <p className="text-[10px] sm:text-xs font-semibold text-[#3A2A2F]/70 truncate w-full mb-1">
+                  {top2.businessType} · {top2.city}
+                </p>
+                <span suppressHydrationWarning className="text-xs sm:text-sm lg:text-base font-black text-[#0096B1] bg-[#33A8C3]/20 px-2.5 py-0.5 rounded-full mb-1">
+                  {getHeadlineMetric(top2)}
+                </span>
+                <span className="text-[10px] font-bold text-[#3A2A2F]/75 uppercase tracking-wider">
+                  {top2.tier} Tier
+                </span>
+              </div>
             </div>
-            <div className="w-full bg-[#E5C7A3] border-2 border-[#33A8C3]/50 rounded-2xl p-3 sm:p-5 pt-3 flex flex-col items-center">
-              <h4 className="font-black text-xs sm:text-base lg:text-lg text-[#942A45] truncate w-full">
-                {top2.name}
-              </h4>
-              <p className="text-[10px] sm:text-xs font-semibold text-[#3A2A2F]/70 truncate w-full mb-1">
-                {top2.city} · {top2.outlets} outlets
-              </p>
-              <span className="text-xs sm:text-sm lg:text-base font-black text-[#0096B1] bg-[#33A8C3]/20 px-2.5 py-0.5 rounded-full">
-                {getMetricDisplay(top2)}
-              </span>
-            </div>
-          </div>
 
-          {/* #1 Rank Pedestal (Elevated Centerpiece) */}
-          <div className="flex flex-col items-center text-center -translate-y-2 sm:-translate-y-4">
-            <Crown className="w-6 h-6 sm:w-8 sm:h-8 text-[#F3B343] mb-1 drop-shadow-md" />
-            <div className="relative mb-3">
-              <div className="w-18 h-18 sm:w-28 sm:h-28 lg:w-32 lg:h-32 rounded-full bg-[#942A45] text-[#F3B343] font-black text-2xl sm:text-4xl lg:text-5xl flex items-center justify-center shadow-2xl border-4 border-[#F3B343] transition-transform hover:scale-105">
-                {top1.initials}
+            {/* #1 Rank Pedestal (Elevated Centerpiece) */}
+            <div className="flex flex-col items-center text-center -translate-y-2 sm:-translate-y-4">
+              <div className="relative mb-3">
+                <div className="w-18 h-18 sm:w-28 sm:h-28 lg:w-32 lg:h-32 rounded-full bg-[#942A45] text-[#F3B343] font-black text-2xl sm:text-4xl lg:text-5xl flex items-center justify-center shadow-2xl border-4 border-[#F3B343] transition-transform hover:scale-105">
+                  {top1.initials}
+                </div>
+                <span className="absolute -bottom-2 inset-x-0 mx-auto w-6 h-6 sm:w-8 sm:h-8 rounded-full flex items-center justify-center font-black text-xs sm:text-sm bg-[#F3B343] text-[#942A45] border-2 border-[#942A45]">
+                  1
+                </span>
               </div>
-              <span className="absolute -bottom-2 inset-x-0 mx-auto w-6 h-6 sm:w-8 sm:h-8 rounded-full flex items-center justify-center font-black text-xs sm:text-sm bg-[#F3B343] text-[#942A45] border-2 border-[#942A45]">
-                1
-              </span>
+              <div className="w-full bg-[#E5C7A3] border-2 border-[#F3B343] rounded-2xl p-3.5 sm:p-6 pt-3 flex flex-col items-center shadow-md">
+                <h4 className="font-black text-sm sm:text-lg lg:text-xl text-[#942A45] truncate w-full">
+                  {top1.name}
+                </h4>
+                <p className="text-xs sm:text-sm font-semibold text-[#3A2A2F]/70 truncate w-full mb-1">
+                  {top1.businessType} · {top1.city}
+                </p>
+                <span suppressHydrationWarning className="text-xs sm:text-base lg:text-lg font-black text-[#942A45] bg-[#F3B343]/35 px-3 py-0.5 sm:py-1 rounded-full mb-1">
+                  {getHeadlineMetric(top1)}
+                </span>
+                <span className="text-[11px] font-black text-[#942A45] uppercase tracking-wider bg-[#95CC2E] px-2.5 py-0.5 rounded-full">
+                  {top1.tier} Member
+                </span>
+              </div>
             </div>
-            <div className="w-full bg-[#E5C7A3] border-2 border-[#F3B343] rounded-2xl p-3.5 sm:p-6 pt-3 flex flex-col items-center shadow-md">
-              <h4 className="font-black text-sm sm:text-lg lg:text-xl text-[#942A45] truncate w-full">
-                {top1.name}
-              </h4>
-              <p className="text-xs sm:text-sm font-semibold text-[#3A2A2F]/70 truncate w-full mb-1">
-                {top1.city} · {top1.outlets} outlets
-              </p>
-              <span className="text-xs sm:text-base lg:text-lg font-black text-[#942A45] bg-[#F3B343]/35 px-3 py-0.5 sm:py-1 rounded-full">
-                {getMetricDisplay(top1)}
-              </span>
-            </div>
-          </div>
 
-          {/* #3 Rank Pedestal */}
-          <div className="flex flex-col items-center text-center">
-            <div className="relative mb-3">
-              <div className="w-14 h-14 sm:w-22 sm:h-22 lg:w-26 lg:h-26 rounded-full bg-[#ED544B] text-[#F2DABB] font-black text-base sm:text-2xl lg:text-3xl flex items-center justify-center shadow-lg border-2 border-[#F2DABB] transition-transform hover:scale-105">
-                {top3.initials}
+            {/* #3 Rank Pedestal */}
+            <div className="flex flex-col items-center text-center">
+              <div className="relative mb-3">
+                <div className="w-14 h-14 sm:w-22 sm:h-22 lg:w-26 lg:h-26 rounded-full bg-[#ED544B] text-[#F2DABB] font-black text-base sm:text-2xl lg:text-3xl flex items-center justify-center shadow-lg border-2 border-[#F2DABB] transition-transform hover:scale-105">
+                  {top3.initials}
+                </div>
+                <span className="absolute -bottom-1 -right-1 w-5 h-5 sm:w-7 sm:h-7 rounded-full flex items-center justify-center font-black text-xs sm:text-sm bg-[#ED544B] text-[#F2DABB] border-2 border-[#F2DABB]">
+                  3
+                </span>
               </div>
-              <span className="absolute -bottom-1 -right-1 w-5 h-5 sm:w-7 sm:h-7 rounded-full flex items-center justify-center font-black text-xs sm:text-sm bg-[#ED544B] text-[#F2DABB] border-2 border-[#F2DABB]">
-                3
-              </span>
-            </div>
-            <div className="w-full bg-[#E5C7A3] border-2 border-[#ED544B]/50 rounded-2xl p-3 sm:p-5 pt-3 flex flex-col items-center">
-              <h4 className="font-black text-xs sm:text-base lg:text-lg text-[#942A45] truncate w-full">
-                {top3.name}
-              </h4>
-              <p className="text-[10px] sm:text-xs font-semibold text-[#3A2A2F]/70 truncate w-full mb-1">
-                {top3.city} · {top3.outlets} outlets
-              </p>
-              <span className="text-xs sm:text-sm lg:text-base font-black text-[#ED544B] bg-[#ED544B]/20 px-2.5 py-0.5 rounded-full">
-                {getMetricDisplay(top3)}
-              </span>
+              <div className="w-full bg-[#E5C7A3] border-2 border-[#ED544B]/50 rounded-2xl p-3 sm:p-5 pt-3 flex flex-col items-center shadow-sm">
+                <h4 className="font-black text-xs sm:text-base lg:text-lg text-[#942A45] truncate w-full">
+                  {top3.name}
+                </h4>
+                <p className="text-[10px] sm:text-xs font-semibold text-[#3A2A2F]/70 truncate w-full mb-1">
+                  {top3.businessType} · {top3.city}
+                </p>
+                <span suppressHydrationWarning className="text-xs sm:text-sm lg:text-base font-black text-[#ED544B] bg-[#ED544B]/20 px-2.5 py-0.5 rounded-full mb-1">
+                  {getHeadlineMetric(top3)}
+                </span>
+                <span className="text-[10px] font-bold text-[#3A2A2F]/75 uppercase tracking-wider">
+                  {top3.tier} Tier
+                </span>
+              </div>
             </div>
           </div>
-        </div>
+        )}
 
         {/* Editorial Ranked Stream (Desktop Table Layout) */}
-        <div className="w-full bg-[#E5C7A3]/50 border-2 border-[#942A45]/20 rounded-3xl overflow-hidden mb-10 shadow-md">
+        <div className="w-full max-w-4xl bg-[#E5C7A3]/50 border-2 border-[#942A45]/20 rounded-3xl overflow-hidden mb-10 shadow-md">
           {/* Table Header on Desktop */}
           <div className="hidden sm:grid grid-cols-12 py-3 px-6 lg:px-8 border-b-2 border-[#942A45]/20 text-xs font-black uppercase tracking-wider text-[#942A45]/80 bg-[#E5C7A3]">
             <div className="col-span-1">Rank</div>
-            <div className="col-span-6">Member Restaurant</div>
-            <div className="col-span-2">Network</div>
-            <div className="col-span-3 text-right">Impact Metric</div>
+            <div className="col-span-5">Member Kitchen</div>
+            <div className="col-span-2">Format & City</div>
+            <div className="col-span-4 text-right">Impact & Volume</div>
           </div>
 
           <div className="flex flex-col divide-y divide-[#942A45]/15">
@@ -212,7 +521,7 @@ export default function Leaderboard() {
 
                 return (
                   <div
-                    key={row.name}
+                    key={row.id}
                     className="w-full py-3.5 sm:py-4 px-4 sm:px-6 lg:px-8 flex sm:grid sm:grid-cols-12 items-center justify-between transition-colors hover:bg-[#942A45]/10 gap-3 sm:gap-4"
                   >
                     {/* Mobile: Combined Left Group | Desktop: Col 1 & Col 2 */}
@@ -228,7 +537,7 @@ export default function Leaderboard() {
                       </div>
 
                       {/* Col 2: Restaurant & Avatar */}
-                      <div className="sm:col-span-6 flex items-center gap-3 sm:gap-4 min-w-0 flex-1 sm:flex-none">
+                      <div className="sm:col-span-5 flex items-center gap-3 sm:gap-4 min-w-0 flex-1 sm:flex-none">
                         <div
                           style={{ backgroundColor: row.avatarBg }}
                           className="w-9 h-9 sm:w-11 sm:h-11 rounded-full text-[#F2DABB] font-black text-xs sm:text-base flex items-center justify-center shrink-0 shadow-sm"
@@ -236,35 +545,38 @@ export default function Leaderboard() {
                           {row.initials}
                         </div>
                         <div className="text-left min-w-0">
-                          <h4 className="font-black text-sm sm:text-base lg:text-lg truncate text-[#942A45]">
-                            {row.name}
-                          </h4>
+                          <div className="flex items-center gap-2">
+                            <h4 className="font-black text-sm sm:text-base lg:text-lg truncate text-[#942A45]">
+                              {row.name}
+                            </h4>
+                            <span className="text-[10px] font-extrabold uppercase px-2 py-0.5 rounded-full bg-[#942A45]/15 text-[#942A45]">
+                              {row.tier}
+                            </span>
+                          </div>
                           <span className="sm:hidden text-[11px] font-semibold text-[#3A2A2F]/70 block truncate">
-                            {row.city} · {row.outlets} outlets
+                            {row.businessType} · {row.city}
                           </span>
                         </div>
                       </div>
                     </div>
 
-                    {/* Col 3: Location & Network (Desktop) */}
+                    {/* Col 3: Format & City (Desktop) */}
                     <div className="hidden sm:flex col-span-2 flex-col text-left">
                       <span className="text-xs sm:text-sm font-bold text-[#942A45]">
-                        {row.city}
+                        {row.businessType}
                       </span>
                       <span className="text-[11px] font-semibold text-[#3A2A2F]/75">
-                        {row.outlets} active outlets
+                        {row.city}
                       </span>
                     </div>
 
                     {/* Col 4: Primary Metric */}
-                    <div className="sm:col-span-3 text-right shrink-0">
-                      <span className="font-black text-sm sm:text-base lg:text-lg block text-[#942A45]">
-                        {getMetricDisplay(row)}
+                    <div className="sm:col-span-4 text-right shrink-0">
+                      <span suppressHydrationWarning className="font-black text-sm sm:text-base lg:text-lg block text-[#942A45]">
+                        {getHeadlineMetric(row)}
                       </span>
-                      <span className="text-[10px] sm:text-xs font-semibold text-[#3A2A2F]/75 block">
-                        {sortKey === 'trees' && `${row.co2Text} CO₂ · ${row.volumeText}`}
-                        {sortKey === 'carbon' && `${row.trees.toLocaleString()} trees · ${row.volumeText}`}
-                        {sortKey === 'volume' && `${row.trees.toLocaleString()} trees · ${row.co2Text} CO₂`}
+                      <span suppressHydrationWarning className="text-[10px] sm:text-xs font-semibold text-[#3A2A2F]/75 block">
+                        {getSubMetric(row)}
                       </span>
                     </div>
                   </div>
@@ -280,13 +592,13 @@ export default function Leaderboard() {
           onClick={() => setShowAll(!showAll)}
           className="mt-1 mb-8 gap-2 font-bold text-sm sm:text-base border-[#942A45] hover:bg-[#942A45] hover:text-[#F2DABB] px-8 py-3.5 rounded-full"
         >
-          <span>{showAll ? 'Show Less' : 'View Full Top 10 Leaderboard'}</span>
+          <span>{showAll ? 'Show Top 5 Only' : `View Full Leaderboard (${sortedAndFilteredData.length} Members)`}</span>
           <ChevronDown className={`w-4 h-4 transition-transform duration-200 ${showAll ? 'rotate-180' : ''}`} />
         </Button>
 
-        {/* Footnote */}
-        <p className="text-xs sm:text-sm lg:text-base text-[#3A2A2F]/75 font-semibold max-w-2xl text-center leading-relaxed px-4">
-          Rankings refresh each season from verified Chuk order volumes. Newly switched members start with a projected first-year figure.
+        {/* Verified Order History Footnote */}
+        <p className="text-xs sm:text-sm lg:text-base text-[#3A2A2F]/80 font-semibold max-w-2xl text-center leading-relaxed px-4">
+          The numbers come off real Chuk order history. Where we have to assume something, we take the lower figure so your impact score holds up when corporate clients ask you to prove it.
         </p>
       </div>
     </section>
