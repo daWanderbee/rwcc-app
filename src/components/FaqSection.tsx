@@ -26,7 +26,7 @@ const faqs = [
     answer:
       'From your verified Chuk order volumes, converted using a published methodology. No self-reporting, and nothing you\'d struggle to defend to a diner or a journalist.',
     tag: 'Verified Data',
-    accentColor: '#33A8C3',
+    accentColor: '#942A45',
     tagVariant: 'teal' as const,
   },
   {
@@ -94,7 +94,7 @@ export default function FaqSection() {
             className="text-3xl sm:text-5xl md:text-6xl lg:text-7xl font-black text-[#942A45] tracking-tight mb-3"
           >
             Frequently Asked{' '}
-            <span className="text-[#33A8C3]">Questions</span>
+            <span className="text-[#942A45]">Questions</span>
           </motion.h2>
 
           <motion.p
@@ -120,7 +120,7 @@ export default function FaqSection() {
                   >
                     {index + 1}
                   </span>
-                  <span className="hover:text-[#33A8C3] transition-colors">{faq.question}</span>
+                  <span className="hover:text-[#942A45] transition-colors">{faq.question}</span>
                 </span>
                 
                 <div className="flex items-center gap-3 shrink-0 mr-2">

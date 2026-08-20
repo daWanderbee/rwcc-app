@@ -11,9 +11,9 @@ const steps = [
     num: '01',
     title: 'We score your switch',
     icon: Calculator,
-    color: '#33A8C3',
+    color: '#942A45',
     imageBg: 'bg-[#D8EFF5]',
-    imageBorder: 'border-[#33A8C3]/30',
+    imageBorder: 'border-[#7B2239]/30',
     image: '/images/step1-scorecard.jpg',
     imageFit: 'object-cover',
     body: 'From your actual or projected Chuk order volume, we work out three numbers: the products you put into service, the trees planted equivalent of choosing bagasse over fossil-based packaging, and the CO₂ you kept out of the air.',
@@ -71,7 +71,7 @@ export default function HowItWorks() {
             className="text-3xl sm:text-5xl md:text-6xl lg:text-7xl font-black text-[#942A45] tracking-tight mb-3"
           >
             Simple to join.{' '}
-            <span className="text-[#33A8C3]">Impossible to ignore.</span>
+            <span className="text-[#942A45]">Impossible to ignore.</span>
           </motion.h2>
 
           <motion.p

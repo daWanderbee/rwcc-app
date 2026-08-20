@@ -74,7 +74,7 @@ export default function JoinCtaSection() {
             className="w-full sm:w-auto px-8 sm:px-10 py-5 sm:py-6 bg-[#F2DABB] text-[#942A45] font-black text-sm sm:text-lg shadow-xl hover:bg-[#F3B343] hover:text-[#942A45] transition-all hover:scale-105 active:scale-95 flex items-center justify-center gap-2"
           >
             <span>Join the Club</span>
-            <ArrowRight className="w-4 h-4 sm:w-5 sm:h-5 text-[#33A8C3]" />
+            <ArrowRight className="w-4 h-4 sm:w-5 sm:h-5 text-[#942A45]" />
           </Button>
 
           <Button

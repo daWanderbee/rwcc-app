@@ -151,7 +151,7 @@ export default function ReelsSection() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 0.1 }}
-            className="text-base sm:text-xl lg:text-2xl font-bold text-[#33A8C3] mb-2 sm:mb-3"
+            className="text-base sm:text-xl lg:text-2xl font-bold text-[#942A45] mb-2 sm:mb-3"
           >
             The best restaurants in India already made the switch.
           </motion.p>
@@ -228,9 +228,9 @@ export default function ReelsSection() {
                     <button
                       type="button"
                       onClick={(e) => toggleLike(reel.id, e)}
-                      className="flex items-center gap-1 text-[#F2DABB] hover:text-[#33A8C3] transition-colors p-0.5"
+                      className="flex items-center gap-1 text-[#F2DABB] hover:text-[#942A45] transition-colors p-0.5"
                     >
-                      <Heart className={`w-3.5 h-3.5 ${isLiked ? 'fill-[#ED544B] text-[#33A8C3]' : ''}`} />
+                      <Heart className={`w-3.5 h-3.5 ${isLiked ? 'fill-[#ED544B] text-[#942A45]' : ''}`} />
                       <span className="text-[10px] sm:text-xs font-black">{isLiked ? 'Liked' : reel.likes}</span>
                     </button>
                   </div>

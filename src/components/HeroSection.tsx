@@ -23,7 +23,7 @@ export default function HeroSection() {
               className="text-5xl xl:text-7xl 2xl:text-8xl font-black text-[#942A45] tracking-tight leading-[1.08] mb-6 font-['Karbon']"
             >
               Welcome to{' '}
-              <span className="text-[#33A8C3] underline decoration-[#F3B343] decoration-wavy decoration-4">
+              <span className="text-[#942A45] underline decoration-[#F3B343] decoration-wavy decoration-4">
                 the club.
               </span>
             </motion.h1>
@@ -58,10 +58,10 @@ export default function HeroSection() {
                 asChild
                 variant="outline"
                 size="lg"
-                className="font-black border-2 border-[#0096B1] text-[#0096B1] bg-[#F2DABB] hover:bg-[#0096B1] hover:text-[#F2DABB] hover:scale-105 active:scale-95 transition-all text-lg px-9 py-6 rounded-full"
+                className="font-black border-2 border-[#942A45] text-[#942A45] bg-[#F2DABB] hover:bg-[#942A45] hover:text-[#F2DABB] hover:scale-105 active:scale-95 transition-all text-lg px-9 py-6 rounded-full"
               >
                 <a href="#leaderboard" className="flex items-center gap-2">
-                  <Trophy className="w-5 h-5 text-[#0096B1]" />
+                  <Trophy className="w-5 h-5 text-[#942A45]" />
                   <span>See the Leaderboard</span>
                 </a>
               </Button>
@@ -134,10 +134,10 @@ export default function HeroSection() {
               asChild
               variant="outline"
               size="lg"
-              className="w-full sm:w-auto font-black border-2 border-[#0096B1] text-[#0096B1] bg-[#F2DABB] hover:bg-[#0096B1] hover:text-[#F2DABB] text-base px-8 py-5 rounded-full"
+              className="w-full sm:w-auto font-black border-2 border-[#942A45] text-[#942A45] bg-[#F2DABB] hover:bg-[#942A45] hover:text-[#F2DABB] text-base px-8 py-5 rounded-full"
             >
               <a href="#leaderboard" className="flex items-center justify-center gap-2">
-                <Trophy className="w-4 h-4 text-[#0096B1]" />
+                <Trophy className="w-4 h-4 text-[#942A45]" />
                 <span>See the Leaderboard</span>
               </a>
             </Button>

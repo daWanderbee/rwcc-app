@@ -39,7 +39,7 @@ const SVG = ({ duration = 7 }: { duration?: number }) => {
       {/* Static Background Curved Lines - Solid Multi-Color Palette */}
       <path
         d="M-200 120 C 300 320, 1100 -80, 1600 420"
-        stroke="#0096B1"
+        stroke="#942A45"
         strokeWidth="4"
         strokeOpacity="0.35"
       />
@@ -65,7 +65,7 @@ const SVG = ({ duration = 7 }: { duration?: number }) => {
       {/* Animated Glowing Light Beams - Solid Color Strokes (No Gradients) */}
       <motion.path
         d="M-200 120 C 300 320, 1100 -80, 1600 420"
-        stroke="#0096B1"
+        stroke="#942A45"
         strokeWidth="6"
         strokeLinecap="round"
         initial={{ pathLength: 0.25, pathOffset: 0 }}

@@ -15,7 +15,7 @@ const buttonVariants = cva(
         gold:
           'bg-[#D6A419] text-[#942A45] hover:bg-[#C29314] shadow-md',
         outline:
-          'border-2 border-[#0096B1] text-[#0096B1] bg-[#F2DABB] hover:bg-[#0096B1] hover:text-[#F2DABB]',
+          'border-2 border-[#942A45] text-[#942A45] bg-[#F2DABB] hover:bg-[#942A45] hover:text-[#F2DABB]',
         outlinePlum:
           'border-2 border-[#942A45] text-[#942A45] bg-[#F2DABB] hover:bg-[#942A45] hover:text-[#F2DABB]',
         secondary:

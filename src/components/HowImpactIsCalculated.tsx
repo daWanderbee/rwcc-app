@@ -112,7 +112,7 @@ export default function HowImpactIsCalculated() {
             transition={{ delay: 0.2 }}
             className="text-base sm:text-lg font-medium text-[#F2DABB]/90 leading-relaxed"
           >
-            Every season, we convert your verified Chuk order volume into three headline numbers — <strong className="text-[#33A8C3]">meals served plastic-free</strong>, <strong className="text-[#95CC2E]">carbon avoided</strong>, and <strong className="text-[#F2DABB]">volume of Chuk products used (CBM)</strong>.
+            Every season, we convert your verified Chuk order volume into three headline numbers — <strong className="text-[#33A8C3]">meals served plastic-free</strong>, <strong className="text-[#95CC2E]">carbon avoided</strong>, and <strong className="text-[#F3B343]">volume of Chuk products used (CBM)</strong>.
           </motion.p>
         </div>
 
@@ -132,7 +132,7 @@ export default function HowImpactIsCalculated() {
             <span className="text-xs font-black uppercase tracking-widest text-[#F2DABB]">
               Dual Recognition System
             </span>
-            <MapPin className="w-6 h-6 text-[#33A8C3]" />
+            <MapPin className="w-6 h-6 text-[#942A45]" />
           </div>
 
           <h3 className="text-2xl sm:text-4xl font-black text-[#F2DABB] mb-3 leading-tight">

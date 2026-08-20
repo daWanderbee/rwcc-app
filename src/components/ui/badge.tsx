@@ -16,7 +16,7 @@ const badgeVariants = cva(
         coral:
           'border-[#ED544B] bg-[#ED544B] text-[#F2DABB]',
         teal:
-          'border-[#0096B1] bg-[#0096B1] text-[#F2DABB]',
+          'border-[#942A45] bg-[#942A45] text-[#F2DABB]',
         green:
           'border-[#82B74B] bg-[#82B74B] text-[#942A45]',
         sand:

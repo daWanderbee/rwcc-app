@@ -96,7 +96,7 @@ const BentoCard = ({
         size="sm"
         className="p-0 text-[#942A45] font-black text-xs sm:text-sm hover:no-underline"
       >
-        <a href={href} className="flex items-center gap-1.5 hover:text-[#33A8C3] transition-colors">
+        <a href={href} className="flex items-center gap-1.5 hover:text-[#942A45] transition-colors">
           <span>{cta}</span>
           <ArrowRight className="h-3.5 w-3.5" />
         </a>
@@ -111,7 +111,7 @@ const BentoCard = ({
         size="sm"
         className="p-0 text-[#942A45] font-black text-base hover:no-underline"
       >
-        <a href={href} className="flex items-center gap-2 hover:text-[#33A8C3] transition-colors">
+        <a href={href} className="flex items-center gap-2 hover:text-[#942A45] transition-colors">
           <span>{cta}</span>
           <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
         </a>

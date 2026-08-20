@@ -95,7 +95,7 @@ export default function YourSpot() {
                   variant="ghost"
                   size="sm"
                   onClick={() => setIsEditing(!isEditing)}
-                  className="h-7 text-[11px] sm:text-sm font-bold text-[#33A8C3] hover:text-[#0096B1] gap-1 px-2.5 rounded-full"
+                  className="h-7 text-[11px] sm:text-sm font-bold text-[#942A45] hover:text-[#942A45] gap-1 px-2.5 rounded-full"
                 >
                   <RefreshCw className="w-3 h-3" />
                   {isEditing ? 'Done' : 'Customize'}
@@ -134,15 +134,15 @@ export default function YourSpot() {
               </div>
 
               {/* Stat 2: CO2 */}
-              <div className="border-t-2 sm:border-t-3 border-[#33A8C3] pt-3 sm:pt-4 flex flex-col justify-between">
+              <div className="border-t-2 sm:border-t-3 border-[#F3B343] pt-3 sm:pt-4 flex flex-col justify-between">
                 <div className="flex items-center justify-between mb-1">
                   <span className="text-[9px] sm:text-xs font-bold text-[#942A45]/80 truncate">
                     CO₂ Avoided
                   </span>
-                  <Leaf className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-[#33A8C3] shrink-0" />
+                  <Leaf className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-[#D6A419] shrink-0" />
                 </div>
-                <span className="text-lg sm:text-3xl lg:text-4xl font-black text-[#33A8C3]">
-                  <NumberTicker value={114} suffix=" t" />
+                <span className="text-lg sm:text-3xl lg:text-4xl font-black text-[#D6A419]">
+                  <NumberTicker value={690} suffix=" t" />
                 </span>
               </div>
 
@@ -152,9 +152,9 @@ export default function YourSpot() {
                   <span className="text-[9px] sm:text-xs font-bold text-[#942A45]/80 truncate">
                     Chuk / Year
                   </span>
-                  <CheckCircle2 className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-[#33A8C3] shrink-0" />
+                  <CheckCircle2 className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-[#ED544B] shrink-0" />
                 </div>
-                <span className="text-lg sm:text-3xl lg:text-4xl font-black text-[#33A8C3]">
+                <span className="text-lg sm:text-3xl lg:text-4xl font-black text-[#ED544B]">
                   <NumberTicker value={512} suffix="K" />
                 </span>
               </div>

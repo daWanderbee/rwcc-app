@@ -155,7 +155,7 @@ export function ClubCTA() {
       >
         <a href="#join-cta" className="flex items-center gap-2">
           <span>Buy from CHUK and Join the Club</span>
-          <ArrowRight className="w-5 h-5 text-[#33A8C3]" />
+          <ArrowRight className="w-5 h-5 text-[#942A45]" />
         </a>
       </Button>
       <p className="mt-3 text-xs sm:text-sm lg:text-base font-semibold text-[#F2DABB]/80">
