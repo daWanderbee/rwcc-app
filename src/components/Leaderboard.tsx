@@ -22,7 +22,7 @@ interface RestaurantMember {
   city: string;
   outlets: number;
   mealsPlasticFree: number; // Headline Figure (Meals)
-  volumePieces: number; // Volume Figure (Pieces)
+  volumeCbm: number; // Volume Figure (CBM)
   co2AvoidedKg: number; // Technical Carbon Metric (kg CO2e)
   kwhAvoided: number; // Electricity Avoided
   monthsRunning: number; // Streak
@@ -41,7 +41,7 @@ const leaderboardMembers: RestaurantMember[] = [
     city: 'Bengaluru',
     outlets: 8,
     mealsPlasticFree: 345000,
-    volumePieces: 512000,
+    volumeCbm: 148,
     co2AvoidedKg: 7850,
     kwhAvoided: 3120,
     monthsRunning: 18,
@@ -58,7 +58,7 @@ const leaderboardMembers: RestaurantMember[] = [
     city: 'Mumbai',
     outlets: 5,
     mealsPlasticFree: 295000,
-    volumePieces: 468000,
+    volumeCbm: 126,
     co2AvoidedKg: 7500,
     kwhAvoided: 2980,
     monthsRunning: 16,
@@ -75,7 +75,7 @@ const leaderboardMembers: RestaurantMember[] = [
     city: 'Delhi',
     outlets: 6,
     mealsPlasticFree: 210000,
-    volumePieces: 401000,
+    volumeCbm: 98,
     co2AvoidedKg: 5120,
     kwhAvoided: 2040,
     monthsRunning: 14,
@@ -92,7 +92,7 @@ const leaderboardMembers: RestaurantMember[] = [
     city: 'Mumbai',
     outlets: 4,
     mealsPlasticFree: 178000,
-    volumePieces: 320000,
+    volumeCbm: 84,
     co2AvoidedKg: 4210,
     kwhAvoided: 1680,
     monthsRunning: 15,
@@ -109,7 +109,7 @@ const leaderboardMembers: RestaurantMember[] = [
     city: 'Pune',
     outlets: 4,
     mealsPlasticFree: 165000,
-    volumePieces: 312000,
+    volumeCbm: 76,
     co2AvoidedKg: 4120,
     kwhAvoided: 1640,
     monthsRunning: 12,
@@ -126,7 +126,7 @@ const leaderboardMembers: RestaurantMember[] = [
     city: 'Kochi',
     outlets: 2,
     mealsPlasticFree: 112000,
-    volumePieces: 280000,
+    volumeCbm: 68,
     co2AvoidedKg: 2810,
     kwhAvoided: 1120,
     monthsRunning: 24,
@@ -143,7 +143,7 @@ const leaderboardMembers: RestaurantMember[] = [
     city: 'Chennai',
     outlets: 3,
     mealsPlasticFree: 128000,
-    volumePieces: 250000,
+    volumeCbm: 59,
     co2AvoidedKg: 3150,
     kwhAvoided: 1250,
     monthsRunning: 10,
@@ -160,7 +160,7 @@ const leaderboardMembers: RestaurantMember[] = [
     city: 'Hyderabad',
     outlets: 4,
     mealsPlasticFree: 145000,
-    volumePieces: 240000,
+    volumeCbm: 54,
     co2AvoidedKg: 3410,
     kwhAvoided: 1360,
     monthsRunning: 9,
@@ -177,7 +177,7 @@ const leaderboardMembers: RestaurantMember[] = [
     city: 'Kolkata',
     outlets: 7,
     mealsPlasticFree: 185000,
-    volumePieces: 220000,
+    volumeCbm: 51,
     co2AvoidedKg: 4390,
     kwhAvoided: 1750,
     monthsRunning: 8,
@@ -194,7 +194,7 @@ const leaderboardMembers: RestaurantMember[] = [
     city: 'Jaipur',
     outlets: 3,
     mealsPlasticFree: 95000,
-    volumePieces: 180000,
+    volumeCbm: 42,
     co2AvoidedKg: 2190,
     kwhAvoided: 870,
     monthsRunning: 5,
@@ -222,7 +222,7 @@ export default function Leaderboard() {
   const [showAll, setShowAll] = useState<boolean>(false);
   const [showExplanation, setShowExplanation] = useState<boolean>(false);
 
-  // Filter & Sort Members based on Meals, Volume, and Carbon
+  // Filter & Sort Members based on Meals, Volume (CBM), and Carbon
   const sortedAndFilteredData = useMemo(() => {
     let filtered = leaderboardMembers;
     if (selectedLeague !== 'All Types') {
@@ -232,7 +232,7 @@ export default function Leaderboard() {
     return [...filtered]
       .sort((a, b) => {
         if (sortKey === 'meals') return b.mealsPlasticFree - a.mealsPlasticFree;
-        if (sortKey === 'volume') return b.volumePieces - a.volumePieces;
+        if (sortKey === 'volume') return b.volumeCbm - a.volumeCbm;
         if (sortKey === 'carbon') return b.co2AvoidedKg - a.co2AvoidedKg;
         return 0;
       })
@@ -249,13 +249,13 @@ export default function Leaderboard() {
 
   const getHeadlineMetric = (row: RestaurantMember) => {
     if (sortKey === 'meals') return `${fmtNum(row.mealsPlasticFree)} Meals`;
-    if (sortKey === 'volume') return `${fmtNum(row.volumePieces)} Pcs`;
+    if (sortKey === 'volume') return `${fmtNum(row.volumeCbm)} CBM`;
     if (sortKey === 'carbon') return `${fmtNum(row.co2AvoidedKg)} kg CO₂`;
     return `${fmtNum(row.mealsPlasticFree)} Meals`;
   };
 
   const getSubMetric = (row: RestaurantMember) => {
-    return `${fmtNum(row.mealsPlasticFree)} meals · ${fmtNum(row.volumePieces)} pcs · ${fmtNum(row.co2AvoidedKg)} kg CO₂`;
+    return `${fmtNum(row.mealsPlasticFree)} meals · ${fmtNum(row.volumeCbm)} CBM · ${fmtNum(row.co2AvoidedKg)} kg CO₂`;
   };
 
   return (
@@ -289,7 +289,7 @@ export default function Leaderboard() {
             transition={{ delay: 0.1 }}
             className="text-lg sm:text-2xl font-bold text-[#ED544B] mb-4 max-w-3xl mx-auto leading-snug"
           >
-            The Club leaderboard ranks members on three core numbers — meals served plastic-free, total volume, and carbon avoided.
+            The Club leaderboard ranks members on three core numbers — meals served plastic-free, volume of Chuk products used (CBM), and carbon avoided.
           </motion.p>
 
           <motion.p
@@ -329,21 +329,21 @@ export default function Leaderboard() {
                 <div className="bg-[#F2DABB] p-4 rounded-2xl border border-[#33A8C3]/30">
                   <h4 className="font-black text-sm text-[#33A8C3] mb-1">Meals served plastic-free</h4>
                   <p className="text-xs text-[#3A2A2F]/85 font-medium leading-relaxed">
-                    comes off your orders. One plate, bowl, container or tray counts as one meal. Lids, cutlery and dipping cups don&apos;t get counted twice.
-                  </p>
-                </div>
-
-                <div className="bg-[#F2DABB] p-4 rounded-2xl border border-[#F3B343]/40">
-                  <h4 className="font-black text-sm text-[#B5793B] mb-1">Order volume</h4>
-                  <p className="text-xs text-[#3A2A2F]/85 font-medium leading-relaxed">
-                    the verified total piece count of Chuk tableware deployed by your kitchen outlets.
+                    One plate, bowl, container, or tray = one meal — counted straight from your orders, no double-counting, no rounding up.
                   </p>
                 </div>
 
                 <div className="bg-[#F2DABB] p-4 rounded-2xl border border-[#95CC2E]/40">
                   <h4 className="font-black text-sm text-[#3A2A2F] mb-1">Carbon avoided</h4>
                   <p className="text-xs text-[#3A2A2F]/85 font-medium leading-relaxed">
-                    is measured against whatever packaging material you used before you switched.
+                    Measured against the packaging you used before you switched. The number only moves when the switch is real.
+                  </p>
+                </div>
+
+                <div className="bg-[#F2DABB] p-4 rounded-2xl border border-[#F3B343]/40">
+                  <h4 className="font-black text-sm text-[#B5793B] mb-1">Volume of Chuk Products Used (CBM)</h4>
+                  <p className="text-xs text-[#3A2A2F]/85 font-medium leading-relaxed">
+                    Every cubic metre of Chuk product you&apos;ve taken on, tallied straight from your orders. Small crates per delivery, stacked over months — into a number that shows exactly how far you&apos;ve moved.
                   </p>
                 </div>
               </div>
@@ -389,7 +389,7 @@ export default function Leaderboard() {
                 Meals Served
               </TabsTrigger>
               <TabsTrigger value="volume" className="text-xs font-bold rounded-full px-4 py-1.5 data-[state=active]:bg-[#F3B343] data-[state=active]:text-[#3A2A2F]">
-                Order Volume
+                Volume (CBM)
               </TabsTrigger>
               <TabsTrigger value="carbon" className="text-xs font-bold rounded-full px-4 py-1.5 data-[state=active]:bg-[#95CC2E] data-[state=active]:text-[#3A2A2F]">
                 Carbon Avoided

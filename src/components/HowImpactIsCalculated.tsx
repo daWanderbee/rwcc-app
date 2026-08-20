@@ -3,7 +3,7 @@
 import React from 'react';
 import Image from 'next/image';
 import { motion } from 'framer-motion';
-import { Utensils, Package, Coffee, Leaf, Trophy, MapPin } from 'lucide-react';
+import { Utensils, Leaf, Package, Trophy, MapPin } from 'lucide-react';
 import { StickyScroll, StickyScrollContentItem } from '@/components/ui/sticky-scroll-reveal';
 
 export default function HowImpactIsCalculated() {
@@ -12,7 +12,7 @@ export default function HowImpactIsCalculated() {
       num: '01',
       title: 'Meals served plastic-free',
       description:
-        'One plate, bowl, container, or tray = one meal. Counted straight from your orders. Lids, cutlery and dipping cups don’t get counted twice.',
+        'One plate, bowl, container, or tray = one meal — counted straight from your orders, no double-counting, no rounding up.',
       icon: Utensils,
       color: '#33A8C3',
       tag: 'Headline Metric',
@@ -33,18 +33,18 @@ export default function HowImpactIsCalculated() {
     },
     {
       num: '02',
-      title: 'Delivery & takeaway containers',
+      title: 'Carbon avoided',
       description:
-        'Every delivery container and lid logged directly from your orders. Small savings across daily shipments scale into tons of avoided waste.',
-      icon: Package,
-      color: '#ED544B',
-      tag: 'Takeaway Packaging',
+        'Measured against the packaging you used before you switched. The number only moves when the switch is real. [VERIFY CLAIM: methodology needed before publish]',
+      icon: Leaf,
+      color: '#95CC2E',
+      tag: 'Net Emission Impact',
       content: (
         <div className="relative w-full h-full flex flex-col items-center justify-center p-2">
           <div className="relative w-full h-64 sm:h-72 drop-shadow-2xl overflow-hidden rounded-2xl border-2 border-[#F2DABB]/20">
             <Image
-              src="/images/explain_delivery_container.png"
-              alt="CHUK Delivery Food Container with Lids"
+              src="/images/explain_square_bowl.png"
+              alt="CHUK Square Bowl with Wooden Fork"
               fill
               className="object-cover rounded-2xl"
               sizes="(max-width: 768px) 100vw, 40vw"
@@ -55,40 +55,18 @@ export default function HowImpactIsCalculated() {
     },
     {
       num: '03',
-      title: 'Plant-fibre cups & lids',
+      title: 'Volume of Chuk Products Used (CBM)',
       description:
-        '100% compostable sugarcane bagasse cups and embossed lids replacing conventional plastic and PE-lined cups.',
-      icon: Coffee,
+        'Every cubic metre of Chuk product you\'ve taken on, tallied straight from your orders. Small crates per delivery, stacked over months — into a number that shows exactly how far you\'ve moved.',
+      icon: Package,
       color: '#F3B343',
-      tag: 'Beverage Packaging',
+      tag: 'Volume in CBM',
       content: (
         <div className="relative w-full h-full flex flex-col items-center justify-center p-2">
           <div className="relative w-full h-64 sm:h-72 drop-shadow-2xl overflow-hidden rounded-2xl border-2 border-[#F2DABB]/20">
             <Image
-              src="/images/explain_beverage_cup.png"
-              alt="CHUK Beverage Cup with Compostable Lid"
-              fill
-              className="object-cover rounded-2xl"
-              sizes="(max-width: 768px) 100vw, 40vw"
-            />
-          </div>
-        </div>
-      ),
-    },
-    {
-      num: '04',
-      title: 'Carbon avoided & streak',
-      description:
-        'Measured against whatever packaging material you used before you switched. The longer your streak, the greater your verified impact.',
-      icon: Leaf,
-      color: '#95CC2E',
-      tag: 'Net Footprint Impact',
-      content: (
-        <div className="relative w-full h-full flex flex-col items-center justify-center p-2">
-          <div className="relative w-full h-64 sm:h-72 drop-shadow-2xl overflow-hidden rounded-2xl border-2 border-[#F2DABB]/20">
-            <Image
-              src="/images/explain_square_bowl.png"
-              alt="CHUK Square Bowl with Wooden Fork"
+              src="/images/explain_delivery_container.png"
+              alt="CHUK Delivery Food Container with Lids"
               fill
               className="object-cover rounded-2xl"
               sizes="(max-width: 768px) 100vw, 40vw"
@@ -124,7 +102,7 @@ export default function HowImpactIsCalculated() {
             transition={{ delay: 0.15 }}
             className="text-xl sm:text-2xl font-black text-[#F3B343] mb-3"
           >
-            Meals, volume, and carbon — verified directly from your orders.
+            Meals, carbon, and volume used (CBM) — verified directly from your orders.
           </motion.p>
 
           <motion.p
@@ -134,7 +112,7 @@ export default function HowImpactIsCalculated() {
             transition={{ delay: 0.2 }}
             className="text-base sm:text-lg font-medium text-[#F2DABB]/90 leading-relaxed"
           >
-            Every season, we convert your verified Chuk order volume into three headline numbers — <strong className="text-[#33A8C3]">meals served plastic-free</strong>, <strong className="text-[#F3B343]">order volume</strong>, and <strong className="text-[#95CC2E]">carbon avoided</strong>.
+            Every season, we convert your verified Chuk order volume into three headline numbers — <strong className="text-[#33A8C3]">meals served plastic-free</strong>, <strong className="text-[#95CC2E]">carbon avoided</strong>, and <strong className="text-[#F3B343]">volume of Chuk products used (CBM)</strong>.
           </motion.p>
         </div>
 
