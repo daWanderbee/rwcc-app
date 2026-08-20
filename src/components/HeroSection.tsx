@@ -46,7 +46,7 @@ export default function HeroSection() {
               <Button
                 asChild
                 size="lg"
-                className="font-black shadow-xl bg-[#ED544B] text-[#F2DABB] hover:bg-[#D9453C] hover:scale-105 active:scale-95 transition-all text-lg px-9 py-6 rounded-full"
+                className="font-black shadow-xl bg-[#ED544B] text-[#FFF2E0] hover:bg-[#D9453C] hover:scale-105 active:scale-95 transition-all text-lg px-9 py-6 rounded-full"
               >
                 <a href="#join-cta" className="flex items-center gap-2">
                   <span>Join the Club</span>
@@ -58,7 +58,7 @@ export default function HeroSection() {
                 asChild
                 variant="outline"
                 size="lg"
-                className="font-black border-2 border-[#942A45] text-[#942A45] bg-[#F2DABB] hover:bg-[#942A45] hover:text-[#F2DABB] hover:scale-105 active:scale-95 transition-all text-lg px-9 py-6 rounded-full"
+                className="font-black border-2 border-[#942A45] text-[#942A45] bg-[#FFF2E0] hover:bg-[#942A45] hover:text-[#FFF2E0] hover:scale-105 active:scale-95 transition-all text-lg px-9 py-6 rounded-full shadow-sm"
               >
                 <a href="#leaderboard" className="flex items-center gap-2">
                   <Trophy className="w-5 h-5 text-[#942A45]" />
@@ -122,7 +122,7 @@ export default function HeroSection() {
             <Button
               asChild
               size="lg"
-              className="w-full sm:w-auto font-black shadow-lg bg-[#ED544B] text-[#F2DABB] hover:bg-[#D9453C] text-base px-8 py-5 rounded-full"
+              className="w-full sm:w-auto font-black shadow-lg bg-[#ED544B] text-[#FFF2E0] hover:bg-[#D9453C] text-base px-8 py-5 rounded-full"
             >
               <a href="#join-cta" className="flex items-center justify-center gap-2">
                 <span>Join the Club</span>
@@ -134,7 +134,7 @@ export default function HeroSection() {
               asChild
               variant="outline"
               size="lg"
-              className="w-full sm:w-auto font-black border-2 border-[#942A45] text-[#942A45] bg-[#F2DABB] hover:bg-[#942A45] hover:text-[#F2DABB] text-base px-8 py-5 rounded-full"
+              className="w-full sm:w-auto font-black border-2 border-[#942A45] text-[#942A45] bg-[#FFF2E0] hover:bg-[#942A45] hover:text-[#FFF2E0] text-base px-8 py-5 rounded-full shadow-sm"
             >
               <a href="#leaderboard" className="flex items-center justify-center gap-2">
                 <Trophy className="w-4 h-4 text-[#942A45]" />

@@ -6,6 +6,7 @@ import { Trees, ShieldCheck, Leaf } from 'lucide-react';
 import { Badge } from '@/components/ui/badge';
 import { NumberTicker } from '@/components/ui/number-ticker';
 import { ClubCTA } from './WhatIsClub';
+import { WavyDivider } from '@/components/ui/wavy-divider';
 
 export default function RunningTotal() {
   const stats = [
@@ -16,6 +17,7 @@ export default function RunningTotal() {
       title: 'Chuk Products in Service',
       label: 'Bagasse tableware holding meals across India, not single-use plastic.',
       color: '#F2DABB',
+      titleColor: '#F2DABB',
       accentColor: '#942A45',
       icon: ShieldCheck,
       badge: 'Tableware Impact',
@@ -27,6 +29,7 @@ export default function RunningTotal() {
       title: 'Trees Planted Equivalent',
       label: 'Environmental equivalent of choosing rapid-renewable bagasse.',
       color: '#DFEFCB',
+      titleColor: '#DFEFCB',
       accentColor: '#95CC2E',
       icon: Trees,
       badge: 'Tree Impact',
@@ -37,8 +40,9 @@ export default function RunningTotal() {
       decimalPlaces: 0,
       title: 'CO₂ Emissions Avoided',
       label: 'Greenhouse gases kept out of the atmosphere vs fossil packaging.',
-      color: '#942A45',
-      accentColor: '#942A45',
+      color: '#95CC2E',
+      titleColor: '#95CC2E',
+      accentColor: '#95CC2E',
       icon: Leaf,
       badge: 'CO₂ Avoided',
     },
@@ -47,8 +51,9 @@ export default function RunningTotal() {
   return (
     <section
       id="running-total"
-      className="relative z-10 w-full bg-[#ED544B] text-[#F2DABB] font-['Karbon'] py-16 sm:py-24 lg:py-32 xl:py-36 px-4 sm:px-8 lg:px-12 xl:px-16"
+      className="relative z-10 w-full bg-[#ED544B] text-[#F2DABB] font-['Karbon'] pt-12 sm:pt-16 lg:pt-20 pb-16 sm:pb-24 lg:pb-32 px-4 sm:px-8 lg:px-12 xl:px-16"
     >
+      <WavyDivider fill="#ED544B" variant={3} />
       <div className="max-w-7xl mx-auto flex flex-col items-center text-center relative z-10">
 
         {/* Intro Line */}
@@ -84,7 +89,10 @@ export default function RunningTotal() {
                   >
                     <IconComponent className="w-5 h-5 lg:w-7 lg:h-7" />
                   </div>
-                  <span className="text-xs sm:text-sm lg:text-base font-bold uppercase tracking-wider text-[#F2DABB]/90">
+                  <span
+                    style={{ color: stat.titleColor }}
+                    className="text-xs sm:text-sm lg:text-base font-bold uppercase tracking-wider"
+                  >
                     {stat.badge}
                   </span>
                 </div>
@@ -104,7 +112,10 @@ export default function RunningTotal() {
                 </div>
 
                 {/* Metric Title */}
-                <h4 className="text-lg sm:text-xl lg:text-2xl xl:text-3xl font-black text-[#F2DABB] mb-3 leading-tight">
+                <h4
+                  style={{ color: stat.titleColor }}
+                  className="text-lg sm:text-xl lg:text-2xl xl:text-3xl font-black mb-3 leading-tight"
+                >
                   {stat.title}
                 </h4>
 

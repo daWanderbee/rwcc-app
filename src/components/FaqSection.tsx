@@ -10,6 +10,7 @@ import {
   AccordionTrigger,
   AccordionContent,
 } from '@/components/ui/accordion';
+import { WavyDivider } from '@/components/ui/wavy-divider';
 
 const faqs = [
   {
@@ -75,8 +76,9 @@ export default function FaqSection() {
   return (
     <section
       id="faq"
-      className="relative z-10 w-full bg-[#F2DABB] text-[#942A45] font-['Karbon'] py-16 sm:py-24 lg:py-32 xl:py-36 px-4 sm:px-8 lg:px-12 xl:px-16"
+      className="relative z-10 w-full bg-[#F2DABB] text-[#942A45] font-['Karbon'] pt-12 sm:pt-16 lg:pt-20 pb-16 sm:pb-24 lg:pb-32 px-4 sm:px-8 lg:px-12 xl:px-16"
     >
+      <WavyDivider fill="#F2DABB" variant={2} />
       <div className="max-w-5xl mx-auto flex flex-col items-center">
         {/* Inject FAQPage Schema for Search & AI Snippets */}
         <script
@@ -131,7 +133,7 @@ export default function FaqSection() {
               </AccordionTrigger>
 
               <AccordionContent className="px-3 sm:px-6 lg:px-8 pb-7 pt-0 border-0">
-                <div className="flex items-start gap-4 text-base sm:text-lg lg:text-xl text-[#942A45] leading-relaxed bg-[#E5C7A3]/40 p-5 sm:p-7 rounded-2xl border border-[#942A45]/15">
+                <div className="flex items-start gap-4 text-base sm:text-lg lg:text-xl text-[#942A45] leading-relaxed bg-[#F2DABB]/50 p-5 sm:p-7 rounded-2xl border border-[#942A45]/15">
                   <CheckCircle2 className="w-6 h-6 lg:w-7 lg:h-7 text-[#059669] shrink-0 mt-0.5" />
                   <div>{faq.answer}</div>
                 </div>

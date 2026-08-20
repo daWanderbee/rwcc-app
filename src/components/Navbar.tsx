@@ -33,7 +33,7 @@ export default function Navbar() {
   ];
 
   return (
-    <header className="fixed top-0 left-0 right-0 z-[100] w-full bg-[#F2DABB] border-b-2 border-[#942A45]/20 px-4 sm:px-8 lg:px-12 xl:px-16 py-3 lg:py-3.5 flex items-center justify-between transition-all shadow-sm">
+    <header className="fixed top-0 left-0 right-0 z-[100] w-full bg-[#F2DABB]/95 backdrop-blur-md border-b-2 border-[#942A45]/15 px-4 sm:px-8 lg:px-12 xl:px-16 py-3 lg:py-3.5 flex items-center justify-between transition-all shadow-sm">
       {/* Top Left: Logo Unit */}
       <div className="flex items-center gap-6 lg:gap-10">
         <AnimatePresence>
@@ -101,14 +101,14 @@ export default function Navbar() {
             initial={{ opacity: 0, y: -10 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -10 }}
-            className="absolute top-full left-0 right-0 bg-[#F2DABB] border-b-4 border-[#942A45] shadow-xl py-4 px-6 md:hidden flex flex-col gap-3 font-bold text-base text-[#942A45]"
+            className="absolute top-full left-0 right-0 bg-[#FFF2E0] border-b-4 border-[#942A45] shadow-xl py-4 px-6 md:hidden flex flex-col gap-3 font-bold text-base text-[#942A45]"
           >
             {navLinks.map((link) => (
               <a
                 key={link.name}
                 href={link.href}
                 onClick={() => setMobileMenuOpen(false)}
-                className="py-2.5 border-b border-[#E5C7A3] hover:text-[#942A45] flex items-center justify-between"
+                className="py-2.5 border-b border-[#F2DABB] hover:text-[#942A45] flex items-center justify-between"
               >
                 <span>{link.name}</span>
                 <span className="text-xs text-[#942A45]">→</span>

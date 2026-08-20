@@ -19,7 +19,7 @@ const buttonVariants = cva(
         outlinePlum:
           'border-2 border-[#942A45] text-[#942A45] bg-[#F2DABB] hover:bg-[#942A45] hover:text-[#F2DABB]',
         secondary:
-          'bg-[#E5C7A3] text-[#942A45] hover:bg-[#D4B58F]',
+          'bg-[#F2DABB] text-[#942A45] hover:bg-[#D4B58F]',
         ghost:
           'hover:bg-[#942A45]/10 text-[#942A45]',
         link: 'text-[#942A45] underline-offset-4 hover:underline',

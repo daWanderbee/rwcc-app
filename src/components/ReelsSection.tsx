@@ -120,6 +120,8 @@ const reelsData: ReelItem[] = [
   },
 ];
 
+import { WavyDivider } from '@/components/ui/wavy-divider';
+
 export default function ReelsSection() {
   const [likedMap, setLikedMap] = useState<Record<string, boolean>>({});
 
@@ -132,8 +134,9 @@ export default function ReelsSection() {
   return (
     <section
       id="reels"
-      className="relative z-10 w-full bg-[#F2DABB] text-[#942A45] font-['Karbon'] py-12 sm:py-20 lg:py-32 xl:py-36 px-4 sm:px-8 lg:px-12 xl:px-16 border-t border-[#942A45]/15"
+      className="relative z-10 w-full bg-[#F2DABB] text-[#942A45] font-['Karbon'] pt-12 sm:pt-16 lg:pt-20 pb-16 sm:pb-24 lg:pb-32 px-4 sm:px-8 lg:px-12 xl:px-16"
     >
+      <WavyDivider fill="#F2DABB" variant={1} />
       <div className="max-w-7xl mx-auto flex flex-col items-center">
         {/* Header */}
         <div className="text-center max-w-3xl mx-auto mb-10 sm:mb-16 lg:mb-20">
@@ -260,7 +263,7 @@ export default function ReelsSection() {
         </div>
 
         {/* Follow CTA Bar */}
-        <div className="w-full max-w-2xl bg-[#E5C7A3] border-2 border-[#942A45]/20 rounded-2xl sm:rounded-3xl p-5 sm:p-7 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 sm:gap-6 shadow-md">
+        <div className="w-full max-w-2xl bg-[#F2DABB] border-2 border-[#942A45]/20 rounded-2xl sm:rounded-3xl p-5 sm:p-7 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 sm:gap-6 shadow-md">
           <div className="flex items-center gap-3.5 sm:gap-4 text-left w-full sm:w-auto">
             <div className="w-11 h-11 sm:w-13 sm:h-13 rounded-2xl bg-[#942A45] text-[#F2DABB] flex items-center justify-center shrink-0 shadow-md">
               <InstagramIcon className="w-5 h-5 sm:w-6 sm:h-6" />

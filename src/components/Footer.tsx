@@ -2,10 +2,12 @@
 
 import React from 'react';
 import Image from 'next/image';
+import { WavyDivider } from '@/components/ui/wavy-divider';
 
 export default function Footer() {
   return (
-    <footer className="w-full bg-[#4A1525] text-[#F2DABB] font-['Karbon'] relative z-10 py-12 sm:py-16 lg:py-20 px-4 sm:px-8 lg:px-12 xl:px-16 border-t-2 border-[#F2DABB]/15">
+    <footer className="w-full bg-[#4A1525] text-[#F2DABB] font-['Karbon'] relative z-10 pt-12 sm:pt-16 lg:pt-20 pb-12 sm:pb-16 lg:pb-20 px-4 sm:px-8 lg:px-12 xl:px-16">
+      <WavyDivider fill="#4A1525" variant={3} />
       <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-8 lg:gap-12 text-center md:text-left">
         {/* Left: Logo & Tagline */}
         <div className="flex items-center gap-4 lg:gap-5">

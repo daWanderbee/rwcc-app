@@ -3,8 +3,9 @@
 import React from 'react';
 import Image from 'next/image';
 import { motion } from 'framer-motion';
-import { Utensils, Leaf, Package, Trophy, MapPin } from 'lucide-react';
+import { Utensils, Leaf, Package, ArrowDown } from 'lucide-react';
 import { StickyScroll, StickyScrollContentItem } from '@/components/ui/sticky-scroll-reveal';
+import { WavyDivider } from '@/components/ui/wavy-divider';
 
 export default function HowImpactIsCalculated() {
   const stickyContent: StickyScrollContentItem[] = [
@@ -35,7 +36,7 @@ export default function HowImpactIsCalculated() {
       num: '02',
       title: 'Carbon avoided',
       description:
-        'Measured against the packaging you used before you switched. The number only moves when the switch is real. [VERIFY CLAIM: methodology needed before publish]',
+        'Measured against the packaging you used before you switched. The number only moves when the switch is real.',
       icon: Leaf,
       color: '#95CC2E',
       tag: 'Net Emission Impact',
@@ -55,12 +56,12 @@ export default function HowImpactIsCalculated() {
     },
     {
       num: '03',
-      title: 'Volume of Chuk Products Used (CBM)',
+      title: 'Volume of Chuk Products Used (Tonnes)',
       description:
-        'Every cubic metre of Chuk product you\'ve taken on, tallied straight from your orders. Small crates per delivery, stacked over months — into a number that shows exactly how far you\'ve moved.',
+        'Every tonne of Chuk compostable tableware you\'ve taken on, tallied straight from your orders. Stacked over deliveries and months — into a verifiable number that shows exactly how much plastic your kitchen has displaced.',
       icon: Package,
       color: '#F3B343',
-      tag: 'Volume in CBM',
+      tag: 'Volume in Tonnes',
       content: (
         <div className="relative w-full h-full flex flex-col items-center justify-center p-2">
           <div className="relative w-full h-64 sm:h-72 drop-shadow-2xl overflow-hidden rounded-2xl border-2 border-[#F2DABB]/20">
@@ -80,8 +81,9 @@ export default function HowImpactIsCalculated() {
   return (
     <section
       id="how-it-works-impact"
-      className="relative z-10 w-full bg-[#942A45] text-[#F2DABB] font-['Karbon'] py-16 sm:py-24 lg:py-28 px-4 sm:px-8 lg:px-12 xl:px-16 border-b border-[#F2DABB]/20 shadow-2xl"
+      className="relative z-10 w-full bg-[#942A45] text-[#F2DABB] font-['Karbon'] pt-12 sm:pt-16 lg:pt-20 pb-16 sm:pb-24 lg:pb-28 px-4 sm:px-8 lg:px-12 xl:px-16 shadow-2xl scroll-mt-20"
     >
+      <WavyDivider fill="#942A45" variant={2} />
       <div className="max-w-6xl mx-auto flex flex-col items-center">
         {/* Header Block */}
         <div className="text-center max-w-3xl mb-12 sm:mb-16">
@@ -102,7 +104,7 @@ export default function HowImpactIsCalculated() {
             transition={{ delay: 0.15 }}
             className="text-xl sm:text-2xl font-black text-[#F2DABB] mb-3"
           >
-            Meals, carbon, and volume used (CBM) — verified directly from your orders.
+            Meals, carbon, and tableware used in tonnes — verified directly from your orders.
           </motion.p>
 
           <motion.p
@@ -112,36 +114,28 @@ export default function HowImpactIsCalculated() {
             transition={{ delay: 0.2 }}
             className="text-base sm:text-lg font-medium text-[#F2DABB]/90 leading-relaxed"
           >
-            Every season, we convert your verified Chuk order volume into three headline numbers — <strong className="text-[#33A8C3]">meals served plastic-free</strong>, <strong className="text-[#95CC2E]">carbon avoided</strong>, and <strong className="text-[#F3B343]">volume of Chuk products used (CBM)</strong>.
+            Every season, we convert your verified Chuk order volume into three headline numbers — <strong className="text-[#33A8C3]">meals served plastic-free</strong>, <strong className="text-[#95CC2E]">carbon avoided</strong>, and <strong className="text-[#F3B343]">volume of Chuk products used in tonnes</strong>.
           </motion.p>
         </div>
 
         {/* Aceternity UI Sticky Scroll Reveal */}
         <StickyScroll content={stickyContent} />
 
-        {/* Closing Callout Block */}
+        {/* Next Section Anchor CTA */}
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 0, y: 15 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ delay: 0.3 }}
-          className="mt-16 sm:mt-20 w-full max-w-4xl bg-[#7B2239]/80 border-2 border-[#F3B343]/40 rounded-3xl p-6 sm:p-10 text-center flex flex-col items-center shadow-xl backdrop-blur-md"
+          className="mt-14 sm:mt-18 text-center"
         >
-          <div className="flex items-center gap-3 mb-3">
-            <Trophy className="w-6 h-6 text-[#F2DABB]" />
-            <span className="text-xs font-black uppercase tracking-widest text-[#F2DABB]">
-              Dual Recognition System
-            </span>
-            <MapPin className="w-6 h-6 text-[#942A45]" />
-          </div>
-
-          <h3 className="text-2xl sm:text-4xl font-black text-[#F2DABB] mb-3 leading-tight">
-            Two leaderboards. One for the country. One for your city.
-          </h3>
-
-          <p className="text-sm sm:text-lg font-medium text-[#F2DABB]/90 leading-relaxed max-w-2xl">
-            The national rank is wide open. The city rank is the one your regulars would actually notice — and the one a kitchen your size can genuinely lead.
-          </p>
+          <a
+            href="#your-spot"
+            className="inline-flex items-center gap-2.5 font-black text-sm sm:text-base text-[#942A45] bg-[#F2DABB] hover:bg-[#FFF2E0] px-8 py-4 rounded-full shadow-lg transition-all hover:scale-105 active:scale-95"
+          >
+            <span>Claim Your Spot on the Board</span>
+            <ArrowDown className="w-4 h-4 text-[#942A45]" />
+          </a>
         </motion.div>
       </div>
     </section>

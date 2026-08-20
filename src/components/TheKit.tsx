@@ -13,6 +13,7 @@ import {
   DialogTitle,
   DialogDescription,
 } from '@/components/ui/dialog';
+import { WavyDivider } from '@/components/ui/wavy-divider';
 
 const kitPieces = [
   {
@@ -93,8 +94,9 @@ export default function TheKit() {
   return (
     <section
       id="the-kit"
-      className="relative z-10 w-full bg-[#942A45] text-[#F2DABB] font-['Karbon'] py-16 sm:py-24 lg:py-32 xl:py-36 px-4 sm:px-8 lg:px-12 xl:px-16"
+      className="relative z-10 w-full bg-[#942A45] text-[#F2DABB] font-['Karbon'] pt-12 sm:pt-16 lg:pt-20 pb-16 sm:pb-24 lg:pb-32 px-4 sm:px-8 lg:px-12 xl:px-16"
     >
+      <WavyDivider fill="#942A45" variant={1} />
       <div className="max-w-7xl mx-auto flex flex-col items-center">
         {/* Section Header */}
         <div className="text-center max-w-3xl mx-auto mb-12 sm:mb-16 lg:mb-20">
