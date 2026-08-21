@@ -8,10 +8,18 @@ import { NumberTicker } from '@/components/ui/number-ticker';
 import { ClubCTA } from './WhatIsClub';
 import { WavyDivider } from '@/components/ui/wavy-divider';
 
+import { leaderboardMembers } from './Leaderboard';
+
 export default function RunningTotal() {
+  const totalMeals = leaderboardMembers.reduce((acc, curr) => acc + curr.mealsPlasticFree, 0);
+  const totalCo2Kg = leaderboardMembers.reduce((acc, curr) => acc + curr.co2AvoidedKg, 0);
+  const totalCo2T = Math.round(totalCo2Kg / 1000); // 234 t
+  const totalMealsM = +(totalMeals / 1000000).toFixed(1); // 5.8M
+  const totalTrees = Math.round(totalCo2Kg / 21.77); // ~10,760 trees equivalent
+
   const stats = [
     {
-      value: 3.1,
+      value: totalMealsM,
       suffix: 'M',
       decimalPlaces: 1,
       title: 'Chuk Products in Service',
@@ -23,7 +31,7 @@ export default function RunningTotal() {
       badge: 'Tableware Impact',
     },
     {
-      value: 22900,
+      value: totalTrees,
       suffix: '',
       decimalPlaces: 0,
       title: 'Trees Planted Equivalent',
@@ -35,7 +43,7 @@ export default function RunningTotal() {
       badge: 'Tree Impact',
     },
     {
-      value: 690,
+      value: totalCo2T,
       suffix: ' t',
       decimalPlaces: 0,
       title: 'CO₂ Emissions Avoided',

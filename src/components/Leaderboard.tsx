@@ -15,7 +15,7 @@ export type BusinessType =
   | 'Cafe and bakery'
   | 'Caterer and canteen';
 
-interface RestaurantMember {
+export interface RestaurantMember {
   id: string;
   name: string;
   initials: string;
@@ -23,7 +23,7 @@ interface RestaurantMember {
   city: string;
   outlets: number;
   mealsPlasticFree: number; // Headline Figure (Meals)
-  volumeCbm: number; // Volume Figure (CBM)
+  volumeCbm: number; // Volume Figure (Tonnes)
   co2AvoidedKg: number; // Technical Carbon Metric (kg CO2e)
   kwhAvoided: number; // Electricity Avoided
   monthsRunning: number; // Streak
@@ -33,7 +33,7 @@ interface RestaurantMember {
   memberSince: string;
 }
 
-const leaderboardMembers: RestaurantMember[] = [
+export const leaderboardMembers: RestaurantMember[] = [
   {
     id: '1',
     name: "Haldiram's",
