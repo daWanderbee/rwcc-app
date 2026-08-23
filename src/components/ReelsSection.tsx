@@ -48,9 +48,9 @@ const reelsData: ReelItem[] = [
     handle: '@rasodu_official',
     city: 'HSR Layout, Bengaluru',
     likes: '217',
-    image: '/images/reels/reel-1.jpg',
+    image: '/images/reels/rasodu.png?v=3',
     tag: '3CP Snack Tray',
-    tagColor: '#95CC2E', // Leaf Lime
+    tagColor: '#F3B343', // Sunny Gold
     quote: '80% of our menu served on Chuk. The 3CP tray keeps the dabeli crisp and chai doesn’t spill.',
   },
   {
@@ -61,7 +61,7 @@ const reelsData: ReelItem[] = [
     handle: '@camerabackpacker',
     city: 'Gurgaon',
     likes: '1.4K',
-    image: '/images/reels/reel-2.jpg',
+    image: '/images/reels/civil-lines-wala.png?v=3',
     tag: 'Legendary Spot',
     tagColor: '#F3B343', // Sunny Gold
     quote: 'Iconic 15-year-old foodie spot serving hot Chole Bhature on 100% regenerative sugarcane tableware.',
@@ -74,9 +74,9 @@ const reelsData: ReelItem[] = [
     handle: '@psclicks_india',
     city: 'Lucknow',
     likes: '890',
-    image: '/images/reels/reel-3.jpg',
+    image: '/images/reels/jain-chaat.png?v=3',
     tag: 'Heritage Chaat',
-    tagColor: '#ED544B', // Sunset Coral
+    tagColor: '#33A8C3', // Turquoise Sky
     quote: 'Generations of Lucknow chaat lovers, now served with care on 100% compostable Chuk plates.',
   },
   {
@@ -87,9 +87,9 @@ const reelsData: ReelItem[] = [
     handle: '@chukitnow',
     city: 'Bengaluru',
     likes: '640',
-    image: '/images/reels/reel-4.jpg',
+    image: '/images/reels/nh8-restaurant.png?v=3',
     tag: 'Unlimited Thali',
-    tagColor: '#33A8C3', // Turquoise Sky
+    tagColor: '#059669', // Forest Emerald
     quote: 'Using Chuk for 6 years. Guests walking in expect hygiene, sustainability, and sturdiness.',
   },
   {
@@ -100,9 +100,9 @@ const reelsData: ReelItem[] = [
     handle: '@bambaiya_bangalore',
     city: 'HSR Layout, Bengaluru',
     likes: '1.1K',
-    image: '/images/reels/reel-5.jpg',
+    image: '/images/reels/bambaiya.png?v=3',
     tag: 'Founder Story',
-    tagColor: '#F3B343', // Sunny Gold
+    tagColor: '#ED544B', // Sunset Coral
     quote: 'Mumbai ka swad in Bangalore. Authentic flavours, honest prices — plastic just didn’t fit our story.',
   },
   {
@@ -113,7 +113,7 @@ const reelsData: ReelItem[] = [
     handle: '@sahibsbrickovenpizza',
     city: 'Horamavu, Bengaluru',
     likes: '780',
-    image: '/images/reels/reel-6.jpg',
+    image: '/images/reels/sahibs-brick-oven-pizza.png?v=3',
     tag: 'Craft Delivery',
     tagColor: '#95CC2E', // Leaf Lime
     quote: 'Handcrafted pasta packed in Chuk: no leaks, no soggy bottoms, delivered 100% toxin-free.',
@@ -192,12 +192,13 @@ export default function ReelsSection() {
                   src={reel.image}
                   alt={reel.title}
                   fill
+                  unoptimized
                   sizes="(max-width: 640px) 85vw, (max-width: 1024px) 45vw, 30vw"
                   className="object-cover transition-transform duration-500 group-hover:scale-105"
                 />
 
-                {/* Subtle dark gradient overlay */}
-                <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-transparent to-black/85 group-hover:from-black/30 group-hover:to-black/80 transition-colors" />
+                {/* Subtle bottom shadow overlay so text is crisp */}
+                <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-black/25 pointer-events-none" />
 
                 {/* Top Bar: Tag & Reel Badge */}
                 <div className="relative z-10 flex items-center justify-between">

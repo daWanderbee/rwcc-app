@@ -1,6 +1,7 @@
 'use client';
 
 import React, { useState, useMemo } from 'react';
+import Image from 'next/image';
 import { motion, AnimatePresence } from 'framer-motion';
 import { ChevronDown, ArrowDown } from 'lucide-react';
 import { Tabs, TabsList, TabsTrigger } from '@/components/ui/tabs';
@@ -19,6 +20,7 @@ export interface RestaurantMember {
   id: string;
   name: string;
   initials: string;
+  logoUrl: string;
   businessType: BusinessType;
   city: string;
   outlets: number;
@@ -38,6 +40,7 @@ export const leaderboardMembers: RestaurantMember[] = [
     id: '1',
     name: "Haldiram's",
     initials: 'HD',
+    logoUrl: '/logos/01-haldirams.png',
     businessType: 'QSR and fast food',
     city: 'Delhi NCR',
     outlets: 45,
@@ -55,6 +58,7 @@ export const leaderboardMembers: RestaurantMember[] = [
     id: '2',
     name: 'Caterspoint',
     initials: 'CP',
+    logoUrl: '/logos/02-caterspoint.png',
     businessType: 'Cloud kitchen',
     city: 'Gurugram',
     outlets: 6,
@@ -72,6 +76,7 @@ export const leaderboardMembers: RestaurantMember[] = [
     id: '3',
     name: 'Bikanervala',
     initials: 'BV',
+    logoUrl: '/logos/03-bikanervala.png',
     businessType: 'QSR and fast food',
     city: 'Delhi NCR',
     outlets: 28,
@@ -89,6 +94,7 @@ export const leaderboardMembers: RestaurantMember[] = [
     id: '4',
     name: 'Lite Bite Foods',
     initials: 'LB',
+    logoUrl: '/logos/04-lite-bite-foods.png',
     businessType: 'Restaurant and casual dining',
     city: 'Mumbai',
     outlets: 18,
@@ -106,6 +112,7 @@ export const leaderboardMembers: RestaurantMember[] = [
     id: '5',
     name: 'Taco Bell',
     initials: 'TB',
+    logoUrl: '/logos/05-taco-bell.png',
     businessType: 'QSR and fast food',
     city: 'Delhi NCR',
     outlets: 12,
@@ -123,6 +130,7 @@ export const leaderboardMembers: RestaurantMember[] = [
     id: '6',
     name: 'Vrindawan Sweets & Restaurant',
     initials: 'VS',
+    logoUrl: '/logos/generic-restaurant.png',
     businessType: 'Restaurant and casual dining',
     city: 'Delhi NCR',
     outlets: 4,
@@ -140,6 +148,7 @@ export const leaderboardMembers: RestaurantMember[] = [
     id: '7',
     name: 'Civil Line Wala',
     initials: 'CL',
+    logoUrl: '/logos/07-civil-line-wala.png',
     businessType: 'QSR and fast food',
     city: 'Gurugram',
     outlets: 3,
@@ -157,6 +166,7 @@ export const leaderboardMembers: RestaurantMember[] = [
     id: '8',
     name: 'Bansal Sweets',
     initials: 'BS',
+    logoUrl: '/logos/generic-restaurant.png',
     businessType: 'QSR and fast food',
     city: 'Delhi NCR',
     outlets: 3,
@@ -174,6 +184,7 @@ export const leaderboardMembers: RestaurantMember[] = [
     id: '9',
     name: 'Kapoor Balle Balle',
     initials: 'KB',
+    logoUrl: '/logos/generic-restaurant.png',
     businessType: 'Restaurant and casual dining',
     city: 'Delhi NCR',
     outlets: 2,
@@ -191,6 +202,7 @@ export const leaderboardMembers: RestaurantMember[] = [
     id: '10',
     name: 'Noodles',
     initials: 'ND',
+    logoUrl: '/logos/generic-restaurant.png',
     businessType: 'QSR and fast food',
     city: 'Delhi NCR',
     outlets: 3,
@@ -208,6 +220,7 @@ export const leaderboardMembers: RestaurantMember[] = [
     id: '11',
     name: 'Harish Bakery',
     initials: 'HB',
+    logoUrl: '/logos/11-harish-bakery.png',
     businessType: 'Cafe and bakery',
     city: 'Gurugram',
     outlets: 2,
@@ -225,6 +238,7 @@ export const leaderboardMembers: RestaurantMember[] = [
     id: '12',
     name: 'Khan Chacha',
     initials: 'KC',
+    logoUrl: '/logos/12-khan-chacha.png',
     businessType: 'Restaurant and casual dining',
     city: 'Delhi',
     outlets: 4,
@@ -242,6 +256,7 @@ export const leaderboardMembers: RestaurantMember[] = [
     id: '13',
     name: 'Prince Chaat',
     initials: 'PC',
+    logoUrl: '/logos/generic-restaurant.png',
     businessType: 'QSR and fast food',
     city: 'Gurugram',
     outlets: 2,
@@ -259,6 +274,7 @@ export const leaderboardMembers: RestaurantMember[] = [
     id: '14',
     name: 'Dora Pancakes & waffles',
     initials: 'DP',
+    logoUrl: '/logos/14-dora-pancakes.png',
     businessType: 'Cafe and bakery',
     city: 'Delhi NCR',
     outlets: 2,
@@ -276,6 +292,7 @@ export const leaderboardMembers: RestaurantMember[] = [
     id: '15',
     name: 'Hooga House',
     initials: 'HH',
+    logoUrl: '/logos/generic-restaurant.png',
     businessType: 'Cafe and bakery',
     city: 'Delhi NCR',
     outlets: 2,
@@ -293,6 +310,7 @@ export const leaderboardMembers: RestaurantMember[] = [
     id: '16',
     name: 'Sandwich king',
     initials: 'SK',
+    logoUrl: '/logos/generic-restaurant.png',
     businessType: 'Cafe and bakery',
     city: 'Delhi NCR',
     outlets: 2,
@@ -310,6 +328,7 @@ export const leaderboardMembers: RestaurantMember[] = [
     id: '17',
     name: 'Lintons Cafe',
     initials: 'LC',
+    logoUrl: '/logos/generic-restaurant.png',
     businessType: 'Cafe and bakery',
     city: 'Kolkata',
     outlets: 2,
@@ -463,6 +482,15 @@ export default function Leaderboard() {
                 <Star3D rank={2} size={84} className="w-16 h-16 sm:w-20 sm:h-20 lg:w-24 lg:h-24" />
               </div>
               <div className="w-full bg-[#FFF2E0] border-2 border-[#33A8C3] rounded-2xl p-3 sm:p-5 pt-3.5 flex flex-col items-center shadow-md">
+                <div className="w-11 h-11 sm:w-13 sm:h-13 rounded-full bg-white border-2 border-[#33A8C3]/50 mb-2 shadow-xs flex items-center justify-center overflow-hidden shrink-0">
+                  <Image
+                    src={top2.logoUrl}
+                    alt={top2.name}
+                    width={52}
+                    height={52}
+                    className="w-full h-full object-cover rounded-full"
+                  />
+                </div>
                 <h4 className="font-black text-xs sm:text-base lg:text-lg text-[#942A45] w-full text-center">
                   {fmtName15(top2.name)}
                 </h4>
@@ -481,6 +509,15 @@ export default function Leaderboard() {
                 <Star3D rank={1} size={110} className="w-20 h-20 sm:w-26 sm:h-26 lg:w-30 lg:h-30" />
               </div>
               <div className="w-full bg-[#FFF2E0] border-3 border-[#F3B343] rounded-2xl p-3.5 sm:p-6 pt-4 flex flex-col items-center shadow-xl">
+                <div className="w-13 h-13 sm:w-15 sm:h-15 rounded-full bg-white border-2 border-[#F3B343] mb-2 shadow-sm flex items-center justify-center overflow-hidden shrink-0">
+                  <Image
+                    src={top1.logoUrl}
+                    alt={top1.name}
+                    width={60}
+                    height={60}
+                    className="w-full h-full object-cover rounded-full"
+                  />
+                </div>
                 <h4 className="font-black text-sm sm:text-lg lg:text-xl text-[#942A45] w-full text-center">
                   {fmtName15(top1.name)}
                 </h4>
@@ -499,6 +536,15 @@ export default function Leaderboard() {
                 <Star3D rank={3} size={84} className="w-16 h-16 sm:w-20 sm:h-20 lg:w-24 lg:h-24" />
               </div>
               <div className="w-full bg-[#FFF2E0] border-2 border-[#ED544B] rounded-2xl p-3 sm:p-5 pt-3.5 flex flex-col items-center shadow-md">
+                <div className="w-11 h-11 sm:w-13 sm:h-13 rounded-full bg-white border-2 border-[#ED544B]/50 mb-2 shadow-xs flex items-center justify-center overflow-hidden shrink-0">
+                  <Image
+                    src={top3.logoUrl}
+                    alt={top3.name}
+                    width={52}
+                    height={52}
+                    className="w-full h-full object-cover rounded-full"
+                  />
+                </div>
                 <h4 className="font-black text-xs sm:text-base lg:text-lg text-[#942A45] w-full text-center">
                   {fmtName15(top3.name)}
                 </h4>
@@ -564,13 +610,16 @@ export default function Leaderboard() {
                         </span>
                       </div>
 
-                      {/* Col 2: Restaurant & Avatar */}
+                      {/* Col 2: Restaurant & Avatar Logo DP */}
                       <div className="sm:col-span-5 flex items-center gap-3 sm:gap-4 min-w-0 flex-1 sm:flex-none">
-                        <div
-                          style={{ backgroundColor: row.avatarBg }}
-                          className="w-9 h-9 sm:w-11 sm:h-11 rounded-full text-[#FFF2E0] font-black text-xs sm:text-base flex items-center justify-center shrink-0 shadow-sm"
-                        >
-                          {row.initials}
+                        <div className="w-10 h-10 sm:w-11 sm:h-11 rounded-full bg-white border border-[#942A45]/20 flex items-center justify-center shrink-0 shadow-xs overflow-hidden">
+                          <Image
+                            src={row.logoUrl}
+                            alt={row.name}
+                            width={44}
+                            height={44}
+                            className="w-full h-full object-cover rounded-full"
+                          />
                         </div>
                         <div className="text-left min-w-0 flex-1 flex flex-col justify-center">
                           <span className="font-black text-sm sm:text-base lg:text-lg text-[#942A45] whitespace-nowrap block">
