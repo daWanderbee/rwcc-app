@@ -21,6 +21,8 @@ export default function JoinCtaSection() {
   const [modalOpen, setModalOpen] = useState(false);
   const [modalType, setModalType] = useState<'join' | 'talk'>('join');
   const [formSubmitted, setFormSubmitted] = useState(false);
+  const [submitting, setSubmitting] = useState(false);
+  const [submitError, setSubmitError] = useState('');
   const [formData, setFormData] = useState({
     restaurantName: '',
     contactName: '',
@@ -33,12 +35,30 @@ export default function JoinCtaSection() {
   const handleOpenModal = (type: 'join' | 'talk') => {
     setModalType(type);
     setFormSubmitted(false);
+    setSubmitError('');
     setModalOpen(true);
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    setFormSubmitted(true);
+    setSubmitError('');
+    setSubmitting(true);
+    try {
+      const res = await fetch('/api/join', {
+        method: 'POST',
+        headers: { 'content-type': 'application/json' },
+        body: JSON.stringify({ ...formData, modalType }),
+      });
+      if (!res.ok) {
+        const { error } = await res.json().catch(() => ({ error: '' }));
+        throw new Error(error || 'Something went wrong. Please try again.');
+      }
+      setFormSubmitted(true);
+    } catch (err) {
+      setSubmitError(err instanceof Error ? err.message : 'Something went wrong.');
+    } finally {
+      setSubmitting(false);
+    }
   };
 
   return (
@@ -243,13 +263,22 @@ export default function JoinCtaSection() {
                 </div>
               </div>
 
+              {submitError && (
+                <p className="text-xs font-bold text-[#ED544B] text-left">{submitError}</p>
+              )}
+
               <Button
                 type="submit"
                 variant="coral"
                 size="lg"
-                className="w-full mt-2 font-black bg-[#942A45] text-[#F2DABB] hover:bg-[#7A1F36] py-3.5 text-sm sm:text-base"
+                disabled={submitting}
+                className="w-full mt-2 font-black bg-[#942A45] text-[#F2DABB] hover:bg-[#7A1F36] py-3.5 text-sm sm:text-base disabled:opacity-70"
               >
-                {modalType === 'join' ? 'Submit & Claim Free Kit' : 'Send Message'}
+                {submitting
+                  ? 'Sending...'
+                  : modalType === 'join'
+                    ? 'Submit & Claim Free Kit'
+                    : 'Send Message'}
               </Button>
             </form>
           )}
