@@ -7,9 +7,12 @@ export const metadata: Metadata = {
   icons: {
     icon: [
       { url: "/images/rwcc.png", type: "image/png" },
+      { url: "/favicon.ico" },
     ],
     shortcut: ["/images/rwcc.png"],
-    apple: ["/images/rwcc.png"],
+    apple: [
+      { url: "/images/rwcc.png", sizes: "180x180", type: "image/png" },
+    ],
   },
 };
 
