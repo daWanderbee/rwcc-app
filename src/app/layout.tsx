@@ -2,8 +2,15 @@ import type { Metadata } from "next";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "Restaurants Who Care Club | Powered by CHUK",
+  title: "RWCC by Chuk",
   description: "Recognising restaurants that serve on compostable tableware.",
+  icons: {
+    icon: [
+      { url: "/images/rwcc.png", type: "image/png" },
+    ],
+    shortcut: ["/images/rwcc.png"],
+    apple: ["/images/rwcc.png"],
+  },
 };
 
 export default function RootLayout({
