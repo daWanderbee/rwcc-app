@@ -77,17 +77,28 @@ export async function POST(req: Request) {
     return Response.json({ error: 'lead intake not configured' }, { status: 503 });
   }
 
+  const text = (v: unknown) => (typeof v === 'string' ? v.trim() : v ? String(v) : '');
+
+  // Zoho type-checks Email and rejects the whole record with INVALID_DATA if it
+  // does not parse — and the browser's type="email" is looser than Zoho, so it
+  // waves through "name@company" with no TLD. An optional field must never cost
+  // us the lead: drop an unusable address from the payload and keep the raw
+  // text in the description so nothing the restaurant typed is lost.
+  const rawEmail = text(b.email);
+  const email = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(rawEmail) ? rawEmail : undefined;
+
   // Last_Name is the only field Zoho makes mandatory on Leads.
   const notes = [
-    b.outlets && `Outlets: ${b.outlets}`,
-    b.isChukCustomer && `Existing Chuk customer: ${b.isChukCustomer}`,
+    b.outlets && `Outlets: ${text(b.outlets)}`,
+    b.isChukCustomer && `Existing Chuk customer: ${text(b.isChukCustomer)}`,
+    rawEmail && !email && `Email as entered (rejected by Zoho): ${rawEmail}`,
   ].filter(Boolean);
 
   const lead = {
-    Last_Name: b.contactName || b.restaurantName,
-    Company: b.restaurantName,
-    Phone: b.phone,
-    Email: b.email,
+    Last_Name: text(b.contactName) || text(b.restaurantName),
+    Company: text(b.restaurantName),
+    Phone: text(b.phone),
+    Email: email,
     Lead_Source: b.modalType === 'talk' ? LEAD_SOURCE.talk : LEAD_SOURCE.join,
     Description: notes.join('\n') || undefined,
   };

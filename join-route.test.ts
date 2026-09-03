@@ -63,6 +63,31 @@ assert.equal(JSON.parse(sent!.init.body as string).data[0].Last_Name, 'Green Lea
 await post({ ...form, modalType: 'talk' });
 assert.equal(JSON.parse(sent!.init.body as string).data[0].Lead_Source, 'RWCC contact');
 
+// Zoho type-checks Email and kills the whole record with INVALID_DATA if it does
+// not parse. The browser's type="email" is looser and lets "name@company" through.
+// An unusable address must be dropped from the payload, not cost us the lead.
+globalThis.fetch = stub(ok) as unknown as typeof fetch;
+for (const bad of ['', '   ', 'name@company', 'not an email', 'a@b@c.com']) {
+  res = await post({ ...form, email: bad });
+  assert.equal(res.status, 200, `email ${JSON.stringify(bad)} must not fail the form`);
+  const sentLead = JSON.parse(sent!.init.body as string).data[0];
+  assert.equal(sentLead.Email, undefined, `email ${JSON.stringify(bad)} must not reach Zoho`);
+  if (bad.trim()) {
+    // whatever the restaurant typed is preserved rather than silently dropped
+    assert.match(sentLead.Description, new RegExp(`Email as entered.*${bad.trim().replace(/[.*+?^${}()|[\]\\]/g, '\\$&')}`));
+  }
+}
+
+// a valid address still goes through as a real Email field, and gets trimmed
+res = await post({ ...form, email: '  hello@restaurant.com  ' });
+assert.equal(JSON.parse(sent!.init.body as string).data[0].Email, 'hello@restaurant.com');
+
+// surrounding whitespace never reaches the CRM
+await post({ ...form, restaurantName: '  Green Leaf Kitchen  ', contactName: '  Asmita  ' });
+const trimmed = JSON.parse(sent!.init.body as string).data[0];
+assert.equal(trimmed.Company, 'Green Leaf Kitchen');
+assert.equal(trimmed.Last_Name, 'Asmita');
+
 // Phone is unique on Leads: an existing restaurant must not fail the form. The
 // existing lead is annotated, never overwritten — its owner and Lead_Source stay.
 {
