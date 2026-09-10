@@ -5,10 +5,10 @@ import "./globals.css";
 const SITE_URL = "https://www.restaurantswhocare.com";
 const SITE_NAME = "Restaurants Who Care Club";
 // Title <= 60 chars, description <= 155 chars: buyer's words first, brand second.
-const TITLE = "Compostable Disposables for Restaurants | RWCC by Chuk";
+const TITLE = "Eco Friendly Packaging for Restaurants | RWCC by Chuk";
 const DESCRIPTION =
-  "Serving on plastic disposables? Restaurants, cloud kitchens, caterers switch to compostable bagasse plates, containers and cups with Chuk and get ranked.";
-const OG_TITLE = "Switch your restaurant to compostable disposables. Get ranked for it.";
+  "Serving on plastic? Restaurants, cloud kitchens and caterers switch to eco friendly food packaging: bagasse plates, containers and cups from Chuk. Get ranked.";
+const OG_TITLE = "Switch your restaurant to eco friendly packaging. Get ranked for it.";
 
 // GA4 property "RWCC (restaurantswhocare.com)" under the CHUK account, created 2026-09-10.
 const GA_ID = process.env.NEXT_PUBLIC_GA_ID || "G-22VHD2BL4M";
@@ -20,8 +20,11 @@ export const metadata: Metadata = {
   alternates: { canonical: "/" },
   keywords: [
     "Restaurants Who Care Club",
-    "eco friendly disposable plates for restaurants",
-    "compostable food containers for restaurants",
+    "eco friendly packaging",
+    "eco friendly food packaging",
+    "eco friendly plates",
+    "biodegradable packaging for restaurants",
+    "compostable food containers",
     "alternative to plastic food containers",
     "eco friendly packaging for cloud kitchen",
     "bagasse plates wholesale",
@@ -73,10 +76,12 @@ const orgSchema = {
       url: SITE_URL,
       logo: `${SITE_URL}/images/rwcc.png`,
       description:
-        "Free recognition programme for Indian restaurants, cloud kitchens and caterers that switch from plastic disposables to compostable bagasse tableware from Chuk.",
+        "Free recognition programme for Indian restaurants, cloud kitchens and caterers that switch from plastic to eco friendly food packaging and compostable bagasse tableware from Chuk.",
       knowsAbout: [
-        "compostable disposable plates",
-        "bagasse tableware",
+        "eco friendly packaging",
+        "eco friendly food packaging",
+        "eco friendly plates",
+        "compostable bagasse tableware",
         "food packaging for restaurants and cloud kitchens",
         "alternatives to plastic food containers",
         "single-use plastic ban in India",
@@ -105,7 +110,8 @@ const orgSchema = {
       about: { "@id": `${SITE_URL}/#organization` },
       audience: { "@type": "Audience", audienceType: "Restaurant owners, cloud kitchens, caterers and QSR operators in India" },
       mentions: [
-        { "@type": "Thing", name: "Compostable disposable plates" },
+        { "@type": "Thing", name: "Eco friendly packaging" },
+        { "@type": "Thing", name: "Eco friendly plates" },
         { "@type": "Thing", name: "Bagasse food containers" },
         { "@type": "Thing", name: "Single-use plastic ban (India)" },
       ],
