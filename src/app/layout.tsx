@@ -4,9 +4,11 @@ import "./globals.css";
 
 const SITE_URL = "https://www.restaurantswhocare.com";
 const SITE_NAME = "Restaurants Who Care Club";
-const TITLE = "Switch your restaurant to compostable disposables | Restaurants Who Care Club by Chuk";
+// Title <= 60 chars, description <= 155 chars: buyer's words first, brand second.
+const TITLE = "Compostable Disposables for Restaurants | RWCC by Chuk";
 const DESCRIPTION =
-  "Still serving on plastic or coated-paper disposables? Indian restaurants, cloud kitchens and caterers switch to compostable bagasse plates, containers and cups with Chuk, get ranked on the leaderboard and receive a free welcome kit.";
+  "Serving on plastic disposables? Restaurants, cloud kitchens, caterers switch to compostable bagasse plates, containers and cups with Chuk and get ranked.";
+const OG_TITLE = "Switch your restaurant to compostable disposables. Get ranked for it.";
 
 // GA4 property "RWCC (restaurantswhocare.com)" under the CHUK account, created 2026-09-10.
 const GA_ID = process.env.NEXT_PUBLIC_GA_ID || "G-22VHD2BL4M";
@@ -30,14 +32,14 @@ export const metadata: Metadata = {
     type: "website",
     url: SITE_URL,
     siteName: SITE_NAME,
-    title: TITLE,
+    title: OG_TITLE,
     description: DESCRIPTION,
     locale: "en_IN",
     images: [{ url: "/images/hero.png", width: 2896, height: 2172, alt: "Restaurants Who Care Club by Chuk" }],
   },
   twitter: {
     card: "summary_large_image",
-    title: TITLE,
+    title: OG_TITLE,
     description: DESCRIPTION,
     images: ["/images/hero.png"],
   },
@@ -70,6 +72,15 @@ const orgSchema = {
       alternateName: "RWCC",
       url: SITE_URL,
       logo: `${SITE_URL}/images/rwcc.png`,
+      description:
+        "Free recognition programme for Indian restaurants, cloud kitchens and caterers that switch from plastic disposables to compostable bagasse tableware from Chuk.",
+      knowsAbout: [
+        "compostable disposable plates",
+        "bagasse tableware",
+        "food packaging for restaurants and cloud kitchens",
+        "alternatives to plastic food containers",
+        "single-use plastic ban in India",
+      ],
       email: "hello@chuk.in",
       telephone: "+91-78000-34448",
       parentOrganization: { "@type": "Organization", name: "Chuk", url: "https://chuk.in" },
@@ -83,6 +94,21 @@ const orgSchema = {
       name: SITE_NAME,
       inLanguage: "en-IN",
       publisher: { "@id": `${SITE_URL}/#organization` },
+    },
+    {
+      "@type": "WebPage",
+      "@id": `${SITE_URL}/#webpage`,
+      url: SITE_URL,
+      name: TITLE,
+      description: DESCRIPTION,
+      isPartOf: { "@id": `${SITE_URL}/#website` },
+      about: { "@id": `${SITE_URL}/#organization` },
+      audience: { "@type": "Audience", audienceType: "Restaurant owners, cloud kitchens, caterers and QSR operators in India" },
+      mentions: [
+        { "@type": "Thing", name: "Compostable disposable plates" },
+        { "@type": "Thing", name: "Bagasse food containers" },
+        { "@type": "Thing", name: "Single-use plastic ban (India)" },
+      ],
     },
   ],
 };
