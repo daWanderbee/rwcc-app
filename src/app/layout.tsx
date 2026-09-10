@@ -7,7 +7,7 @@ const SITE_NAME = "Restaurants Who Care Club";
 // Title <= 60 chars, description <= 155 chars: buyer's words first, brand second.
 const TITLE = "Eco Friendly Packaging for Restaurants | RWCC by Chuk";
 const DESCRIPTION =
-  "Serving on plastic? Restaurants, cloud kitchens and caterers switch to eco friendly food packaging: bagasse plates, containers and cups from Chuk. Get ranked.";
+  "Serving on plastic? Restaurants, cloud kitchens, caterers switch to eco friendly food packaging: bagasse plates, containers and cups from Chuk. Get ranked.";
 const OG_TITLE = "Switch your restaurant to eco friendly packaging. Get ranked for it.";
 
 // GA4 property "RWCC (restaurantswhocare.com)" under the CHUK account, created 2026-09-10.
