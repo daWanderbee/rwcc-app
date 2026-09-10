@@ -54,6 +54,10 @@ export default function JoinCtaSection() {
         throw new Error(error || 'Something went wrong. Please try again.');
       }
       setFormSubmitted(true);
+      // GA4 key event: the only outcome this site has. modalType = 'join' | 'talk'.
+      (window as unknown as { gtag?: (...a: unknown[]) => void }).gtag?.('event', 'generate_lead', {
+        lead_source: modalType === 'join' ? 'RWCC kit' : 'RWCC contact',
+      });
     } catch (err) {
       setSubmitError(err instanceof Error ? err.message : 'Something went wrong.');
     } finally {
