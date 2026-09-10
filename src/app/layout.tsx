@@ -4,9 +4,9 @@ import "./globals.css";
 
 const SITE_URL = "https://www.restaurantswhocare.com";
 const SITE_NAME = "Restaurants Who Care Club";
-const TITLE = "Restaurants Who Care Club by Chuk | Recognition for plastic-free restaurants in India";
+const TITLE = "Switch your restaurant to compostable disposables | Restaurants Who Care Club by Chuk";
 const DESCRIPTION =
-  "A free recognition programme for Indian restaurants, cloud kitchens and caterers that serve on 100% compostable Chuk tableware. See the leaderboard, your impact numbers and the welcome kit.";
+  "Still serving on plastic or coated-paper disposables? Indian restaurants, cloud kitchens and caterers switch to compostable bagasse plates, containers and cups with Chuk, get ranked on the leaderboard and receive a free welcome kit.";
 
 // GA4 property "RWCC (restaurantswhocare.com)" under the CHUK account, created 2026-09-10.
 const GA_ID = process.env.NEXT_PUBLIC_GA_ID || "G-22VHD2BL4M";
@@ -18,10 +18,12 @@ export const metadata: Metadata = {
   alternates: { canonical: "/" },
   keywords: [
     "Restaurants Who Care Club",
-    "sustainable restaurant certification India",
-    "eco friendly restaurants India",
-    "plastic free restaurant",
-    "compostable tableware for restaurants",
+    "eco friendly disposable plates for restaurants",
+    "compostable food containers for restaurants",
+    "alternative to plastic food containers",
+    "eco friendly packaging for cloud kitchen",
+    "bagasse plates wholesale",
+    "single use plastic ban restaurants India",
     "Chuk",
   ],
   openGraph: {
