@@ -12,16 +12,16 @@
 import React, { useEffect, useState } from 'react';
 import Image from 'next/image';
 import { AnimatePresence, motion, useReducedMotion } from 'framer-motion';
-import { X } from 'lucide-react';
+import { ArrowRight, X } from 'lucide-react';
 
 const COMMUNITY_URL = 'https://chat.whatsapp.com/EVTX6tj05Mj4dYHUnTyEkd?s=sh&p=i&mlu=4&ilr=4';
 
 const PERKS = [
-  { icon: '✨', text: <><strong className="font-bold">Premium content.</strong> Completely free.</> },
-  { icon: '📈', text: <>Practical tips to <strong className="font-bold">grow your restaurant &amp; retain customers</strong></> },
-  { icon: '🎓', text: <>Exclusive <strong className="font-bold">masterclasses &amp; webinars</strong> with industry experts</> },
-  { icon: '🔥', text: <>Festive-season ideas, trends &amp; restaurant hacks</> },
-  { icon: '🤝', text: <>A community to <strong className="font-bold">connect and learn from fellow restaurants</strong></> },
+  { key: 'premium', text: <><strong className="font-bold">Premium content.</strong> Completely free.</> },
+  { key: 'grow', text: <>Practical tips to <strong className="font-bold">grow your restaurant &amp; retain customers</strong></> },
+  { key: 'masterclasses', text: <>Exclusive <strong className="font-bold">masterclasses &amp; webinars</strong> with industry experts</> },
+  { key: 'festive', text: <>Festive-season ideas, trends &amp; restaurant hacks</> },
+  { key: 'community', text: <>A community to <strong className="font-bold">connect and learn from fellow restaurants</strong></> },
 ];
 
 export default function CommunityPlate() {
@@ -58,7 +58,7 @@ export default function CommunityPlate() {
                 <X className="h-4 w-4" strokeWidth={2.5} />
               </button>
               <p className="text-lg font-bold leading-tight pr-7">
-                RWCC just got a new address. 👀
+                RWCC just got a new address.
               </p>
               <p className="mt-2 text-sm leading-snug text-[#F2DABB]/90">
                 A space where restaurants can{' '}
@@ -73,10 +73,11 @@ export default function CommunityPlate() {
               </p>
               <ul className="mt-3 flex flex-col gap-2.5">
                 {PERKS.map((perk) => (
-                  <li key={perk.icon} className="flex gap-2.5 text-sm leading-snug">
-                    <span aria-hidden className="shrink-0 text-base leading-none pt-0.5">
-                      {perk.icon}
-                    </span>
+                  <li key={perk.key} className="flex gap-2.5 text-sm leading-snug">
+                    <span
+                      aria-hidden
+                      className="mt-[0.45rem] h-1.5 w-1.5 shrink-0 rounded-full bg-[#ED544B]"
+                    />
                     <span>{perk.text}</span>
                   </li>
                 ))}
@@ -94,7 +95,8 @@ export default function CommunityPlate() {
                 rel="noopener noreferrer"
                 className="mt-2 flex w-full items-center justify-center gap-2 rounded-full bg-[#ED544B] px-4 py-3 text-sm font-bold text-[#F2DABB] shadow-lg transition-transform hover:scale-[1.02] focus:outline-none focus-visible:ring-2 focus-visible:ring-[#942A45]"
               >
-                👉 Join the RWCC WhatsApp Community
+                Join the RWCC WhatsApp Community
+                <ArrowRight className="h-4 w-4" strokeWidth={2.5} />
               </a>
             </div>
           </motion.div>
@@ -115,18 +117,17 @@ export default function CommunityPlate() {
           transition={{ duration: reduceMotion ? 0 : 0.6, ease: [0.4, 0, 0.2, 1] }}
           style={{ transformStyle: 'preserve-3d' }}
         >
-          {/* front — the plate */}
+          {/* front — a real Chuk plate, cropped square from the meal-tray shot */}
           <span
-            className="absolute inset-0 grid place-items-center rounded-full bg-[#F2DABB] shadow-xl ring-4 ring-[#942A45] group-hover:ring-[#ED544B] transition-colors"
+            className="absolute inset-0 overflow-hidden rounded-full shadow-xl ring-4 ring-[#942A45] group-hover:ring-[#ED544B] transition-colors"
             style={{ backfaceVisibility: 'hidden' }}
           >
-            <span className="absolute inset-[7px] rounded-full ring-2 ring-[#942A45]/20" />
             <Image
-              src="/images/chuk-eat-safe-logo.png"
+              src="/images/chuk-plate-badge.png"
               alt=""
-              width={80}
-              height={80}
-              className="absolute inset-[11px] h-auto w-auto rounded-full object-cover"
+              fill
+              sizes="80px"
+              className="object-cover"
             />
           </span>
 
