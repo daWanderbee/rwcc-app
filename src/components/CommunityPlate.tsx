@@ -111,10 +111,11 @@ export default function CommunityPlate() {
         className="group relative rounded-2xl focus:outline-none focus-visible:ring-2 focus-visible:ring-[#942A45] focus-visible:ring-offset-2 focus-visible:ring-offset-[#F2DABB]"
         style={{ perspective: '600px' }}
       >
-        {/* The plate is cut out on transparency, so it keeps its own silhouette —
-            no circular mask, and the shadow follows the rim rather than a box. */}
+        {/* An empty Chuk container, cut out on transparency, so it keeps its own
+            silhouette — no circular mask, and the shadow follows the rim rather
+            than a box. */}
         <motion.span
-          className="relative block h-[4.5rem] w-[4.5rem] sm:h-20 sm:w-20 transition-transform group-hover:scale-105"
+          className="relative block h-24 w-24 sm:h-28 sm:w-28 transition-transform group-hover:scale-105"
           animate={{ rotateY: open ? 180 : 0 }}
           transition={{ duration: reduceMotion ? 0 : 0.6, ease: [0.4, 0, 0.2, 1] }}
           style={{ filter: 'drop-shadow(0 6px 10px rgba(74,21,37,0.35))' }}
@@ -123,7 +124,7 @@ export default function CommunityPlate() {
             src="/images/chuk-plate-badge.png"
             alt=""
             fill
-            sizes="80px"
+            sizes="112px"
             className="object-contain"
             priority={false}
           />
