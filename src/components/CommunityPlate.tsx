@@ -4,9 +4,9 @@
  * Floating "flip to reveal" Chuk plate, bottom-right. Closed it is a small
  * plate badge; clicking flips it and opens the RWCC WhatsApp community card.
  *
- * ponytail: the flip is two faces on one rotating element — no library, no
- * per-face state. Tailwind v4 ships 3D utilities but the transform properties
- * are written inline so this does not depend on that utility set existing.
+ * ponytail: one rotating element, no back face — the plate is a cut-out PNG so
+ * it keeps its own shape and simply turns over. The 3D transform properties are
+ * written inline rather than leaning on Tailwind v4's 3D utility set.
  */
 
 import React, { useEffect, useState } from 'react';
@@ -108,40 +108,25 @@ export default function CommunityPlate() {
         onClick={() => setOpen((v) => !v)}
         aria-expanded={open}
         aria-label={open ? 'Close the RWCC community invite' : 'Flip the plate to reveal the RWCC community invite'}
-        className="group relative focus:outline-none focus-visible:ring-2 focus-visible:ring-[#942A45] focus-visible:ring-offset-2 focus-visible:ring-offset-[#F2DABB] rounded-full"
+        className="group relative rounded-2xl focus:outline-none focus-visible:ring-2 focus-visible:ring-[#942A45] focus-visible:ring-offset-2 focus-visible:ring-offset-[#F2DABB]"
         style={{ perspective: '600px' }}
       >
+        {/* The plate is cut out on transparency, so it keeps its own silhouette —
+            no circular mask, and the shadow follows the rim rather than a box. */}
         <motion.span
-          className="relative block h-[4.5rem] w-[4.5rem] sm:h-20 sm:w-20"
+          className="relative block h-[4.5rem] w-[4.5rem] sm:h-20 sm:w-20 transition-transform group-hover:scale-105"
           animate={{ rotateY: open ? 180 : 0 }}
           transition={{ duration: reduceMotion ? 0 : 0.6, ease: [0.4, 0, 0.2, 1] }}
-          style={{ transformStyle: 'preserve-3d' }}
+          style={{ filter: 'drop-shadow(0 6px 10px rgba(74,21,37,0.35))' }}
         >
-          {/* front — a real Chuk plate, cropped square from the meal-tray shot */}
-          <span
-            className="absolute inset-0 overflow-hidden rounded-full shadow-xl ring-4 ring-[#942A45] group-hover:ring-[#ED544B] transition-colors"
-            style={{ backfaceVisibility: 'hidden' }}
-          >
-            <Image
-              src="/images/chuk-plate-badge.png"
-              alt=""
-              fill
-              sizes="80px"
-              className="object-cover"
-            />
-          </span>
-
-          {/* back — shown once flipped */}
-          <span
-            className="absolute inset-0 grid place-items-center rounded-full bg-[#ED544B] text-[#F2DABB] shadow-xl ring-4 ring-[#942A45] px-2 text-center"
-            style={{ backfaceVisibility: 'hidden', transform: 'rotateY(180deg)' }}
-          >
-            <span className="text-[0.65rem] font-bold leading-tight">
-              Tap to
-              <br />
-              close
-            </span>
-          </span>
+          <Image
+            src="/images/chuk-plate-badge.png"
+            alt=""
+            fill
+            sizes="80px"
+            className="object-contain"
+            priority={false}
+          />
         </motion.span>
 
         {!open && (
