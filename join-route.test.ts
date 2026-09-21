@@ -70,11 +70,11 @@ globalThis.fetch = stub(ok) as unknown as typeof fetch;
 for (const bad of ['', '   ', 'name@company', 'not an email', 'a@b@c.com']) {
   res = await post({ ...form, email: bad });
   assert.equal(res.status, 200, `email ${JSON.stringify(bad)} must not fail the form`);
-  const sentLead = JSON.parse(sent!.init.body as string).data[0];
+  const sentLead: Record<string, string | undefined> = JSON.parse(sent!.init.body as string).data[0];
   assert.equal(sentLead.Email, undefined, `email ${JSON.stringify(bad)} must not reach Zoho`);
   if (bad.trim()) {
     // whatever the restaurant typed is preserved rather than silently dropped
-    assert.match(sentLead.Description, new RegExp(`Email as entered.*${bad.trim().replace(/[.*+?^${}()|[\]\\]/g, '\\$&')}`));
+    assert.match(String(sentLead.Description), new RegExp(`Email as entered.*${bad.trim().replace(/[.*+?^${}()|[\]\\]/g, '\\$&')}`));
   }
 }
 

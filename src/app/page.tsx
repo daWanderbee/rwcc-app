@@ -12,6 +12,7 @@ import TheKit from '@/components/TheKit';
 import FaqSection from '@/components/FaqSection';
 import JoinCtaSection from '@/components/JoinCtaSection';
 import Footer from '@/components/Footer';
+import CommunityPlate from '@/components/CommunityPlate';
 
 export default function Home() {
   return (
@@ -29,6 +30,7 @@ export default function Home() {
       <FaqSection />
       <JoinCtaSection />
       <Footer />
+      <CommunityPlate />
     </main>
   );
 }
