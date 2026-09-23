@@ -46,7 +46,7 @@ export default function CommunityPlate() {
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: 16, scale: 0.96 }}
             transition={{ duration: reduceMotion ? 0 : 0.25, ease: 'easeOut' }}
-            className="w-[min(22rem,calc(100vw-2rem))] max-h-[min(32rem,calc(100vh-9rem))] overflow-y-auto rounded-3xl bg-[#F2DABB] text-[#942A45] shadow-2xl ring-2 ring-[#942A45]/15"
+            className="w-[min(26rem,calc(100vw-2rem))] max-h-[min(36rem,calc(100vh-11rem))] overflow-y-auto rounded-3xl bg-[#F2DABB] text-[#942A45] shadow-2xl ring-2 ring-[#942A45]/15"
           >
             <div className="relative bg-[#942A45] text-[#F2DABB] px-5 pt-5 pb-4 rounded-t-3xl">
               <button
@@ -55,12 +55,12 @@ export default function CommunityPlate() {
                 aria-label="Close"
                 className="absolute top-3 right-3 rounded-full p-1.5 text-[#F2DABB]/80 hover:text-[#F2DABB] hover:bg-[#F2DABB]/15 transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-[#F2DABB]"
               >
-                <X className="h-4 w-4" strokeWidth={2.5} />
+                <X className="h-5 w-5" strokeWidth={2.5} />
               </button>
-              <p className="text-lg font-bold leading-tight pr-7">
+              <p className="text-2xl font-bold leading-tight pr-8">
                 RWCC just got a new address.
               </p>
-              <p className="mt-2 text-sm leading-snug text-[#F2DABB]/90">
+              <p className="mt-2.5 text-base leading-snug text-[#F2DABB]/90">
                 A space where restaurants can{' '}
                 <strong className="font-bold text-[#F2DABB]">learn, connect and grow</strong> — with
                 access to things that can actually help you run your business better.
@@ -68,35 +68,35 @@ export default function CommunityPlate() {
             </div>
 
             <div className="px-5 py-4">
-              <p className="text-xs font-bold uppercase tracking-wide text-[#942A45]/60">
+              <p className="text-sm font-bold uppercase tracking-wide text-[#942A45]/60">
                 Here&apos;s what&apos;s waiting inside
               </p>
-              <ul className="mt-3 flex flex-col gap-2.5">
+              <ul className="mt-3 flex flex-col gap-3">
                 {PERKS.map((perk) => (
-                  <li key={perk.key} className="flex gap-2.5 text-sm leading-snug">
+                  <li key={perk.key} className="flex gap-3 text-base leading-snug">
                     <span
                       aria-hidden
-                      className="mt-[0.45rem] h-1.5 w-1.5 shrink-0 rounded-full bg-[#ED544B]"
+                      className="mt-[0.5rem] h-2 w-2 shrink-0 rounded-full bg-[#ED544B]"
                     />
                     <span>{perk.text}</span>
                   </li>
                 ))}
               </ul>
 
-              <p className="mt-4 rounded-2xl bg-[#82B74B]/15 px-3 py-2.5 text-sm leading-snug ring-1 ring-[#82B74B]/30">
+              <p className="mt-4 rounded-2xl bg-[#82B74B]/15 px-3.5 py-3 text-base leading-snug ring-1 ring-[#82B74B]/30">
                 And because you&apos;re already part of RWCC, you get{' '}
                 <strong className="font-bold">FREE access</strong> to this exclusive community.
               </p>
 
-              <p className="mt-4 text-center text-sm font-bold">Ready to step inside?</p>
+              <p className="mt-4 text-center text-base font-bold">Ready to step inside?</p>
               <a
                 href={COMMUNITY_URL}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="mt-2 flex w-full items-center justify-center gap-2 rounded-full bg-[#ED544B] px-4 py-3 text-sm font-bold text-[#F2DABB] shadow-lg transition-transform hover:scale-[1.02] focus:outline-none focus-visible:ring-2 focus-visible:ring-[#942A45]"
+                className="mt-2.5 flex w-full items-center justify-center gap-2 rounded-full bg-[#ED544B] px-4 py-3.5 text-base font-bold text-[#F2DABB] shadow-lg transition-transform hover:scale-[1.02] focus:outline-none focus-visible:ring-2 focus-visible:ring-[#942A45]"
               >
                 Join the RWCC WhatsApp Community
-                <ArrowRight className="h-4 w-4" strokeWidth={2.5} />
+                <ArrowRight className="h-5 w-5 shrink-0" strokeWidth={2.5} />
               </a>
             </div>
           </motion.div>
@@ -107,7 +107,7 @@ export default function CommunityPlate() {
         type="button"
         onClick={() => setOpen((v) => !v)}
         aria-expanded={open}
-        aria-label={open ? 'Close the RWCC community invite' : 'Flip the plate to reveal the RWCC community invite'}
+        aria-label={open ? 'Close the RWCC community invite' : 'Tap the plate to reveal the RWCC community invite'}
         className="group relative rounded-2xl focus:outline-none focus-visible:ring-2 focus-visible:ring-[#942A45] focus-visible:ring-offset-2 focus-visible:ring-offset-[#F2DABB]"
         style={{ perspective: '600px' }}
       >
@@ -131,8 +131,8 @@ export default function CommunityPlate() {
         </motion.span>
 
         {!open && (
-          <span className="pointer-events-none absolute -top-1 left-1/2 -translate-x-1/2 -translate-y-full whitespace-nowrap rounded-full bg-[#942A45] px-2.5 py-1 text-[0.65rem] font-bold uppercase tracking-wide text-[#F2DABB] shadow-md">
-            Flip to reveal
+          <span className="pointer-events-none absolute -top-1.5 left-1/2 -translate-x-1/2 -translate-y-full whitespace-nowrap rounded-full bg-[#942A45] px-3.5 py-1.5 text-sm font-bold uppercase tracking-wide text-[#F2DABB] shadow-md">
+            Tap to reveal
           </span>
         )}
       </button>
