@@ -28,17 +28,24 @@ export default function CommunityPlate() {
   const [pastHero, setPastHero] = useState(false);
   const reduceMotion = useReducedMotion();
 
-  // The hero is a full-screen sticky panel; the plate stays out of its way and
-  // only appears once the reader has scrolled past it.
+  // Phones only: the hero fills the screen there, so the plate waits until the
+  // reader has scrolled past it. From sm up there is room for both, and the
+  // plate is visible from page load. Tracks resize so crossing the breakpoint
+  // does not leave it stuck hidden.
   useEffect(() => {
-    const onScroll = () => {
-      const past = window.scrollY > window.innerHeight * 0.75;
+    const update = () => {
+      const gated = window.innerWidth < 640;
+      const past = !gated || window.scrollY > window.innerHeight * 0.75;
       setPastHero(past);
       if (!past) setOpen(false);
     };
-    onScroll();
-    window.addEventListener('scroll', onScroll, { passive: true });
-    return () => window.removeEventListener('scroll', onScroll);
+    update();
+    window.addEventListener('scroll', update, { passive: true });
+    window.addEventListener('resize', update);
+    return () => {
+      window.removeEventListener('scroll', update);
+      window.removeEventListener('resize', update);
+    };
   }, []);
 
   useEffect(() => {
