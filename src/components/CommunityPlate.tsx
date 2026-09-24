@@ -25,7 +25,21 @@ const PERKS = [
 
 export default function CommunityPlate() {
   const [open, setOpen] = useState(false);
+  const [pastHero, setPastHero] = useState(false);
   const reduceMotion = useReducedMotion();
+
+  // The hero is a full-screen sticky panel; the plate stays out of its way and
+  // only appears once the reader has scrolled past it.
+  useEffect(() => {
+    const onScroll = () => {
+      const past = window.scrollY > window.innerHeight * 0.75;
+      setPastHero(past);
+      if (!past) setOpen(false);
+    };
+    onScroll();
+    window.addEventListener('scroll', onScroll, { passive: true });
+    return () => window.removeEventListener('scroll', onScroll);
+  }, []);
 
   useEffect(() => {
     if (!open) return;
@@ -33,6 +47,8 @@ export default function CommunityPlate() {
     window.addEventListener('keydown', onKey);
     return () => window.removeEventListener('keydown', onKey);
   }, [open]);
+
+  if (!pastHero) return null;
 
   return (
     <div className="fixed bottom-4 right-4 sm:bottom-6 sm:right-6 z-[110] flex flex-col items-end gap-3 font-['Karbon']">
