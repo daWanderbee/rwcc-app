@@ -25,7 +25,21 @@ const PERKS = [
 
 export default function CommunityPlate() {
   const [open, setOpen] = useState(false);
+  const [pastHero, setPastHero] = useState(false);
   const reduceMotion = useReducedMotion();
+
+  // The hero is a full-screen sticky panel; the plate stays out of its way and
+  // only appears once the reader has scrolled past it.
+  useEffect(() => {
+    const onScroll = () => {
+      const past = window.scrollY > window.innerHeight * 0.75;
+      setPastHero(past);
+      if (!past) setOpen(false);
+    };
+    onScroll();
+    window.addEventListener('scroll', onScroll, { passive: true });
+    return () => window.removeEventListener('scroll', onScroll);
+  }, []);
 
   useEffect(() => {
     if (!open) return;
@@ -34,59 +48,20 @@ export default function CommunityPlate() {
     return () => window.removeEventListener('keydown', onKey);
   }, [open]);
 
+  if (!pastHero) return null;
+
   return (
-    <div className="fixed top-[4.75rem] right-3 sm:top-[5.5rem] sm:right-6 z-[110] flex flex-col items-end gap-2.5 font-['Karbon']">
-      <button
-        type="button"
-        onClick={() => setOpen((v) => !v)}
-        aria-expanded={open}
-        aria-label={open ? 'Close the RWCC community invite' : 'Reveal the RWCC community invite'}
-        className="group relative rounded-2xl focus:outline-none focus-visible:ring-2 focus-visible:ring-[#942A45] focus-visible:ring-offset-2 focus-visible:ring-offset-[#F2DABB]"
-        style={{ perspective: '600px' }}
-      >
-        {/* The four-compartment Chuk plate, cut from its studio white onto
-            transparency, so it keeps its own silhouette — no circular mask, and
-            the shadow follows the rim rather than a box. */}
-        <motion.span
-          className="relative block h-16 w-16 sm:h-20 sm:w-20 transition-transform group-hover:scale-105"
-          animate={{ rotateY: open ? 180 : 0 }}
-          transition={{ duration: reduceMotion ? 0 : 0.6, ease: [0.4, 0, 0.2, 1] }}
-          style={{ filter: 'drop-shadow(0 6px 10px rgba(74,21,37,0.35))' }}
-        >
-          <Image
-            src="/images/chuk-plate-badge.png"
-            alt=""
-            fill
-            sizes="80px"
-            className="object-contain"
-            priority={false}
-          />
-        </motion.span>
-
-        {/* Keyed off the pointer device, not the viewport: a touchscreen laptop
-            at desktop width should still read "Tap". The button carries its own
-            aria-label, so neither copy is announced twice. */}
-        {!open && (
-          <span
-            aria-hidden
-            className="pointer-events-none absolute -bottom-1.5 right-0 translate-y-full whitespace-nowrap rounded-full bg-[#942A45] px-3 py-1 text-xs font-bold uppercase tracking-wide text-[#F2DABB] shadow-md"
-          >
-            <span className="pointer-fine:hidden">Tap to reveal</span>
-            <span className="hidden pointer-fine:inline">Click to reveal</span>
-          </span>
-        )}
-      </button>
-
+    <div className="fixed bottom-4 right-4 sm:bottom-6 sm:right-6 z-[110] flex flex-col items-end gap-3 font-['Karbon']">
       <AnimatePresence>
         {open && (
           <motion.div
             role="dialog"
             aria-label="Join the RWCC WhatsApp Community"
-            initial={{ opacity: 0, y: -12, scale: 0.96 }}
+            initial={{ opacity: 0, y: 16, scale: 0.96 }}
             animate={{ opacity: 1, y: 0, scale: 1 }}
-            exit={{ opacity: 0, y: -12, scale: 0.96 }}
+            exit={{ opacity: 0, y: 16, scale: 0.96 }}
             transition={{ duration: reduceMotion ? 0 : 0.25, ease: 'easeOut' }}
-            className="w-[min(32rem,calc(100vw-2rem))] max-h-[calc(100vh-12rem)] sm:max-h-[calc(100vh-13rem)] overflow-y-auto rounded-3xl bg-[#F2DABB] text-[#942A45] shadow-2xl ring-2 ring-[#942A45]/15"
+            className="w-[min(32rem,calc(100vw-2rem))] max-h-[calc(100vh-7rem)] sm:max-h-[calc(100vh-8.5rem)] overflow-y-auto rounded-3xl bg-[#F2DABB] text-[#942A45] shadow-2xl ring-2 ring-[#942A45]/15"
           >
             <div className="relative bg-[#942A45] text-[#F2DABB] px-5 pt-4 pb-3 rounded-t-3xl">
               <button
@@ -141,6 +116,47 @@ export default function CommunityPlate() {
           </motion.div>
         )}
       </AnimatePresence>
+
+      <button
+        type="button"
+        onClick={() => setOpen((v) => !v)}
+        aria-expanded={open}
+        aria-label={open ? 'Close the RWCC community invite' : 'Reveal the RWCC community invite'}
+        className="group relative rounded-2xl focus:outline-none focus-visible:ring-2 focus-visible:ring-[#942A45] focus-visible:ring-offset-2 focus-visible:ring-offset-[#F2DABB]"
+        style={{ perspective: '600px' }}
+      >
+        {/* The four-compartment Chuk plate, cut from its studio white onto
+            transparency, so it keeps its own silhouette — no circular mask, and
+            the shadow follows the rim rather than a box. */}
+        <motion.span
+          className="relative block h-16 w-16 sm:h-20 sm:w-20 transition-transform group-hover:scale-105"
+          animate={{ rotateY: open ? 180 : 0 }}
+          transition={{ duration: reduceMotion ? 0 : 0.6, ease: [0.4, 0, 0.2, 1] }}
+          style={{ filter: 'drop-shadow(0 6px 10px rgba(74,21,37,0.35))' }}
+        >
+          <Image
+            src="/images/chuk-plate-badge.png"
+            alt=""
+            fill
+            sizes="80px"
+            className="object-contain"
+            priority={false}
+          />
+        </motion.span>
+
+        {/* Keyed off the pointer device, not the viewport: a touchscreen laptop
+            at desktop width should still read "Tap". The button carries its own
+            aria-label, so neither copy is announced twice. */}
+        {!open && (
+          <span
+            aria-hidden
+            className="pointer-events-none absolute -top-1.5 right-0 -translate-y-full whitespace-nowrap rounded-full bg-[#942A45] px-3 py-1 text-xs font-bold uppercase tracking-wide text-[#F2DABB] shadow-md"
+          >
+            <span className="pointer-fine:hidden">Tap to reveal</span>
+            <span className="hidden pointer-fine:inline">Click to reveal</span>
+          </span>
+        )}
+      </button>
     </div>
   );
 }
