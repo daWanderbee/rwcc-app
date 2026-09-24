@@ -52,11 +52,11 @@ export default function CommunityPlate() {
                 type="button"
                 onClick={() => setOpen(false)}
                 aria-label="Close"
-                className="absolute top-3 right-3 rounded-full p-1.5 text-[#F2DABB]/80 hover:text-[#F2DABB] hover:bg-[#F2DABB]/15 transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-[#F2DABB]"
+                className="absolute top-2.5 right-2.5 flex h-9 w-9 items-center justify-center rounded-full bg-[#F2DABB] text-[#942A45] shadow-md ring-2 ring-[#942A45]/20 transition-transform hover:scale-110 focus:outline-none focus-visible:ring-2 focus-visible:ring-[#F2DABB]"
               >
-                <X className="h-5 w-5" strokeWidth={2.5} />
+                <X className="h-4 w-4" strokeWidth={3} />
               </button>
-              <p className="text-2xl font-bold leading-tight pr-8">
+              <p className="text-2xl font-bold leading-tight pr-12">
                 RWCC just got a new address.
               </p>
             </div>
