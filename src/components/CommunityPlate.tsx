@@ -35,7 +35,7 @@ export default function CommunityPlate() {
   }, [open]);
 
   return (
-    <div className="fixed bottom-4 right-4 sm:bottom-6 sm:right-6 z-50 flex flex-col items-end gap-3 font-['Karbon']">
+    <div className="fixed bottom-4 right-4 sm:bottom-6 sm:right-6 z-[110] flex flex-col items-end gap-3 font-['Karbon']">
       <AnimatePresence>
         {open && (
           <motion.div
@@ -45,7 +45,7 @@ export default function CommunityPlate() {
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: 16, scale: 0.96 }}
             transition={{ duration: reduceMotion ? 0 : 0.25, ease: 'easeOut' }}
-            className="w-[min(32rem,calc(100vw-2rem))] max-h-[calc(100vh-13rem)] sm:max-h-[calc(100vh-14.5rem)] overflow-y-auto rounded-3xl bg-[#F2DABB] text-[#942A45] shadow-2xl ring-2 ring-[#942A45]/15"
+            className="w-[min(32rem,calc(100vw-2rem))] max-h-[calc(100vh-7rem)] sm:max-h-[calc(100vh-8.5rem)] overflow-y-auto rounded-3xl bg-[#F2DABB] text-[#942A45] shadow-2xl ring-2 ring-[#942A45]/15"
           >
             <div className="relative bg-[#942A45] text-[#F2DABB] px-5 pt-4 pb-3 rounded-t-3xl">
               <button
@@ -113,7 +113,7 @@ export default function CommunityPlate() {
             transparency, so it keeps its own silhouette — no circular mask, and
             the shadow follows the rim rather than a box. */}
         <motion.span
-          className="relative block h-24 w-24 sm:h-28 sm:w-28 transition-transform group-hover:scale-105"
+          className="relative block h-16 w-16 sm:h-20 sm:w-20 transition-transform group-hover:scale-105"
           animate={{ rotateY: open ? 180 : 0 }}
           transition={{ duration: reduceMotion ? 0 : 0.6, ease: [0.4, 0, 0.2, 1] }}
           style={{ filter: 'drop-shadow(0 6px 10px rgba(74,21,37,0.35))' }}
@@ -122,7 +122,7 @@ export default function CommunityPlate() {
             src="/images/chuk-plate-badge.png"
             alt=""
             fill
-            sizes="112px"
+            sizes="80px"
             className="object-contain"
             priority={false}
           />
@@ -134,7 +134,7 @@ export default function CommunityPlate() {
         {!open && (
           <span
             aria-hidden
-            className="pointer-events-none absolute -top-1.5 right-0 -translate-y-full whitespace-nowrap rounded-full bg-[#942A45] px-3.5 py-1.5 text-sm font-bold uppercase tracking-wide text-[#F2DABB] shadow-md"
+            className="pointer-events-none absolute -top-1.5 right-0 -translate-y-full whitespace-nowrap rounded-full bg-[#942A45] px-3 py-1 text-xs font-bold uppercase tracking-wide text-[#F2DABB] shadow-md"
           >
             <span className="pointer-fine:hidden">Tap to reveal</span>
             <span className="hidden pointer-fine:inline">Click to reveal</span>
