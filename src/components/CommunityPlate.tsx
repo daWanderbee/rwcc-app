@@ -45,7 +45,7 @@ export default function CommunityPlate() {
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: 16, scale: 0.96 }}
             transition={{ duration: reduceMotion ? 0 : 0.25, ease: 'easeOut' }}
-            className="w-[min(32rem,calc(100vw-2rem))] max-h-[calc(100vh-5.5rem)] overflow-y-auto rounded-3xl bg-[#F2DABB] text-[#942A45] shadow-2xl ring-2 ring-[#942A45]/15"
+            className="w-[min(32rem,calc(100vw-2rem))] max-h-[calc(100vh-13rem)] sm:max-h-[calc(100vh-14.5rem)] overflow-y-auto rounded-3xl bg-[#F2DABB] text-[#942A45] shadow-2xl ring-2 ring-[#942A45]/15"
           >
             <div className="relative bg-[#942A45] text-[#F2DABB] px-5 pt-4 pb-3 rounded-t-3xl">
               <button
