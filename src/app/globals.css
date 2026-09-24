@@ -34,6 +34,45 @@
 
 @theme {
   --font-sans: "Karbon", system-ui, -apple-system, sans-serif;
+
+  /* Body copy runs one eighth larger site-wide. Only the steps body text uses
+     are scaled — 2xl and up are display sizes and keep Tailwind's defaults, so
+     the headings do not move and nothing reflows under them. */
+  --text-xs: 1.05rem;
+  --text-xs--line-height: 1.45rem;
+  --text-sm: 1.15rem;
+  --text-sm--line-height: 1.6rem;
+  --text-base: 1.35rem;
+  --text-base--line-height: 2rem;
+  --text-lg: 1.5rem;
+  --text-lg--line-height: 2.2rem;
+  --text-xl: 1.7rem;
+  --text-xl--line-height: 2.3rem;
+  /* Most section paragraphs land on lg:text-2xl or 2xl:text-3xl at desktop
+     width, so body copy only actually moves if these two move as well. */
+  --text-2xl: 1.95rem;
+  --text-2xl--line-height: 2.5rem;
+  --text-3xl: 2.4rem;
+  --text-3xl--line-height: 2.85rem;
+}
+
+/* Below Tailwind's sm breakpoint the responsive classes fall back to their
+   smallest step, so phones were reading text-xs / text-base while desktop got
+   2xl. Lift the small end again for mobile only — the font-size utilities
+   compile to var(--text-*), so redefining them here is all it takes. */
+@media (max-width: 639.98px) {
+  :root {
+    --text-xs: 1.15rem;
+    --text-xs--line-height: 1.6rem;
+    --text-sm: 1.3rem;
+    --text-sm--line-height: 1.85rem;
+    --text-base: 1.5rem;
+    --text-base--line-height: 2.15rem;
+    --text-lg: 1.65rem;
+    --text-lg--line-height: 2.35rem;
+    --text-xl: 1.85rem;
+    --text-xl--line-height: 2.45rem;
+  }
 }
 
 :root {

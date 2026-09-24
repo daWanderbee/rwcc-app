@@ -1,8 +1,8 @@
 'use client';
 
-import React, { useState } from 'react';
+import React, { useRef, useState } from 'react';
 import { motion } from 'framer-motion';
-import { Play, Heart, ExternalLink, ArrowRight } from 'lucide-react';
+import { Play, Heart, ExternalLink, ArrowRight, ChevronLeft, ChevronRight } from 'lucide-react';
 import Image from 'next/image';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
@@ -40,6 +40,45 @@ interface ReelItem {
 }
 
 const reelsData: ReelItem[] = [
+  {
+    id: 'reel-7',
+    url: 'https://www.instagram.com/chukitnow/reel/Dcx2py-ssQV/',
+    title: 'Oye Kake · Punjabi Food',
+    restaurant: 'Oye Kake',
+    handle: '@rohil.mohile',
+    city: 'Sky City Mall',
+    likes: '1K',
+    image: '/images/reels/oye-kake.jpg?v=1',
+    tag: 'Punjabi Food',
+    tagColor: '#33A8C3', // Turquoise Sky
+    quote: 'Trying possibly the best Punjabi food in Sky City Mall.',
+  },
+  {
+    id: 'reel-8',
+    url: 'https://www.instagram.com/chukitnow/reel/DcnbWyzyT9y/',
+    title: 'Ka Ching · Chinese Food',
+    restaurant: 'Ka Ching',
+    handle: '@rohil.mohile',
+    city: 'Goregaon',
+    likes: '564',
+    image: '/images/reels/ka-ching.jpg?v=1',
+    tag: 'Chinese Food',
+    tagColor: '#ED544B', // Sunset Coral
+    quote: 'Trying possibly the best Chinese food in Goregaon.',
+  },
+  {
+    id: 'reel-9',
+    url: 'https://www.instagram.com/chukitnow/reel/Dcv3SVgAw7N/',
+    title: 'The Benne Kitchen · South Indian',
+    restaurant: 'The Benne Kitchen',
+    handle: '@chirayu_2.0_',
+    city: 'Indore',
+    likes: '180',
+    image: '/images/reels/the-benne-kitchen.jpg?v=1',
+    tag: 'South Indian',
+    tagColor: '#95CC2E', // Leaf Lime
+    quote: 'Their tableware by CHUK is made from sugarcane residue. No big sustainability lecture — just a better choice.',
+  },
   {
     id: 'reel-1',
     url: 'https://www.instagram.com/chukitnow/reel/DZ42J3cBD4W/',
@@ -124,6 +163,13 @@ import { WavyDivider } from '@/components/ui/wavy-divider';
 
 export default function ReelsSection() {
   const [likedMap, setLikedMap] = useState<Record<string, boolean>>({});
+  const trackRef = useRef<HTMLDivElement>(null);
+
+  // ponytail: native scroll + CSS snap does the sliding; the arrows only nudge it.
+  const slide = (dir: 1 | -1) => {
+    const el = trackRef.current;
+    if (el) el.scrollBy({ left: dir * el.clientWidth * 0.85, behavior: 'smooth' });
+  };
 
   const toggleLike = (id: string, e: React.MouseEvent) => {
     e.preventDefault();
@@ -164,14 +210,18 @@ export default function ReelsSection() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 0.15 }}
-            className="text-xs sm:text-base lg:text-lg text-[#942A45]/90 font-medium leading-relaxed max-w-2xl mx-auto"
+            className="text-base sm:text-base lg:text-lg text-[#942A45]/90 font-medium leading-relaxed max-w-2xl mx-auto"
           >
             See how operators across the country are serving with 100% compostable Chuk — and what their diners are saying about it.
           </motion.p>
         </div>
 
-        {/* 6 Real Partner Reels Grid (Mobile Snap Carousel / Desktop 3-Col Grid) */}
-        <div className="w-full flex sm:grid sm:grid-cols-2 lg:grid-cols-3 gap-5 sm:gap-6 lg:gap-8 overflow-x-auto sm:overflow-visible snap-x snap-mandatory pb-6 sm:pb-0 mb-12 sm:mb-16 scrollbar-none">
+        {/* Real Partner Reels Grid (Mobile Snap Carousel / Desktop 3-Col Grid) */}
+        <div className="relative w-full mb-12 sm:mb-16">
+          <div
+            ref={trackRef}
+            className="w-full flex gap-5 sm:gap-6 lg:gap-8 overflow-x-auto snap-x snap-mandatory pb-6 scrollbar-none scroll-smooth"
+          >
           {reelsData.map((reel, index) => {
             const isLiked = !!likedMap[reel.id];
 
@@ -185,7 +235,7 @@ export default function ReelsSection() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.4, delay: index * 0.08 }}
-                className="group relative shrink-0 w-[82vw] sm:w-auto snap-center rounded-2xl sm:rounded-3xl overflow-hidden shadow-lg border-2 sm:border-3 border-[#942A45]/20 bg-[#3A2A2F] flex flex-col justify-between aspect-[9/16] transition-all duration-300 hover:scale-[1.02] hover:shadow-2xl p-3.5 sm:p-4 text-left"
+                className="group relative shrink-0 w-[82vw] sm:w-[calc(50%-0.75rem)] lg:w-[calc(33.333%-1.334rem)] snap-center rounded-2xl sm:rounded-3xl overflow-hidden shadow-lg border-2 sm:border-3 border-[#942A45]/20 bg-[#3A2A2F] flex flex-col justify-between aspect-[9/16] transition-all duration-300 hover:scale-[1.02] hover:shadow-2xl p-3.5 sm:p-4 text-left"
               >
                 {/* High-Resolution Thumbnail */}
                 <Image
@@ -261,6 +311,24 @@ export default function ReelsSection() {
               </motion.a>
             );
           })}
+          </div>
+
+          <button
+            type="button"
+            onClick={() => slide(-1)}
+            aria-label="Previous reels"
+            className="hidden sm:flex absolute left-0 top-1/2 -translate-y-1/2 -translate-x-1/2 h-11 w-11 items-center justify-center rounded-full bg-[#942A45] text-[#F2DABB] shadow-lg transition-transform hover:scale-110 focus:outline-none focus-visible:ring-2 focus-visible:ring-[#942A45] focus-visible:ring-offset-2 focus-visible:ring-offset-[#F2DABB]"
+          >
+            <ChevronLeft className="h-6 w-6" strokeWidth={3} />
+          </button>
+          <button
+            type="button"
+            onClick={() => slide(1)}
+            aria-label="More reels"
+            className="hidden sm:flex absolute right-0 top-1/2 -translate-y-1/2 translate-x-1/2 h-11 w-11 items-center justify-center rounded-full bg-[#942A45] text-[#F2DABB] shadow-lg transition-transform hover:scale-110 focus:outline-none focus-visible:ring-2 focus-visible:ring-[#942A45] focus-visible:ring-offset-2 focus-visible:ring-offset-[#F2DABB]"
+          >
+            <ChevronRight className="h-6 w-6" strokeWidth={3} />
+          </button>
         </div>
 
         {/* Follow CTA Bar */}

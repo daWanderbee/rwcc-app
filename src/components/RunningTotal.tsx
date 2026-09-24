@@ -128,7 +128,7 @@ export default function RunningTotal() {
                 </h4>
 
                 {/* Metric Label / Subtext */}
-                <p className="text-xs sm:text-base lg:text-lg text-[#F2DABB]/85 font-medium leading-relaxed max-w-sm">
+                <p className="text-base sm:text-base lg:text-lg text-[#F2DABB]/85 font-medium leading-relaxed max-w-sm">
                   {stat.label}
                 </p>
               </motion.div>

@@ -10,6 +10,7 @@ import RunningTotal from '@/components/RunningTotal';
 
 import TheKit from '@/components/TheKit';
 import FaqSection from '@/components/FaqSection';
+import CommunityInvite from '@/components/CommunityInvite';
 import JoinCtaSection from '@/components/JoinCtaSection';
 import Footer from '@/components/Footer';
 import CommunityPlate from '@/components/CommunityPlate';
@@ -20,6 +21,7 @@ export default function Home() {
       <Navbar />
       <HeroSection />
       <WhatIsClub />
+      <CommunityInvite />
       <ReelsSection />
       <Leaderboard />
       <HowImpactIsCalculated />

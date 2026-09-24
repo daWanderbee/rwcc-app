@@ -41,16 +41,7 @@ export default function WhatIsClub() {
       badge: 'India-Wide Network',
       accentColor: '#33A8C3', // Turquoise Sky
       className: 'col-span-1 md:col-span-1',
-      background: (
-        <div className="absolute right-2 bottom-2 sm:right-4 sm:bottom-3 w-28 h-28 sm:w-36 sm:h-36 lg:w-44 lg:h-44 pointer-events-none transition-transform duration-300 group-hover:scale-105">
-          <Image
-            src="/images/entering-sticker.png"
-            alt="Entering sticker glass decal"
-            fill
-            className="object-contain drop-shadow-md"
-          />
-        </div>
-      ),
+      background: null,
     },
     {
       Icon: KeyRound,
@@ -62,16 +53,7 @@ export default function WhatIsClub() {
       badge: 'Free Entry',
       accentColor: '#ED544B', // Sunset Coral
       className: 'col-span-1 md:col-span-1',
-      background: (
-        <div className="absolute right-2 bottom-2 sm:right-4 sm:bottom-3 w-28 h-28 sm:w-36 sm:h-36 lg:w-44 lg:h-44 pointer-events-none transition-transform duration-300 group-hover:scale-105">
-          <Image
-            src="/images/tent-card.png"
-            alt="Table tent card"
-            fill
-            className="object-contain drop-shadow-md"
-          />
-        </div>
-      ),
+      background: null,
     },
     {
       Icon: Gift,

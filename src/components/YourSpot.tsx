@@ -37,7 +37,7 @@ export default function YourSpot() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 0.1 }}
-            className="text-xs sm:text-xl lg:text-2xl text-[#F2DABB]/90 font-medium leading-relaxed max-w-2xl mx-auto"
+            className="text-base sm:text-xl lg:text-2xl text-[#F2DABB]/90 font-medium leading-relaxed max-w-2xl mx-auto"
           >
             Every member gets a recognition block: your three impact numbers and your season rank, built for the reception desk, the billing counter, or the pass. Diners read it while they wait. Other restaurants ask where you got it.
           </motion.p>
