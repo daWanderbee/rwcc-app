@@ -38,22 +38,22 @@
   /* Body copy runs one eighth larger site-wide. Only the steps body text uses
      are scaled — 2xl and up are display sizes and keep Tailwind's defaults, so
      the headings do not move and nothing reflows under them. */
-  --text-xs: 1.05rem;
-  --text-xs--line-height: 1.45rem;
-  --text-sm: 1.15rem;
-  --text-sm--line-height: 1.6rem;
-  --text-base: 1.35rem;
-  --text-base--line-height: 2rem;
-  --text-lg: 1.5rem;
-  --text-lg--line-height: 2.2rem;
-  --text-xl: 1.7rem;
-  --text-xl--line-height: 2.3rem;
+  --text-xs: 0.84rem;
+  --text-xs--line-height: 1.15rem;
+  --text-sm: 0.98rem;
+  --text-sm--line-height: 1.4rem;
+  --text-base: 1.12rem;
+  --text-base--line-height: 1.7rem;
+  --text-lg: 1.26rem;
+  --text-lg--line-height: 1.95rem;
+  --text-xl: 1.4rem;
+  --text-xl--line-height: 1.95rem;
   /* Most section paragraphs land on lg:text-2xl or 2xl:text-3xl at desktop
      width, so body copy only actually moves if these two move as well. */
-  --text-2xl: 1.95rem;
-  --text-2xl--line-height: 2.5rem;
-  --text-3xl: 2.4rem;
-  --text-3xl--line-height: 2.85rem;
+  --text-2xl: 1.68rem;
+  --text-2xl--line-height: 2.2rem;
+  --text-3xl: 2.1rem;
+  --text-3xl--line-height: 2.5rem;
 }
 
 /* Below Tailwind's sm breakpoint the responsive classes fall back to their
@@ -62,16 +62,16 @@
    compile to var(--text-*), so redefining them here is all it takes. */
 @media (max-width: 639.98px) {
   :root {
-    --text-xs: 1.15rem;
-    --text-xs--line-height: 1.6rem;
-    --text-sm: 1.3rem;
-    --text-sm--line-height: 1.85rem;
-    --text-base: 1.5rem;
-    --text-base--line-height: 2.15rem;
-    --text-lg: 1.65rem;
-    --text-lg--line-height: 2.35rem;
-    --text-xl: 1.85rem;
-    --text-xl--line-height: 2.45rem;
+    --text-xs: 0.9rem;
+    --text-xs--line-height: 1.25rem;
+    --text-sm: 1rem;
+    --text-sm--line-height: 1.45rem;
+    --text-base: 1.12rem;
+    --text-base--line-height: 1.7rem;
+    --text-lg: 1.22rem;
+    --text-lg--line-height: 1.85rem;
+    --text-xl: 1.35rem;
+    --text-xl--line-height: 1.9rem;
   }
 }
 
